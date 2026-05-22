@@ -1,0 +1,39 @@
+
+@use '../abstracts/variables' as vars;
+
+
+.pagination .page-item .page-link.pren.prev:hover {
+	transform: translateX(-5px);
+	background: none;
+	color: vars.$secondary-500;
+}
+
+.pagination .page-item .page-link.pren.next:hover {
+	transform: translateX(5px);
+	background: none;
+	color: vars.$secondary-500;
+}
+
+.pagination .page-item .page-link {
+	background: none;
+	border: none;
+	color: #313131;
+	font-size: 1rem;
+	border-radius: 0;
+	font-weight: 600;
+	min-width: 40px;
+	text-align: center;
+	margin-right: 0.6rem;
+	border-radius: 4px;
+	padding: 3px 0;
+}
+
+.pagination .page-item.active .page-link,
+.pagination .page-item:hover .page-link {
+	background: vars.$secondary-500;
+	color: #fff;
+}
+
+.pagination {
+	display: inline-flex;
+}

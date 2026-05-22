@@ -1,0 +1,222 @@
+<div class="th-menu-wrapper">
+    <div class="th-menu-area text-center">
+        <button class="th-menu-toggle"> <i class="fa-solid fa-xmark"></i></button>
+
+        <div class="th-mobile-menu">
+            <ul>
+                <li class="menu-item-has-children">
+                    <a href="home-organic-farm.html">Home</a>
+                    <ul class="sub-menu">
+                        <li><a href="home-organic-farm.html">Organic Farm</a></li>
+                        <li><a href="home-organic-food.html">Organic Food</a></li>
+                        <li><a href="home-mega-shop.html">Mega Shop</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">About Us</a></li>
+                <li class="menu-item-has-children">
+                    <a href="#">Service</a>
+                    <ul class="sub-menu">
+                        <li><a href="service.html">Service</a></li>
+                        <li><a href="service-details.html">Service Details</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="#">Pages</a>
+                    <ul class="sub-menu">
+                        <li class="menu-item-has-children">
+                            <a href="#">Shop</a>
+                            <ul class="sub-menu">
+                                <li><a href="shop.html">Shop</a></li>
+                                <li><a href="shop-details.html">Shop Details</a></li>
+                                <li><a href="cart.html">Cart Page</a></li>
+                                <li><a href="checkout.html">Checkout</a></li>
+                                <li><a href="wishlist.html">Wishlist</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="team-details.html">Team Details</a></li>
+                        <li><a href="project.html">Project Gallery</a></li>
+                        <li><a href="project-details.html">Project Details</a></li>
+                        <li><a href="faq.html">Faq Page</a></li>
+                        <li><a href="error.html">Error Page</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="#">Blog</a>
+                    <ul class="sub-menu">
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="blog-details.html">Blog Details</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<header class="header">
+
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-xl-6">
+                    <ul class="header-info">
+                        <li>
+                            <i class="ri-mail-send-line me-2"></i>
+                           <a href="mailto:butwalcomputer@gmail.com">butwalcomputer&#64;gmail.com</a>
+                        </li>
+                        <li>
+                            <i class="ri-mail-send-line me-2"></i>
+                            <a href="tel:+977-9857024299"> 9857024299,</a>
+                            <a href="tel:+977-9857085299"> 9857085299,</a>
+                            <a href="tel:+977-071538659"> 071538659</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6 d-none  d-xl-block">
+                    <div class="header-text">
+                        <span><img src="../../assets/img/fire.png" alt=""></span>Need It Today? Free In Store & Pickup
+                        / $100 Same Day Delivery
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="header-middle">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-5 col-lg-3">
+                    <a routerLink="" class="logo">
+                        <img src="../../assets/img/logo.jpg" alt="">
+                    </a>
+                </div>
+                <div class="col-md-7 d-none d-lg-block">
+                    <form class="header__search-box  mx-auto" action="#">
+                        <div class="select-box">
+                            <select id="category" name="category">
+                                <option value="">All Categories</option>
+                                <option value="4">Summer collections</option>
+                                <option value="5">Breakfast & Dairy</option>
+                                <option value="6">Beverage & Drinks</option>
+                                <option value="7">Cocolate Box</option>
+                                <option value="8">Dried Food Corner</option>
+                                <option value="9">Frozen Foods</option>
+                                <option value="10">Baby Food Corner</option>
+                                <option value="11">Milk & Juices</option>
+                                <option value="12">Organic & Snacks</option>
+                            </select>
+                        </div>
+                        <input type="text" name="search" id="search" placeholder="Search For Products" required />
+                        <button type="submit"><i class="ri-search-line"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="col-md-2 d-none d-lg-block">
+                    <div class="header-middle-right">
+                        <a routerLink="/login" class="user-login">
+                            <i class="ri-user-line"></i>
+                        </a>
+                        <a routerLink="/shop/wishlist" class="user-wishlist">
+                            <i class="ri-heart-3-line"></i>
+                        </a>
+                        <div class="user-add-to-cart cart-btn">
+                            <i class="ri-shopping-cart-2-line"></i>
+                            <div class="user-basket">0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-7 col-lg-9 d-flex d-lg-none justify-content-end">
+                    <button type="button" class="th-menu-toggle">
+                        <i class="fa-solid fa-bars"></i>
+
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <menu [ngClass]="{ 'sticky': isSticky }" class="menu d-none  d-lg-block">
+        <div class="container">
+            <nav class="main-menu d-none d-lg-inline-block">
+                <ul>
+                    <li>
+                        <a routerLink="">Home</a>
+
+                    </li>
+
+
+                    <li class="menu-item-has-children">
+                        <a routerLink="">shop</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a routerLink="/shop/categories">shop category</a>
+
+                            </li>
+                            <li>
+                                <a routerLink="/shop/shop-single">shop single</a>
+
+                            </li>
+                            <li>
+                                <a routerLink="/shop/shop-cart">shop cart</a>
+
+                            </li>
+                            <li>
+                                <a routerLink="/shop/checkout">checkout</a>
+
+                            </li>
+                            <li>
+                                <a routerLink="/shop/wishlist">wishlist</a>
+
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item-has-children">
+                        <a routerLink="laptops">Laptops</a>
+                        <ul class="sub-menu">
+                            <li class="menu-item-has-children">
+                                <a routerLink="/laptops/acer">Acer</a>
+                                <ul class="sub-menu">
+                                    <li><a routerLink="/laptops/acer/a-series">Acer A Series</a></li>
+                                </ul>
+                            </li>
+                            <li><a routerLink="/laptops/lenovo">Lenovo</a></li>
+                            <li class="menu-item-has-children">
+                                <a routerLink="/laptops/dell">Dell</a>
+                                <ul class="sub-menu">
+                                    <li><a routerLink="/laptops/dell/inspiron">Inspiron Series</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item-has-children">
+                        <a href="#">Service</a>
+                        <ul class="sub-menu">
+                            <li><a href="service.html">Service</a></li>
+                            <li>
+                                <a href="service-details.html">Service Details</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item-has-children">
+                        <a href="#">Blog</a>
+                        <ul class="sub-menu">
+                            <li><a routerLink="blog">Blog</a></li>
+                            <li><a routerLink="blog-single">Blog Details</a></li>
+                        </ul>
+                    </li>
+                    <li><a routerLink="/contact">Contact</a></li>
+                </ul>
+            </nav>
+
+        </div>
+
+    </menu>
+
+
+</header>
+
+<app-cart-sidebar></app-cart-sidebar>

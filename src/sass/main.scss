@@ -1,0 +1,60 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.dev/guide/theming
+
+@use 'ngx-red-zoom/styles/base.scss';
+@use 'ngx-red-zoom/styles/style-window.scss';
+
+
+@use '@angular/material' as mat;
+
+@use  'bootstrap/scss/bootstrap';
+
+@use  "abstracts/functions";
+@use  "abstracts/mixins";
+
+@use  "abstracts/variables";
+
+@use  "base/global";
+@use  "base/animations";
+@use  "base/typography";
+@use  "base/utilities";
+
+@use  "components/hero";
+@use  "components/benefit";
+@use  "components/category";
+
+@use  "components/heading";
+@use  "components/toastr";
+@use  "components/button";
+@use  "components/title";
+@use  "components/card";
+@use  "components/products-tab";
+@use  "components/call-to-action";
+@use  "components/product-media";
+@use  "components/testimonials";
+@use  "components/pagination";
+@use  "components/cart-sidebar";
+
+
+
+@use  "layout/header";
+
+@use  "layout/loader";
+@use  "layout/menu";
+@use  "layout/footer";
+
+
+@use  "pages/login";
+@use  "pages/shop";
+@use  "pages/shop-single";
+@use  "pages/error-page";
+@use  "pages/checkout";
+@use  "pages/form";
+@use  "pages/contact";
+@use  "pages/cart";
+@use  "pages/blog-page";
+@use  "pages/blog-single-page";
+
+@use  "custom";
+@use  "responsive";

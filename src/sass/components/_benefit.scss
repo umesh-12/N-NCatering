@@ -1,0 +1,57 @@
+@use 'sass:color';
+@use '../abstracts/variables' as vars;
+
+.benefit {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+// .benefit-img{
+//     flex: 0 0 37px;
+// }
+
+.benefit-content {
+    flex: 1;
+}
+
+.benefit-title {
+    font-weight: bold;
+    color: vars.$grey-800;
+}
+
+
+
+
+
+@media only screen and (max-width: 992px) {
+    .grid--4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid--6 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+
+@media only screen and (max-width: 767px) {}
+
+
+@media only screen and (max-width: 576px) {
+    .advert-img {
+        img {
+            width: 110px;
+        }
+    }
+
+    .grid--6 {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 0;
+    }
+
+    .benefits .grid--4 {
+        grid-template-columns: 1fr;
+    }
+}

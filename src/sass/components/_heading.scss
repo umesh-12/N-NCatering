@@ -1,0 +1,13 @@
+@use '../abstracts/variables' as vars;
+
+.title {
+  border-bottom: 1px solid vars.$border;
+
+  span {
+    display: inline-block;
+    border-bottom: 1px solid vars.$secondary-500;
+    padding-bottom: 8px;
+  }
+
+
+}

@@ -1,0 +1,112 @@
+// src/sass/_variables.scss
+
+// ======================
+// Color System
+// ======================
+
+// Base Colors
+$white: #fff !default;
+
+// Grey Scale
+$grey-200: #F8FAFF !default;
+$grey-300: #F1F3F7 !default;
+$grey-400: #E1E4ED !default;
+$grey-500: #B4B9C9 !default;
+$grey-600: #6D758F !default;
+$grey-700: #353E5C !default;
+$grey-800: #19213D !default;
+
+
+$red-500: #DF0E0E !default;
+
+
+// Teal Scale
+$teal-300: #4295aa !default;
+$teal-400: #2b88a0 !default;
+$teal-500: #137B95 !default;
+$teal-600: #116f86 !default;
+$teal-700: #0f6277 !default;
+$teal-800: #285966 !default;
+
+// Orange Scale
+$orange-300: #f79f59 !default;
+$orange-400: #f69345 !default;
+$orange-500: #F58730 !default;
+$orange-600: #dd7a2b !default;
+$orange-700: #c46c26 !default;
+$orange-800: #ac5f22 !default;
+
+// Primary Scale
+$primary-300: $teal-300 !default;
+$primary-400: $teal-400 !default;
+$primary-500: $teal-500 !default;
+$primary-600: $teal-600 !default;
+$primary-700: $teal-700 !default;
+$primary-800: $teal-800 !default;
+
+$secondary-300: $orange-300 !default;
+$secondary-400: $orange-400 !default;
+$secondary-500: $red-500 !default;
+$secondary-600: $orange-600 !default;
+
+
+// UI Colors
+$border: $grey-400 !default;
+$body-text: $grey-600 !default;
+$th-bg: #E7EEF0 !default;
+$text-primary: $primary-500 !default;
+$text-secondary: $secondary-500 !default;
+
+// ======================
+// Typography
+// ======================
+
+// Base Typography
+$font-family-base: "Inter", sans-serif !default;
+$font-size-base: 0.9375rem !default; // 15px
+$line-height-base: 1.857 !default; // ~26px/14px
+$font-weight-base: 400 !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-bold: 500 !default;
+
+// Headings
+$headings-font-family-1: "Inter", sans-serif !default;
+$headings-font-weight: 600 !default;
+$headings-line-height: 1.3 !default;
+$headings-color: $grey-800 !default;
+$headings-margin-bottom: 1.5rem !default;
+
+$h1-font-size: 3.875rem !default;    // 62px
+$h2-font-size: 2rem !default;   // 32px
+$h3-font-size: 1.5625rem !default; // 25px
+$h4-font-size: 1.25rem !default; // 20px
+
+
+// ======================
+// Body & Layout
+// ======================
+
+$body-bg: $white !default;
+$body-color: $body-text !default;
+
+// ======================
+// Links
+// ======================
+
+$link-color: $body-text !default;
+$link-decoration: none !default;
+$link-hover-color: $primary-500 !default;
+$link-hover-decoration: none !default;
+
+// ======================
+// Spacing & Paragraphs
+// ======================
+
+$paragraph-margin-bottom: 1rem !default;
+
+// ======================
+// Assets Path
+// ======================
+
+$imgUrl: '../../dist/images/' !default;

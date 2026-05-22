@@ -1,0 +1,227 @@
+<section class="page-shop-details p-t-32">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Shop Single</li>
+            </ol>
+        </nav>
+
+        <div class="row m-t-32">
+            <div class="col-md-6">
+                <!-- Main Carousel + Zoom -->
+                <!-- Main Carousel with zoom -->
+                <section id="main-carousel" class="splide" aria-label="Main carousel">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li *ngFor="let img of images" class="splide__slide">
+                                <img [src]="img.thumb" [alt]="img.alt" [redZoom]="img.full"
+                                    redZoomClass="red-zoom--style--window" style="cursor: zoom-in;" />
+
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Thumbnail Carousel -->
+                <section id="thumbnail-carousel" class="splide mt-3" aria-label="Thumbnails">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <img [src]="img.thumb" [alt]="img.alt" *ngFor="let img of images" />
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+
+
+                <div style="margin-top: 1rem;"></div>
+
+
+                <!-- <
+                 zdiv class="product-single-img-wrap">
+                    <div class="product-single-img">
+                        <img src="../../../../assets/img/products/product-img-big.png" alt="">
+                    </div>
+                </> -->
+            </div>
+            <div class="col-md-6">
+                <div class="product-single-content">
+                    <h3 class="product-single-title mb-2">Acer Monitor 19</h3>
+                    <div class="product-single-rating m-b-24">
+
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+
+                    </div>
+                    <h4 class="product-single-price">Rs. 12800.00</h4>
+                    <div class="badge text-bg-secondary mb-3">In Stock (1)</div>
+                    <div class="product-single-text">
+                        Display Size : 19.5" HD (TN) Pixel Pitch (mm) : 0.3177×0.307 Max. Resolution : 1366x768 60Hz
+                        Brightness (cd/m2) : 200 cd/m2 Contrast Ratio : 600: 1 ... Display Size: 19.5" HD (TN) Max.
+                        Resolution: 1366x768 60Hz Connectivity: VGA, HDMI Viewing Angle (H,V): 90°(H),65°(V)
+                    </div>
+                    <div class="quantity mt-4">
+                        <div class="quantity-button minus"> - </div>
+                        <input type="text" id="quantityInput" class="qtyText" name="quantityInput" min="1" max="84"
+                            autocomplete="off">
+                        <div class="quantity-button plus"> + </div>
+                    </div>
+
+                    <div class="social-share mt-4">
+                        <h4 class="social-share-title mb-0">Share on </h4>
+                        <div class="social-share-icons">
+                            <i class="ri-whatsapp-line"></i>
+                            <i class="ri-messenger-line"></i>
+                            <i class="fa-brands fa-viber"></i>
+                            <i class="ri-facebook-box-line"></i>
+                        </div>
+
+                    </div>
+
+                    <div class="btns-group m-t-24">
+                        <button href="" class="btn btn-secondary ">Add To Cart<i
+                                class="ms-1 ri-arrow-right-long-line"></i></button>
+                        <button href="" class="btn btn-outline-dark">Checkout<i
+                                class="ms-1 ri-arrow-right-long-line"></i></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <mat-tab-group animationDuration="0ms" class="m-t-32 product-single-tab">
+            <mat-tab label="Description">
+                <div class="m-t-24">Dell 27 Curved Gaming Monitor – S2721HGF ; Diagonal Size. 27" ; Resolution / Refresh
+                    Rate. Full HD
+                    (1080p) 1920 x 1080 at 144 Hz ;
+                    Adaptive Sync. NVIDIA</div>
+            </mat-tab>
+            <mat-tab label="Review">
+                <div class="m-t-24">Dell 27 Curved Gaming Monitor – S2721HGF ; Diagonal Size. 27" ; Resolution / Refresh
+                    Rate. Full HD
+                    (1080p) 1920 x 1080 at 144 Hz ;
+                    Adaptive Sync. NVIDIA</div>
+            </mat-tab>
+        </mat-tab-group>
+
+        <div class="related-products m-t-80">
+            <h2>Related Products</h2>
+            <div class="row ">
+                 <div class=" col-sm-6 col-md-4 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-img-holder">
+                            <img src="../../../assets/img/products/product-img-1.jpg" alt="">
+                        </div>
+                        <div class="product-content">
+                            <div class="product-title">Acer Nitro 5</div>
+                            <div class="product-price">
+                                <div class="product-price-main">Rs. 128000.00</div>
+                                <div class="product-price-strike">Rs. 135000.00</div>
+                            </div>
+                        </div>
+                        <ul class="product-action">
+                            <li>
+                                <a href="#!"><i class="fa-solid fa-down-left-and-up-right-to-center"></i></a>
+                            </li>
+                            <li>
+                                <a href="#!"><i class="fa-solid fa-basket-shopping"></i></a>
+                            </li>
+                            <li>
+                                <a href="#!"><i class="fa-solid fa-heart"></i></a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+                <div class=" col-sm-6 col-md-4 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-img-holder">
+                            <img src="../../../assets/img/products/product-img-2.jpg" alt="">
+                        </div>
+                        <div class="product-content">
+                            <div class="product-title">Dell 27" Inch LED Monitor
+                                S2721HGF</div>
+                            <div class="product-price">
+                                <div class="product-price-main">Rs. 27000.00</div>
+                                <div class="product-price-strike">Rs. 35000.00</div>
+                            </div>
+                        </div>
+                        <ul class="product-action">
+                            <li>
+                                <a href="#!"><i class="fa-solid fa-down-left-and-up-right-to-center"></i></a>
+                            </li>
+                            <li>
+                                <a href="#!"><i class="fa-solid fa-basket-shopping"></i></a>
+                            </li>
+                            <li>
+                                <a href="#!"><i class="fa-solid fa-heart"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                 <div class=" col-sm-6 col-md-4 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-img-holder">
+                            <img src="../../../assets/img/products/product-img-3.jpg" alt="">
+                        </div>
+                        <div class="product-content">
+                            <div class="product-title">Acer Monitor 19</div>
+                            <div class="product-price">
+                                <div class="product-price-main">Rs. 12800.00</div>
+                                <div class="product-price-strike">Rs. 14500.00</div>
+                            </div>
+                        </div>
+                        <ul class="product-action">
+                            <li>
+                                <a href="#!"><i class="fa-solid fa-down-left-and-up-right-to-center"></i></a>
+                            </li>
+                            <li>
+                                <a href="#!"><i class="fa-solid fa-basket-shopping"></i></a>
+                            </li>
+                            <li>
+                                <a href="#!"><i class="fa-solid fa-heart"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                 <div class=" col-sm-6 col-md-4 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-img-holder">
+                            <img src="../../../assets/img/products/product-img-4.jpg" alt="">
+                        </div>
+                        <div class="product-content">
+                            <div class="product-title">Dell Inspiron 15 3530</div>
+                            <div class="product-price">
+                                <div class="product-price-main">Rs. 53000.00</div>
+                                <div class="product-price-strike">Rs. 55000.00</div>
+                            </div>
+                        </div>
+                        <ul class="product-action">
+                            <li>
+                                <a href="#!"><i class="fa-solid fa-down-left-and-up-right-to-center"></i></a>
+                            </li>
+                            <li>
+                                <a href="#!"><i class="fa-solid fa-basket-shopping"></i></a>
+                            </li>
+                            <li>
+                                <a href="#!"><i class="fa-solid fa-heart"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

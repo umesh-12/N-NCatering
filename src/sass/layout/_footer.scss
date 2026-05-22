@@ -1,0 +1,93 @@
+@use '../abstracts/variables' as vars; // Import your variables file
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr 0.8fr 1fr;
+    gap: 30px;
+}
+
+.footer {
+    background: vars.$grey-800;
+    padding-top: 2rem;
+
+
+    a,
+    p,
+    div {
+        color: vars.$grey-500;
+
+    }
+
+    h3 {
+        color: #fff
+    }
+
+    &-list-item {
+        margin-bottom: 8px;
+    }
+
+}
+
+.footer-list-link {
+    transition: all 0.3s ease;
+    display: block;
+
+    &:hover {
+        padding-left: 12px;
+        color: #fff;
+    }
+
+}
+
+.subscribe-form {
+    display: flex;
+
+    &-text {
+        height: 40px;
+        flex: 1;
+        border: none;
+        background: #fff;
+        border: none;
+        padding-left: 1rem;
+    }
+
+    &-btm {
+        all: unset;
+        background: vars.$secondary-500;
+        height: 41px;
+        width: 55px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.footer-btm {
+    margin-top: 2rem;
+    background: #12151F;
+    padding: 0.5rem 0;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+
+@media only screen and (max-width: 1200px) {}
+
+@media only screen and (max-width: 992px) {}
+
+@media only screen and (max-width: 767px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media only screen and (max-width: 576px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
