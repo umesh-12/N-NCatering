@@ -6,7 +6,7 @@
   color: #fff;
   text-align: center;
   padding: 60px 0 30px;
-  a{
+  a {
     color: #fff;
   }
 }
@@ -29,6 +29,21 @@
   align-items: center;
   color: #fff;
   text-decoration: none;
+}
+
+.fb:hover {
+  background: #0766ff;
+  border-color: #0766ff;
+}
+
+.instagram:hover {
+  background: #fb0aa6;
+  border-color: #fb0aa6;
+}
+
+.ytb:hover {
+  background: #ff0033;
+  border-color: #0766ff;
 }
 
 .footer p {
