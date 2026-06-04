@@ -100,6 +100,38 @@
   }
 }
 
+
+.btn-primary {
+  background: vars.$primary-500;
+  transition:
+    background 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    color: #fff;
+    background: vars.$primary-600;
+  }
+
+  &:focus-visible,
+  &:active,
+  &:focus {
+    background: vars.$primary-600;;
+    color: #fff;
+  }
+
+  &:first-child:active {
+    color: #fff;
+    background-color: vars.$primary-600 !important;
+    border-color: vars.$primary-600 !important;
+  }
+
+  &.clicked {
+    animation: clickBounce 0.3s ease;
+  }
+}
+
+
+
 .btn-secondary {
   background: vars.$secondary-500;
   transition:
