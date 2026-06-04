@@ -1,10 +1,27 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import Splide from '@splidejs/splide';
+
+declare var lightbox: any;
 
 @Component({
   selector: 'app-gallery',
-  imports: [],
-  templateUrl: './gallery.component.html'
+  standalone: true,
+  templateUrl: './gallery.component.html',
 })
-export class GalleryComponent {
+export class GalleryComponent implements AfterViewInit {
+  @ViewChild('gallery') splideElement!: ElementRef;
 
+  ngAfterViewInit() {
+    new Splide(this.splideElement.nativeElement, {
+      perPage: 3,
+      gap: '20px',
+      type: 'loop',
+      pagination: false,
+    }).mount();
+
+    lightbox.option({
+      resizeDuration: 200,
+      wrapAround: true,
+    });
+  }
 }

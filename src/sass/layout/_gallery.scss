@@ -27,3 +27,20 @@
 .gallery-item img:hover {
   transform: scale(1.1);
 }
+
+.gallery-section {
+  .splide__slide img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+// .gallery-section {
+//   .splide__slide {
+//     height: 380px;
+//     overflow: hidden;
+//     border: none !important;
+//   }
+// }
