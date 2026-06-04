@@ -2,17 +2,18 @@
 .cta-banner {
   position: relative;
   padding: 120px 0;
-  background: url("../../assets/img/reservation-bg.jpg") no-repeat left top;
+  background-image: url("../../assets/img/reservation-bg.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: 0 0;
   text-align: center;
   color: #fff;
 
-  h2{
-    a{
-    color: #fff;
-
+  h2 {
+    a {
+      color: #fff;
     }
   }
-
 }
 
 .cta-banner .overlay {
