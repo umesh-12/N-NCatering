@@ -21,6 +21,20 @@ export const routes: Routes = [
   },
 
   {
+    path: 'about',
+    loadComponent: () =>
+      import('./pages/about/about.component').then((m) => m.AboutComponent),
+  },
+
+  {
+    path: 'gallery',
+    loadComponent: () =>
+      import('./pages/gallery-page/gallery-page.component').then(
+        (m) => m.GalleryPageComponent,
+      ),
+  },
+
+  {
     path: 'shop',
     loadChildren: () =>
       import('./pages/shop/shop.routes').then((m) => m.shopRoutes),
