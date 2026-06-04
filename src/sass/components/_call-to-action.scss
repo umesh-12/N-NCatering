@@ -1,109 +1,47 @@
-@use '../abstracts/variables' as vars;
+@use "../abstracts/variables" as vars;
+.cta-banner {
+  position: relative;
+  padding: 120px 0;
+  background: url("../../assets/img/reservation-bg.jpg") no-repeat left top;
+  text-align: center;
+  color: #fff;
 
-.call-to-action {
-    .container{
-        overflow: hidden;
+  h2{
+    a{
+    color: #fff;
+
     }
-}
-
-.call-to-action-inside {
-    background: vars.$grey-800;
-    padding: 2rem;
-    height: 320px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.btn-contact {
-    &:hover {
-        background: white;
-        color: vars.$secondary-500;
-    }
-}
-
-.shape {
-    position: absolute;
-}
-
-.shape-1 {
-    bottom: 0;
-    right: 0;
-}
-
-
-.shape-2 {
-    top: 0;
-    left: 0;
-}
-
-
-.shape-3 {
-    bottom: 30px;
-    left: 80px;
-    animation: rotateInfinite 10s infinite linear;
-}
-
-.shape-4 {
-    top: 30px;
-    right: 80px;
-    animation: rotateInfinite 10s infinite linear;
-}
-
-
-
-@keyframes rotateInfinite {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.rotate-infinite {
-    animation: rotateInfinite 2s linear infinite;
-}
-
-
-
-@media only screen and (max-width: 1200px) {}
-
-@media only screen and (max-width: 992px) {
-    .shape-3 {
-        bottom: 20px;
-        left: 15px;
-    }
-
-    .shape-4 {
-        top: 0;
-        right: 0;
-    }
+  }
 
 }
 
-@media only screen and (max-width: 767px) {
-    .shape-3 {
-        bottom: 0;
-        left: 15px;
-    }
-
-    .shape-1 {
-        bottom: -60px;
-        right: -30px;
-    }
-
-    .shape-2 {
-        top: -60px;
-        left: -30px;
-    }
-
-    .call-to-action-inside h2 {
-        font-size: 1.3rem;
-    }
+.cta-banner .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
 }
 
+.cta-banner .container {
+  position: relative;
+  z-index: 2;
+}
 
-@media only screen and (max-width: 576px) {}
+.cta-banner span {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.cta-banner h2 {
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: #fff;
+  color: #203a8e;
+  padding: 14px 35px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 600;
+}

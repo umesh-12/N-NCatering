@@ -53,30 +53,26 @@
         </div>
     </div>
 </div>
-<header class="header">
 
+<header class="header">
     <div class="header-top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-7 col-xl-6">
+
+                <div class="col-md-6 d-none d-xl-block">
+                    <div class="header-address">
+                        <i class="ri-map-pin-line me-2"></i>
+                        <span>kapan, Kathmandu, Nepal, 44600</span>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-xl-6 d-flex justify-content-end">
                     <ul class="header-info">
                         <li>
-                            <i class="ri-mail-send-line me-2"></i>
-                           <a href="mailto:butwalcomputer@gmail.com">butwalcomputer&#64;gmail.com</a>
+                            <i class="ri-alarm-line me-2"></i>
+                          <span>We're Open! Mon - Sat: 9:00 AM - 6:00 PM</span> 
                         </li>
-                        <li>
-                            <i class="ri-mail-send-line me-2"></i>
-                            <a href="tel:+977-9857024299"> 9857024299,</a>
-                            <a href="tel:+977-9857085299"> 9857085299,</a>
-                            <a href="tel:+977-071538659"> 071538659</a>
-                        </li>
+
                     </ul>
-                </div>
-                <div class="col-md-6 d-none  d-xl-block">
-                    <div class="header-text">
-                        <span><img src="../../assets/img/fire.png" alt=""></span>Need It Today? Free In Store & Pickup
-                        / $100 Same Day Delivery
-                    </div>
                 </div>
             </div>
         </div>
@@ -85,138 +81,98 @@
     <div class="header-middle">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-5 col-lg-3">
-                    <a routerLink="" class="logo">
-                        <img src="../../assets/img/logo.jpg" alt="">
-                    </a>
-                </div>
-                <div class="col-md-7 d-none d-lg-block">
-                    <form class="header__search-box  mx-auto" action="#">
-                        <div class="select-box">
-                            <select id="category" name="category">
-                                <option value="">All Categories</option>
-                                <option value="4">Summer collections</option>
-                                <option value="5">Breakfast & Dairy</option>
-                                <option value="6">Beverage & Drinks</option>
-                                <option value="7">Cocolate Box</option>
-                                <option value="8">Dried Food Corner</option>
-                                <option value="9">Frozen Foods</option>
-                                <option value="10">Baby Food Corner</option>
-                                <option value="11">Milk & Juices</option>
-                                <option value="12">Organic & Snacks</option>
-                            </select>
-                        </div>
-                        <input type="text" name="search" id="search" placeholder="Search For Products" required />
-                        <button type="submit"><i class="ri-search-line"></i>
-                        </button>
-                    </form>
-                </div>
-                <div class="col-md-2 d-none d-lg-block">
-                    <div class="header-middle-right">
-                        <a routerLink="/login" class="user-login">
-                            <i class="ri-user-line"></i>
-                        </a>
-                        <a routerLink="/shop/wishlist" class="user-wishlist">
-                            <i class="ri-heart-3-line"></i>
-                        </a>
-                        <div class="user-add-to-cart cart-btn">
-                            <i class="ri-shopping-cart-2-line"></i>
-                            <div class="user-basket">0</div>
+                <div class="col-md-6">
+                    <div class="logo">
+                        <img src="../../assets/img/logo.jpg" alt="" height="60px">
+                        <div>
+                            <h2>N & N Catering Event <br> Management Service</h2>
+
                         </div>
                     </div>
-                </div>
-                <div class="col-7 col-lg-9 d-flex d-lg-none justify-content-end">
-                    <button type="button" class="th-menu-toggle">
-                        <i class="fa-solid fa-bars"></i>
 
-                    </button>
+                </div>
+                <div class="col-md-6">
+                    <div class="header-contact">
+
+                        <div class="contact-box-item">
+                            <i class="ri-phone-line"></i>
+                            <div>
+                                <small>Contact us</small>
+                                <p>
+                                    <a href="tel:+977- 986-0739065"> 986-0739065,</a> /
+                                    <a href="tel:+977- 9810158390"> 9810158390,</a>
+
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="contact-box-item">
+                            <i class="ri-mail-line"></i>
+                            <div>
+                                <small>Email us on</small>
+                              <p><a href="mailto:dahalns2071@gmail.com">dahalns2071&#64;gmail.com</a></p>  
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
+
+
+
         </div>
-
-
     </div>
-    <menu [ngClass]="{ 'sticky': isSticky }" class="menu d-none  d-lg-block">
-        <div class="container">
-            <nav class="main-menu d-none d-lg-inline-block">
-                <ul>
-                    <li>
-                        <a routerLink="">Home</a>
-
-                    </li>
-
-
-                    <li class="menu-item-has-children">
-                        <a routerLink="">shop</a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a routerLink="/shop/categories">shop category</a>
-
-                            </li>
-                            <li>
-                                <a routerLink="/shop/shop-single">shop single</a>
-
-                            </li>
-                            <li>
-                                <a routerLink="/shop/shop-cart">shop cart</a>
-
-                            </li>
-                            <li>
-                                <a routerLink="/shop/checkout">checkout</a>
-
-                            </li>
-                            <li>
-                                <a routerLink="/shop/wishlist">wishlist</a>
-
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="menu-item-has-children">
-                        <a routerLink="laptops">Laptops</a>
-                        <ul class="sub-menu">
-                            <li class="menu-item-has-children">
-                                <a routerLink="/laptops/acer">Acer</a>
-                                <ul class="sub-menu">
-                                    <li><a routerLink="/laptops/acer/a-series">Acer A Series</a></li>
-                                </ul>
-                            </li>
-                            <li><a routerLink="/laptops/lenovo">Lenovo</a></li>
-                            <li class="menu-item-has-children">
-                                <a routerLink="/laptops/dell">Dell</a>
-                                <ul class="sub-menu">
-                                    <li><a routerLink="/laptops/dell/inspiron">Inspiron Series</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="menu-item-has-children">
-                        <a href="#">Service</a>
-                        <ul class="sub-menu">
-                            <li><a href="service.html">Service</a></li>
-                            <li>
-                                <a href="service-details.html">Service Details</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="menu-item-has-children">
-                        <a href="#">Blog</a>
-                        <ul class="sub-menu">
-                            <li><a routerLink="blog">Blog</a></li>
-                            <li><a routerLink="blog-single">Blog Details</a></li>
-                        </ul>
-                    </li>
-                    <li><a routerLink="/contact">Contact</a></li>
-                </ul>
-            </nav>
-
-        </div>
-
-    </menu>
-
-
 </header>
+<menu [ngClass]="{ 'sticky': isSticky }" class="menu d-none d-lg-block">
+    <div class="container ">
+        <nav class="main-menu d-none d-lg-inline-block">
+            <ul>
 
-<app-cart-sidebar></app-cart-sidebar>
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <a routerLink="">Home</a>
+                </li>
+
+                <li class="menu-item-has-children" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }">
+
+                    <a>About us</a>
+
+                    <ul class="sub-menu">
+                        <li routerLinkActive="active">
+                            <a routerLink="/test1">Test 1</a>
+                        </li>
+
+                        <li routerLinkActive="active">
+                            <a routerLink="/test2">Test 2</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="menu-item-has-children" routerLinkActive="active">
+                    <a>Products</a>
+                    <ul class="sub-menu">
+                        <li routerLinkActive="active"><a routerLink="/shop/categories">Product Categories</a></li>
+                        <li routerLinkActive="active"><a routerLink="/shop/shop-single">Product Details</a></li>
+                        <li routerLinkActive="active"><a routerLink="/shop/shop-cart">Cart Page</a></li>
+
+                    </ul>
+                </li>
+
+                <li routerLinkActive="active">
+                    <a routerLink="/blog">Blog</a>
+                </li>
+
+                <li routerLinkActive="active">
+                    <a href="#">Gallery</a>
+                </li>
+
+                <li routerLinkActive="active">
+                    <a routerLink="/contact">Contact</a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</menu>
+

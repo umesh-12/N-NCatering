@@ -1,0 +1,29 @@
+/* GALLERY */
+
+.gallery-section {
+}
+
+.container-fluid {
+  width: 100%;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 20px;
+}
+
+.gallery-item {
+  overflow: hidden;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  transition: 0.5s;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.1);
+}

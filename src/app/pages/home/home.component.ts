@@ -1,25 +1,24 @@
 import { Component } from '@angular/core';
 import { HeroComponent } from '../../components/home/hero/hero.component';
-import { BenefitsComponent } from '../../components/home/benefits/benefits.component';
-import { CategoriesComponent } from '../../components/home/categories/categories.component';
-import { ProductsTabComponent } from '../../components/home/products-tab/products-tab.component';
+import { AboutComponent } from '../../components/home/about/about.component';
+import { ServicesComponent } from '../../components/home/services/services.component';
 import { CallToActionComponent } from '../../components/home/call-to-action/call-to-action.component';
-import { BlogsComponent } from '../../components/home/blogs/blogs.component';
+import { MenuCardComponent } from '../../components/home/menu-card/menu-card.component';
+import { GalleryComponent } from '../../components/home/gallery/gallery.component';
 import { TestimonialsComponent } from '../../components/home/testimonials/testimonials.component';
-
-
+import { ReservationComponent } from '../../components/home/reservation/reservation.component';
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     HeroComponent,
-    BenefitsComponent,
-    CategoriesComponent,
-    ProductsTabComponent,
+    AboutComponent,
+    ServicesComponent,
     CallToActionComponent,
-    BlogsComponent,
+    MenuCardComponent,
+    GalleryComponent,
     TestimonialsComponent,
-    
+    ReservationComponent,
   ],
   templateUrl: './home.component.html',
 })

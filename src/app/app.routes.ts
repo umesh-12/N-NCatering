@@ -16,7 +16,7 @@ export const routes: Routes = [
     path: 'register',
     loadComponent: () =>
       import('./auth/register/register.component').then(
-        (m) => m.RegisterComponent
+        (m) => m.RegisterComponent,
       ),
   },
 
@@ -40,12 +40,11 @@ export const routes: Routes = [
   //     ),
   // },
 
-  
   {
     path: 'blog-single',
     loadComponent: () =>
       import('./pages/blog-single/blog-single.component').then(
-        (m) => m.BlogSingleComponent
+        (m) => m.BlogSingleComponent,
       ),
   },
 
@@ -53,7 +52,7 @@ export const routes: Routes = [
     path: 'contact',
     loadComponent: () =>
       import('./pages/contact/contact.component').then(
-        (m) => m.ContactComponent
+        (m) => m.ContactComponent,
       ),
   },
 

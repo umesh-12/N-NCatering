@@ -1,60 +1,59 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.dev/guide/theming
 
-@use 'ngx-red-zoom/styles/base.scss';
-@use 'ngx-red-zoom/styles/style-window.scss';
+@use "ngx-red-zoom/styles/base.scss";
+@use "ngx-red-zoom/styles/style-window.scss";
 
+@use "@angular/material" as mat;
 
-@use '@angular/material' as mat;
+@use "abstracts/functions";
+@use "abstracts/mixins";
 
-@use  'bootstrap/scss/bootstrap';
+@use "abstracts/variables";
 
-@use  "abstracts/functions";
-@use  "abstracts/mixins";
+@use "base/global";
+@use "base/animations";
+@use "base/typography";
+@use "base/utilities";
 
-@use  "abstracts/variables";
+@use "components/benefit";
+@use "components/category";
 
-@use  "base/global";
-@use  "base/animations";
-@use  "base/typography";
-@use  "base/utilities";
+@use "components/heading";
+@use "components/toastr";
+@use "components/button";
+@use "components/title";
+@use "components/card";
+@use "components/products-tab";
+@use "components/call-to-action";
+@use "components/product-media";
+@use "components/testimonials";
+@use "components/pagination";
+@use "components/cart-sidebar";
 
-@use  "components/hero";
-@use  "components/benefit";
-@use  "components/category";
+@use "layout/header";
 
-@use  "components/heading";
-@use  "components/toastr";
-@use  "components/button";
-@use  "components/title";
-@use  "components/card";
-@use  "components/products-tab";
-@use  "components/call-to-action";
-@use  "components/product-media";
-@use  "components/testimonials";
-@use  "components/pagination";
-@use  "components/cart-sidebar";
+@use "layout/hero";
+@use "layout/services";
+@use "layout/about";
+@use "layout/menu-card";
+@use "layout/gallery";
+@use "layout/reservation";
+@use "layout/loader";
+@use "layout/menu";
+@use "layout/footer";
 
+@use "pages/home";
+@use "pages/login";
+@use "pages/shop";
+@use "pages/shop-single";
+@use "pages/error-page";
+@use "pages/checkout";
+@use "pages/form";
+@use "pages/contact";
+@use "pages/cart";
+@use "pages/blog-page";
+@use "pages/blog-single-page";
 
-
-@use  "layout/header";
-
-@use  "layout/loader";
-@use  "layout/menu";
-@use  "layout/footer";
-
-
-@use  "pages/login";
-@use  "pages/shop";
-@use  "pages/shop-single";
-@use  "pages/error-page";
-@use  "pages/checkout";
-@use  "pages/form";
-@use  "pages/contact";
-@use  "pages/cart";
-@use  "pages/blog-page";
-@use  "pages/blog-single-page";
-
-@use  "custom";
-@use  "responsive";
+@use "custom";
+@use "responsive";

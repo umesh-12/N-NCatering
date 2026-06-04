@@ -1,9 +1,24 @@
-@use '../abstracts/variables' as vars;
+@use "../abstracts/variables" as vars;
 
+.menu-title {
+  position: relative;
+  display: inline-block;
+  padding: 8px 28px;
+  background: #ffffff;
+  border: 1px solid #cfcfcf;
+  border-radius: 60px;
+  font-size: 1rem;
+  font-weight: bold;
+}
 
-
-.sub-title{
-    font-weight: bold;
-    text-transform: uppercase;
-    color: vars.$secondary-500;
+.menu-title::before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 2px;
+  background: #2f4fb5;
+  z-index: 2;
 }

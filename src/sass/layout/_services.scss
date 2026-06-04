@@ -1,0 +1,63 @@
+.services-section {
+  padding: 60px 0;
+  background: #e3e9ff;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: url("../../assets/img/pattern-1.png") no-repeat left top;
+    width: 434px;
+    height: 274px;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: url("../../assets/img/pattern-2.png") no-repeat left top;
+    width: 434px;
+    height: 274px;
+  }
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.service-card {
+  background: #fefbf8;
+  padding: 3rem 2rem;
+  transition: all 0.25s ease;
+  border-top-right-radius: 60px;
+  border-bottom-left-radius: 60px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 3px 0px;
+  text-align: center;
+
+  img {
+    margin-bottom: 24px;
+    height: 50px;
+  }
+}
+
+.service-card i {
+  font-size: 2.6rem;
+  color: #b87c4f;
+  margin-bottom: 1rem;
+}
+
+.service-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}

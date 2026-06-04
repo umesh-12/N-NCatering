@@ -2,13 +2,12 @@ import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, HostListener } from '@angular/core';
 declare var jQuery: any;
 import * as jquery from 'jquery';
-import { CartSidebarComponent } from '../components/cart-sidebar/cart-sidebar.component';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, CartSidebarComponent, RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements AfterViewInit {

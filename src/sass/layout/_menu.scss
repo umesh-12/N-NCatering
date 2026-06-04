@@ -1,6 +1,6 @@
 /* Material Menu Styles */
-@use '@angular/material' as mat;
-@use '../abstracts/variables' as vars; // Import your variables file
+@use "@angular/material" as mat;
+@use "../abstracts/variables" as vars; // Import your variables file
 
 /*mobile menu*/
 .th-menu-wrapper {
@@ -37,12 +37,12 @@
   font-size: 18px;
   z-index: 1;
   color: #fff;
-  background-color: vars.$secondary-500;
+  background-color: vars.$primary-500;
   border-radius: 50%;
 }
 
 .th-menu-wrapper .th-menu-toggle:hover {
-  background-color: vars.$secondary-500;
+  background-color: vars.$primary-500;
   color: #fff;
 }
 
@@ -50,7 +50,7 @@
   width: 100%;
   max-width: 310px;
   background-color: #fff;
-  border-right: 3px solid vars.$secondary-500;
+  border-right: 3px solid vars.$primary-500;
   height: 100%;
   position: relative;
   left: -110%;
@@ -114,12 +114,11 @@
   display: inline-block;
 }
 
-.th-mobile-menu ul li.th-active>a {
-  color: vars.$secondary-500;
-
+.th-mobile-menu ul li.th-active > a {
+  color: vars.$primary-500;
 }
 
-.th-mobile-menu ul li.th-active>a:before {
+.th-mobile-menu ul li.th-active > a:before {
   -webkit-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
@@ -133,7 +132,7 @@
   border-bottom: none;
 }
 
-.th-mobile-menu ul .th-item-has-children>a .th-mean-expand {
+.th-mobile-menu ul .th-item-has-children > a .th-mean-expand {
   position: absolute;
   right: 0;
   top: 50%;
@@ -151,13 +150,13 @@
   border-radius: 50%;
 }
 
-.th-mobile-menu ul .th-item-has-children>a .th-mean-expand:before {
+.th-mobile-menu ul .th-item-has-children > a .th-mean-expand:before {
   content: "\2b";
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
 }
 
-.th-mobile-menu ul .th-item-has-children>a:after {
+.th-mobile-menu ul .th-item-has-children > a:after {
   content: "\f067";
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
@@ -173,19 +172,19 @@
   margin-top: 1px;
 }
 
-.th-mobile-menu ul .th-item-has-children.th-active>a .th-mean-expand:before {
+.th-mobile-menu ul .th-item-has-children.th-active > a .th-mean-expand:before {
   content: "\f068";
 }
 
-.th-mobile-menu ul .th-item-has-children.th-active>a:after {
+.th-mobile-menu ul .th-item-has-children.th-active > a:after {
   content: "\f068";
 }
 
-.th-mobile-menu>ul {
+.th-mobile-menu > ul {
   padding: 0 40px;
 }
 
-.th-mobile-menu>ul>li:last-child {
+.th-mobile-menu > ul > li:last-child {
   border-bottom: none;
 }
 
@@ -195,16 +194,15 @@
   padding: 0;
   font-size: 20px;
   border: none;
-  background-color: vars.$secondary-500;
+  background-color: vars.$primary-500;
   color: #fff;
   display: inline-block;
   border-radius: 5px;
 }
 
 .th-menu-toggle:hover {
-  background-color: vars.$secondary-500;
+  background-color: vars.$primary-500;
 }
-
 
 @media (max-width: 400px) {
   .th-menu-wrapper .th-menu-area {
@@ -212,23 +210,18 @@
     max-width: 270px;
   }
 
-  .th-mobile-menu>ul {
+  .th-mobile-menu > ul {
     padding: 0 20px;
   }
 }
 
-
-
 /*mobile menu end*/
-
-
 
 /*Desktop menu*/
 
 .menu {
-  background: vars.$grey-800;
+  background: vars.$primary-500;
 }
-
 
 .main-menu a {
   display: block;
@@ -240,19 +233,31 @@
 }
 
 .main-menu a:hover {
-  color: vars.$secondary-500;
+  color: #fff;
 }
 
-.main-menu>ul>li {
-  margin: 0 19px;
+.main-menu > ul > li {
+  // margin: 0 19px;
 }
 
-.main-menu>ul>li>a {
-  padding: 12px 0;
+.main-menu > ul > li > a {
+  padding: 12px 20px;
+  color: #fff !important;
+  cursor: pointer !important;
 }
 
-.main-menu>ul>li>a:hover {
-  color: vars.$secondary-500;
+.main-menu ul li.active > a {
+  color: #fff;
+  background: #e05d26;
+}
+
+.sub-menu li a.active {
+  color: #fff;
+  background: #e05d26;
+}
+
+.main-menu > ul > li > a:hover {
+  color: #fff;
 }
 
 .main-menu ul {
@@ -266,7 +271,7 @@
   position: relative;
 }
 
-.main-menu ul li.menu-item-has-children>a:after {
+.main-menu ul li.menu-item-has-children > a:after {
   content: "\2b";
   display: inline-block;
   position: relative;
@@ -279,7 +284,7 @@
   transition: 0.3s ease-in-out;
 }
 
-.main-menu ul li.menu-item-has-children>a:hover:after {
+.main-menu ul li.menu-item-has-children > a:hover:after {
   content: "\f068";
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
@@ -295,7 +300,7 @@
   margin-left: 0 !important;
 }
 
-.main-menu ul li:hover>ul.sub-menu {
+.main-menu ul li:hover > ul.sub-menu {
   visibility: visible;
   opacity: 1;
   -webkit-transform: scaleY(1);
@@ -334,28 +339,29 @@
 .main-menu ul.sub-menu a {
   font-size: 14px;
   line-height: 30px;
-  color: inherit;
+  padding: 2px 24px;
+  color: vars.$grey-400;
 }
 
 .main-menu ul.sub-menu {
-  padding: 18px 20px 18px 18px;
+  padding: 0;
   left: -27px;
 }
 
 .main-menu ul.sub-menu li {
   display: block;
   margin: 0 0;
-  padding: 0px 9px;
+  // padding: 0px 9px;
 }
 
-.main-menu ul.sub-menu li.menu-item-has-children>a:after {
+.main-menu ul.sub-menu li.menu-item-has-children > a:after {
   content: "\2b";
   float: right;
   top: 1px;
   display: inline-block;
 }
 
-.main-menu ul.sub-menu li.menu-item-has-children>a:hover:after {
+.main-menu ul.sub-menu li.menu-item-has-children > a:hover:after {
   content: "\f068";
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
@@ -364,40 +370,39 @@
 
 .main-menu ul.sub-menu li a {
   position: relative;
-  padding-left: 0;
   text-transform: capitalize;
 }
 
-.main-menu ul.sub-menu li a:before {
-  content: "\f26c";
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-family: "Font Awesome 6 Free";
-  width: 11px;
-  height: 11px;
-  text-align: center;
-  border-radius: 50%;
-  display: inline-block;
-  font-size: 0.9em;
-  line-height: 1;
-  font-weight: 900;
-  opacity: 0;
-  visibility: visible;
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-}
+// .main-menu ul.sub-menu li a:before {
+//   content: "\f26c";
+//   position: absolute;
+//   top: 10px;
+//   left: 10px;
+//   font-family: "Font Awesome 6 Free";
+//   width: 11px;
+//   height: 11px;
+//   text-align: center;
+//   border-radius: 50%;
+//   display: inline-block;
+//   font-size: 0.9em;
+//   line-height: 1;
+//   font-weight: 900;
+//   opacity: 0;
+//   visibility: visible;
+//   -webkit-transition: 0.3s ease-in-out;
+//   transition: 0.3s ease-in-out;
+// }
 
-.main-menu ul.sub-menu li a:hover {
-  padding-left: 23px;
-  color: vars.$secondary-500;
-}
+// .main-menu ul.sub-menu li a:hover {
+//   padding-left: 23px;
+//   color: vars.$primary-500;
+// }
 
-.main-menu ul.sub-menu li a:hover:before {
-  visibility: visible;
-  opacity: 1;
-  left: 0;
-}
+// .main-menu ul.sub-menu li a:hover:before {
+//   visibility: visible;
+//   opacity: 1;
+//   left: 0;
+// }
 
 .main-menu ul.sub-menu li ul.sub-menu {
   left: 100%;
@@ -413,17 +418,17 @@
 }
 
 @media (max-width: 1500px) {
-  .main-menu>ul>li {
-    margin: 0 13px;
-  }
+  // .main-menu > ul > li {
+  //   margin: 0 13px;
+  // }
 }
 
-.menu-style1>ul>li {
+.menu-style1 > ul > li {
   margin: 0 14px;
 }
 
 @media (max-width: 1299px) {
-  .menu-style1>ul>li {
+  .menu-style1 > ul > li {
     margin: 0 10px;
   }
 }

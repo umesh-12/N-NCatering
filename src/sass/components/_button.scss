@@ -1,18 +1,16 @@
 /* #btn================================================== */
-@use 'sass:color';
-@use '../abstracts/variables' as vars;
+@use "sass:color";
+@use "../abstracts/variables" as vars;
 
 .btn {
   display: inline-block;
   border: none;
   color: #fff;
-  border-radius: 0;
+  border-radius: 30px;
   height: 40px;
   line-height: 40px;
   padding: 0 1.5em;
 }
-
-
 
 .btn-white {
   background: #fff;
@@ -24,16 +22,12 @@
   }
 
   &:focus-visible,
-
   &:active,
   &:focus {
     background: white;
     color: vars.$grey-800;
   }
-
-
 }
-
 
 .btn-dark {
   background: vars.$grey-800;
@@ -45,7 +39,6 @@
   }
 
   &:focus-visible,
-
   &:active,
   &:focus {
     background: vars.$secondary-500;
@@ -59,6 +52,29 @@
   }
 }
 
+.btn-outline-white {
+  border: 1px solid #fff;
+  color: #fff;
+
+  &:hover {
+    color: vars.$grey-500;
+    border: 1px solid #fff;
+    background: #fff;
+  }
+
+  &:focus-visible,
+  &:active,
+  &:focus {
+    background: #fff;
+    color: #fff;
+  }
+
+  &:first-child:active {
+    color: #fff;
+    background-color: #fff !important;
+    border-color: #fff;
+  }
+}
 
 .btn-outline-dark {
   border: 1px solid vars.$grey-800;
@@ -71,7 +87,6 @@
   }
 
   &:focus-visible,
-
   &:active,
   &:focus {
     background: vars.$grey-800;
@@ -85,18 +100,16 @@
   }
 }
 
-
-
 .btn-secondary {
   background: vars.$secondary-500;
-  transition: background 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-
+  transition:
+    background 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
     color: #fff;
     background: vars.$grey-800;
   }
-
 
   &:focus-visible,
   &:active,
@@ -130,27 +143,34 @@
   }
 }
 
-
 .btn-danger {
-  background: linear-gradient(90deg, rgba(248, 80, 50, 1) 0%, rgba(231, 56, 39, 1) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(248, 80, 50, 1) 0%,
+    rgba(231, 56, 39, 1) 100%
+  );
   color: #fff;
 
   &:hover {
     color: #fff;
-    background: linear-gradient(-90deg, rgba(248, 80, 50, 1) 0%, rgba(231, 56, 39, 1) 100%);
+    background: linear-gradient(
+      -90deg,
+      rgba(248, 80, 50, 1) 0%,
+      rgba(231, 56, 39, 1) 100%
+    );
   }
 
   &:focus-visible,
   &:active,
   &:focus {
-    background: linear-gradient(-90deg, rgba(248, 80, 50, 1) 0%, rgba(231, 56, 39, 1) 100%);
+    background: linear-gradient(
+      -90deg,
+      rgba(248, 80, 50, 1) 0%,
+      rgba(231, 56, 39, 1) 100%
+    );
     color: #fff;
   }
-
 }
-
-
-
 
 /*btn size*/
 .btn:focus,
@@ -176,8 +196,6 @@ button:focus {
     text-decoration: underline;
   }
 }
-
-
 
 .btn-groups {
   display: inline-flex;
