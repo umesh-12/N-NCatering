@@ -13,7 +13,7 @@ export class GalleryComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     new Splide(this.splideElement.nativeElement, {
-      perPage: 3,
+      perPage: 5,
       gap: '20px',
       type: 'loop',
       pagination: false,
