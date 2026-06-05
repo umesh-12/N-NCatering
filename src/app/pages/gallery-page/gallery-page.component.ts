@@ -15,13 +15,13 @@ export class GalleryPageComponent {
       id: 1,
       category: 'wedding',
       title: 'Wedding Event',
-      image: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba',
+      image: '/assets/img/gallery/photo-1.jpeg',
     },
     {
       id: 2,
       category: 'corporate',
       title: 'Corporate Setup',
-      image: 'https://images.unsplash.com/photo-1555244162-803834f70033',
+      image: '/assets/img/gallery/photo-2.jpeg',
     },
     {
       id: 3,
