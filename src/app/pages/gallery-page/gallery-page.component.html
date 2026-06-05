@@ -1,63 +1,32 @@
-<section class="gallery-page p-t-32 p-b-60">
+<section class="gallery-page p-b-60">
 
-    <div class="container">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Gallery</li>
-            </ol>
+    <!-- HERO -->
+    <section class="gallery-hero">
+        <div class="container">
+            <h1>Our Gallery</h1>
+            <p>Moments we created with love, taste, and perfection</p>
+        </div>
+    </section>
 
-        </nav>
+    <!-- FILTER BUTTONS -->
+    <section class="filter">
+        <button (click)="setFilter('all')" [class.active]="selectedFilter === 'all'">All</button>
+        <button (click)="setFilter('wedding')" [class.active]="selectedFilter === 'wedding'">Wedding</button>
+        <button (click)="setFilter('corporate')" [class.active]="selectedFilter === 'corporate'">Corporate</button>
+        <button (click)="setFilter('birthday')" [class.active]="selectedFilter === 'birthday'">Birthday</button>
+        <button (click)="setFilter('decoration')" [class.active]="selectedFilter === 'decoration'">Decoration</button>
+    </section>
 
 
-        <div class="gallery-list m-t-32">
-            <div class="row">
-                <div class="col-md-3">
-                    <a href="gallery-detail.html">
-                        <div class="gallery-item">
-                            <div class="gallery-img-holder">
-                                <img class="card-img-top" src="../../../assets/img/blogs/blog1.jpg" alt="">
+    <!-- GALLERY GRID -->
+    <section class="grid-gallery">
 
-                            </div>
-
-                            <div class="gallery-item-caption">
-                                Album Name 1
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-                <div class="col-md-3">
-                    <a href="gallery-detail.html">
-                        <div class="gallery-item">
-                            <div class="gallery-img-holder">
-                                <img class="card-img-top" src="../../../assets/img/blogs/blog2.jpg" alt="">
-                            </div>
-
-                            <div class="gallery-item-caption">
-                                Album Name 2
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-                <div class="col-md-3">
-
-                    <a href="gallery-detail.html">
-                        <div class="gallery-item">
-                            <div class="gallery-img-holder">
-                                <img class="card-img-top" src="../../../assets/img/blogs/blog3.jpg" alt="">
-                            </div>
-
-                            <div class="gallery-item-caption">
-                                Album Name 3
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
+        <div class="item" *ngFor="let item of filteredItems">
+            <img [src]="item.image" [alt]="item.title">
+            <div class="overlay">
+                <h3>{{ item.title }}</h3>
             </div>
         </div>
 
-    </div>
+    </section>
 </section>

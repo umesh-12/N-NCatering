@@ -56,7 +56,7 @@
   font-weight: bold;
   line-height: 1.2;
   color: vars.$primary-500;
-  letter-spacing: -0.5px; 
+  letter-spacing: -0.5px;
   margin-bottom: 0;
 }
 
@@ -97,4 +97,55 @@
 .contact-box i {
   color: #203a8e;
   font-size: 24px;
+}
+
+//Social media
+.social-fixed {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-fixed a {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  font-size: 22px;
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.social-fixed a:hover {
+  transform: translateX(-5px) scale(1.1);
+}
+
+/* Brand Colors */
+.facebook {
+  background: #1877f2;
+}
+
+.youtube {
+  background: #ff0000;
+}
+
+.instagram {
+  background: #e4405f;
+}
+
+.whatsapp {
+  background: #25d366;
 }

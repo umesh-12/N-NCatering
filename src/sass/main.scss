@@ -44,6 +44,7 @@
 @use "layout/footer";
 
 @use "pages/home";
+@use "pages/about-page";
 @use "pages/login";
 @use "pages/shop";
 @use "pages/shop-single";
@@ -55,6 +56,7 @@
 @use "pages/inner-page";
 @use "pages/cart";
 @use "pages/blog-page";
+@use "pages/blog-pages";
 @use "pages/blog-single-page";
 
 @use "custom";

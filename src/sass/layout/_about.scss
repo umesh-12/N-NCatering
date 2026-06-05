@@ -1,8 +1,15 @@
-/* ABOUT SECTION */
+@use "../abstracts/variables" as vars;
 
+/* ABOUT SECTION */
 .about-section {
   background: #fff;
   position: relative;
+}
+
+.about-hero {
+  h1 {
+    color: #fff;
+  }
 }
 
 .section-heading {
