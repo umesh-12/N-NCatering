@@ -1,3 +1,5 @@
+@use "../abstracts/variables" as vars;
+
 /* MENU SECTION */
 
 .menu-section {
@@ -49,7 +51,7 @@
 }
 
 .gold {
-  background: #dc5b48;
+  background: #dc6a48;
 }
 
 .diamond {

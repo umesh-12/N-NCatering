@@ -34,11 +34,11 @@ export const routes: Routes = [
       ),
   },
 
-  {
-    path: 'shop',
-    loadChildren: () =>
-      import('./pages/shop/shop.routes').then((m) => m.shopRoutes),
-  },
+  // {
+  //   path: 'shop',
+  //   loadChildren: () =>
+  //     import('./pages/shop/shop.routes').then((m) => m.shopRoutes),
+  // },
 
   {
     path: 'blog',

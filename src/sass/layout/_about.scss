@@ -4,6 +4,7 @@
 .about-section {
   background: #fff;
   position: relative;
+
 }
 
 .about-hero {
@@ -88,4 +89,20 @@
   object-fit: cover;
   border-top-right-radius: 60px;
   border-bottom-left-radius: 60px;
+}
+
+.pasion{
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 2px;
+    bottom: -6px;
+    width: 124px;
+    height: 14px;
+    background: url('../../assets/img/line.png') no-repeat center center;
+    border-radius: 2px;
+  }
 }
