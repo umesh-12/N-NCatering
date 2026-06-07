@@ -46,6 +46,16 @@ export const routes: Routes = [
       import('./pages/blogs/blogs.component').then((m) => m.BlogsComponent),
   },
 
+  
+  {
+    path: 'services',
+    loadComponent: () =>
+      import('./pages/service-page/service-page.component').then(
+        (m) => m.ServicePageComponent,
+      ),
+  },
+
+
   // {
   //   path: 'blog-single/:id',
   //   loadComponent: () =>

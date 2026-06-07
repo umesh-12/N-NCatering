@@ -1,0 +1,36 @@
+@use '../abstracts/variables' as vars;
+
+.services-page .service-card img {
+    height: 220px;
+}
+
+.services-page .service-card:hover {
+    background: #fff;
+}
+
+.services-page .service-card:hover {
+    background: #fff;
+}
+
+.services-page {
+    .service-card {
+
+        &:hover {
+            background: #fff;
+
+            svg {
+                path {
+                    fill: inherit;
+                }
+            }
+
+            h3 {
+                color: inherit;
+            }
+
+            p {
+                color: inherit;
+            }
+        }
+    }
+}
