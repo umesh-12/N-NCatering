@@ -40,8 +40,14 @@
         <input type="number" placeholder="Number Of Guest" data-aos="fade-left" data-aos-delay="300"
           data-aos-duration="700">
 
+        <div data-aos="fade-left" data-aos-delay="300" data-aos-duration="700">
+          <select id="multiSelect" multiple style="width: 100%">
+            <option *ngFor="let opt of options" [value]="opt.id">{{ opt.text }}</option>
+          </select>
+        </div>
+
         <!-- RADIO 1 -->
-        <div class="radio-group" data-aos="fade-left" data-aos-delay="350" data-aos-duration="700">
+        <div class="radio-group m-t-20" data-aos="fade-left" data-aos-delay="350" data-aos-duration="700">
           <div class="radio-type">
             Function Type
           </div>

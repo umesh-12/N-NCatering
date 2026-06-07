@@ -33,7 +33,7 @@
               "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
               "node_modules/@splidejs/splide/dist/css/splide.min.css",
               "node_modules/lightbox2/dist/css/lightbox.min.css",
-
+              "node_modules/select2/dist/css/select2.min.css",
 
               "src/sass/main.scss"
             ],
@@ -41,6 +41,7 @@
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+                "node_modules/select2/dist/js/select2.min.js",
                "node_modules/lightbox2/dist/js/lightbox.min.js",
               "src/assets/libs/js/backToTop.js"
             ]

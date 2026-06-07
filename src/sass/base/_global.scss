@@ -203,7 +203,8 @@ textarea {
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
   box-shadow: none !important;
   outline: none;
   border-color: vars.$primary-500 !important;
