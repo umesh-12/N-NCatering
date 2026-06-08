@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, AfterViewInit } from '@angular/core';
 declare var $: any; // jQuery
 
+
 @Component({
-  selector: 'app-reservation',
-  standalone: true,
+  selector: 'app-booking-form',
   imports: [CommonModule],
-  templateUrl: './reservation.component.html'
+  templateUrl: './booking-form.component.html'
 })
-export class ReservationComponent implements AfterViewInit {
+export class BookingFormComponent implements AfterViewInit {
 
   options = [
     { id: 1, text: 'Silver' },
@@ -19,6 +19,7 @@ export class ReservationComponent implements AfterViewInit {
   selected: number[] = [];
 
   ngAfterViewInit(): void {
+
     setTimeout(() => {
       // Initialize Select2
       $('#multiSelect').select2({
@@ -29,7 +30,6 @@ export class ReservationComponent implements AfterViewInit {
       });
 
     }, 200);
-
 
     // Update Angular model on change
     $('#multiSelect').on('change', (e: any) => {

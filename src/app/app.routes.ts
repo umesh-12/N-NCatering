@@ -73,6 +73,15 @@ export const routes: Routes = [
       ),
   },
 
+  
+  {
+    path: 'reservation',
+    loadComponent: () =>
+      import('./pages/booking-form/booking-form.component').then(
+        (m) => m.BookingFormComponent,
+      ),
+  },
+
 
   {
     path: 'menu-single',

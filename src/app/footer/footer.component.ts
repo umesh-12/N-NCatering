@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './footer.component.html'
 })
 export class FooterComponent implements AfterViewInit, OnDestroy {
