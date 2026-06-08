@@ -5,6 +5,7 @@
   padding: 60px 0;
   background: #e3e9ff;
   position: relative;
+  overflow: hidden;
   &::before {
     content: "";
     position: absolute;
