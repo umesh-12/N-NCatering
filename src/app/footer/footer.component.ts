@@ -1,10 +1,31 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './footer.component.html'
 })
-export class FooterComponent {
+export class FooterComponent implements AfterViewInit, OnDestroy {
 
+  showBackToTop = false;
+
+  ngAfterViewInit(): void {
+    window.addEventListener('scroll', this.toggleBackToTopButton);
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('scroll', this.toggleBackToTopButton);
+  }
+
+  toggleBackToTopButton = (): void => {
+    this.showBackToTop = window.scrollY > 300;
+  };
+
+  scrollToTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
 }

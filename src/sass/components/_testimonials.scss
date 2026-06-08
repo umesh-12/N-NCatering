@@ -15,7 +15,8 @@
 .video-box {
   position: relative;
   overflow: hidden;
-  border-radius: 20px;
+  border-top-right-radius: 60px;
+  border-bottom-left-radius: 60px;
 }
 
 .video-box img {
@@ -45,8 +46,9 @@
 }
 
 .testimonial-card {
-  border: 1px solid #ddd;
-  border-radius: 30px;
+  border: 1px solid vars.$border;
+  border-top-right-radius: 60px;
+  border-bottom-left-radius: 60px;
   padding: 50px;
   text-align: center;
 }
@@ -55,7 +57,7 @@
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  border: 1px solid #ddd;
+  border: 1px solid vars.$border;
   margin: 25px auto;
   display: flex;
   justify-content: center;

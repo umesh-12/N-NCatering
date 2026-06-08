@@ -2,6 +2,9 @@
 
 .services-page .service-card img {
     height: 220px;
+    border-top-right-radius: 60px;
+    border-bottom-left-radius: 60px;
+
 }
 
 .services-page .service-card:hover {
@@ -14,7 +17,7 @@
 
 .services-page {
     .service-card {
-
+        padding: 2rem;
         &:hover {
             background: #fff;
 

@@ -33,7 +33,8 @@
 
 .about-img img {
   width: 100%;
-  border-radius: 12px;
+  border-top-right-radius: 60px;
+  border-bottom-left-radius: 60px;
 }
 
 .about-content h2 {
@@ -89,7 +90,8 @@
 .mission-box {
   padding: 30px;
   background: #fff;
-  border-radius: 12px;
+  border-top-right-radius: 60px;
+  border-bottom-left-radius: 60px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
   text-align: center;
   transition: 0.3s;
