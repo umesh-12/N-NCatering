@@ -46,7 +46,15 @@ export const routes: Routes = [
       import('./pages/blogs/blogs.component').then((m) => m.BlogsComponent),
   },
 
-  
+
+  {
+    path: 'blog-single',
+    loadComponent: () =>
+      import('./pages/blog-single/blog-single.component').then(
+        (m) => m.BlogSingleComponent,
+      ),
+  },
+
   {
     path: 'services',
     loadComponent: () =>
@@ -54,6 +62,37 @@ export const routes: Routes = [
         (m) => m.ServicePageComponent,
       ),
   },
+
+
+
+  {
+    path: 'menu',
+    loadComponent: () =>
+      import('./pages/menu-categories-page/menu-categories-page.component').then(
+        (m) => m.MenuCategoriesPageComponent,
+      ),
+  },
+
+
+  {
+    path: 'menu-single',
+    loadComponent: () =>
+      import('./pages/menu-single-page/menu-single-page.component').then(
+        (m) => m.MenuSinglePageComponent,
+      ),
+  },
+
+
+  {
+    path: 'service-single',
+    loadComponent: () =>
+      import('./pages/service-single/service-single.component').then(
+        (m) => m.ServiceSingleComponent,
+      ),
+  },
+
+
+
 
 
   // {
@@ -64,13 +103,6 @@ export const routes: Routes = [
   //     ),
   // },
 
-  {
-    path: 'blog-single',
-    loadComponent: () =>
-      import('./pages/blog-single/blog-single.component').then(
-        (m) => m.BlogSingleComponent,
-      ),
-  },
 
   {
     path: 'contact',

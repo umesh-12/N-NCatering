@@ -1,0 +1,76 @@
+.service-single {
+  padding-bottom: 60px;
+}
+
+/* Hero */
+.service-hero {
+  background: #111;
+  color: #fff;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.service-title {
+  font-size: 42px;
+  margin: 10px 0;
+}
+
+.service-subtitle {
+  max-width: 700px;
+  margin: auto;
+  opacity: 0.8;
+}
+
+/* Layout */
+.service-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+/* Content */
+.service-image {
+  width: 100%;
+  border-top-right-radius: 60px;
+  border-bottom-left-radius: 60px;
+  margin-bottom: 20px;
+}
+
+.service-content h2 {
+  margin-top: 20px;
+}
+
+.service-list {
+  padding-left: 20px;
+}
+
+.service-list li {
+  margin-bottom: 10px;
+}
+
+/* Sidebar */
+.service-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-card {
+  background: #f8f8f8;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.sidebar-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-card ul li {
+  margin-bottom: 10px;
+}

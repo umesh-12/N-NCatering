@@ -43,7 +43,6 @@
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
                 "node_modules/select2/dist/js/select2.min.js",
                "node_modules/lightbox2/dist/js/lightbox.min.js",
-              "src/assets/libs/js/backToTop.js"
             ]
           },
           "configurations": {

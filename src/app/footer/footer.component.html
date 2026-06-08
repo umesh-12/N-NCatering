@@ -52,7 +52,23 @@
 
   </div>
 
-<a *ngIf="showBackToTop" class="back-to-top" (click)="scrollToTop()">
-  ↑
-</a>
+  <a *ngIf="showBackToTop" class="back-to-top" (click)="scrollToTop()">
+    ↑
+  </a>
+<div class="book-now-cta" data-aos="fade-left" data-aos-duration="800">
+
+  <a routerLink="/contact" class="cta-btn">
+
+    <span class="icon">
+      <i class="ri-calendar-check-line"></i>
+    </span>
+
+    <span class="text">
+      Book Now
+    </span>
+
+  </a>
+
+</div>
+
 </footer>

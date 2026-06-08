@@ -78,3 +78,73 @@
   cursor: pointer;
   z-index: 999;
 }
+
+.book-now-cta {
+  position: fixed;
+  right: 0;
+  top: 80%;
+  transform: translateY(-50%);
+  z-index: 9999;
+}
+
+/* MAIN BUTTON */
+.cta-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: #ff6a00;
+  color: #fff;
+  text-decoration: none;
+
+  padding: 8px 18px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+
+  font-weight: 600;
+  font-size: 14px;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+
+  transition: 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ICON */
+.cta-btn .icon {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+/* HOVER EFFECT */
+.cta-btn:hover {
+  background: #e85d00;
+  transform: translateX(-5px);
+}
+
+/* PULSE ANIMATION */
+.cta-btn::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-80%);
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateY(-80%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-80%) scale(3);
+    opacity: 0;
+  }
+}
