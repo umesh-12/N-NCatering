@@ -7,7 +7,7 @@
       center/cover;
   color: white;
   text-align: center;
-  padding: 100px 20px;
+  padding: 80px 20px;
 
   h1 {
     color: #fff;
@@ -42,7 +42,7 @@
 
 .blog-card {
   background: #fff;
-  border-radius: 12px;
+  border-top-right-radius: 60px;
   overflow: hidden;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
   transition: 0.3s;
@@ -54,7 +54,8 @@
 
 .blog-card img {
   width: 100%;
-  height: 250px;
+  height: 320px;
+  border-bottom-left-radius: 60px;
   object-fit: cover;
 }
 
@@ -122,6 +123,11 @@
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+
+  a:hover{
+    color: vars.$primary-500;
+    text-decoration: underline;
+  }
 }
 
 .sidebar-box h3 {

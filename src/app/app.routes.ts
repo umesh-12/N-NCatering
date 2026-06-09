@@ -34,17 +34,75 @@ export const routes: Routes = [
       ),
   },
 
-  {
-    path: 'shop',
-    loadChildren: () =>
-      import('./pages/shop/shop.routes').then((m) => m.shopRoutes),
-  },
+  // {
+  //   path: 'shop',
+  //   loadChildren: () =>
+  //     import('./pages/shop/shop.routes').then((m) => m.shopRoutes),
+  // },
 
   {
     path: 'blog',
     loadComponent: () =>
       import('./pages/blogs/blogs.component').then((m) => m.BlogsComponent),
   },
+
+
+  {
+    path: 'blog-single',
+    loadComponent: () =>
+      import('./pages/blog-single/blog-single.component').then(
+        (m) => m.BlogSingleComponent,
+      ),
+  },
+
+  {
+    path: 'services',
+    loadComponent: () =>
+      import('./pages/service-page/service-page.component').then(
+        (m) => m.ServicePageComponent,
+      ),
+  },
+
+
+
+  {
+    path: 'menu',
+    loadComponent: () =>
+      import('./pages/menu-categories-page/menu-categories-page.component').then(
+        (m) => m.MenuCategoriesPageComponent,
+      ),
+  },
+
+  
+  {
+    path: 'reservation',
+    loadComponent: () =>
+      import('./pages/booking-form/booking-form.component').then(
+        (m) => m.BookingFormComponent,
+      ),
+  },
+
+
+  {
+    path: 'menu-single',
+    loadComponent: () =>
+      import('./pages/menu-single-page/menu-single-page.component').then(
+        (m) => m.MenuSinglePageComponent,
+      ),
+  },
+
+
+  {
+    path: 'service-single',
+    loadComponent: () =>
+      import('./pages/service-single/service-single.component').then(
+        (m) => m.ServiceSingleComponent,
+      ),
+  },
+
+
+
+
 
   // {
   //   path: 'blog-single/:id',
@@ -54,13 +112,6 @@ export const routes: Routes = [
   //     ),
   // },
 
-  {
-    path: 'blog-single',
-    loadComponent: () =>
-      import('./pages/blog-single/blog-single.component').then(
-        (m) => m.BlogSingleComponent,
-      ),
-  },
 
   {
     path: 'contact',

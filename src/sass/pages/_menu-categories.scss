@@ -1,0 +1,50 @@
+
+/* ===== SINGLE MENU PAGE ===== */
+.single-menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.menu-image img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.menu-details h3 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.menu-details span {
+  font-size: 14px;
+  color: #777;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.menu-details ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 15px;
+}
+
+.menu-details ul li {
+  padding: 8px 0;
+  font-size: 14px;
+  border-bottom: 1px dashed #ddd;
+}
+
+.menu-details p {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+
+
+/* RESPONSIVE */
+@media(max-width: 992px) {
+  .single-menu-grid {
+    grid-template-columns: 1fr;
+  }
+}

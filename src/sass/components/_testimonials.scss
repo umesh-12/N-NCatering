@@ -15,7 +15,8 @@
 .video-box {
   position: relative;
   overflow: hidden;
-  border-radius: 20px;
+  border-top-right-radius: 60px;
+  border-bottom-left-radius: 60px;
 }
 
 .video-box img {
@@ -29,8 +30,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   background: #fff;
   border-radius: 50%;
   display: flex;
@@ -45,17 +46,19 @@
 }
 
 .testimonial-card {
-  border: 1px solid #ddd;
-  border-radius: 30px;
+  border: 1px solid vars.$border;
+  border-top-right-radius: 60px;
+  border-bottom-left-radius: 60px;
   padding: 50px;
   text-align: center;
+  overflow: hidden;
 }
 
 .client-icon {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  border: 1px solid #ddd;
+  border: 1px solid vars.$border;
   margin: 25px auto;
   display: flex;
   justify-content: center;

@@ -11,6 +11,7 @@
     border-bottom: 1px solid vars.$border;
     background: vars.$primary-500;
     color: #fff;
+
     a {
       color: #fff;
     }
@@ -52,10 +53,13 @@
 }
 
 .logo h2 {
-  font-size: 32px;
+  font-size: 26px;
   font-weight: bold;
   line-height: 1.2;
   color: vars.$primary-500;
+font-family: "Cinzel Decorative", serif;
+  // font-family: "Forum", serif;
+
   letter-spacing: -0.5px;
   margin-bottom: 0;
 }
@@ -70,6 +74,13 @@
   display: flex;
   gap: 10px;
   align-items: center;
+  &:hover {
+    i {
+      background: vars.$primary-500;
+      color: #fff;
+      border-color: vars.$primary-500;
+    }
+  }
 
   p {
     margin-bottom: 0;
@@ -102,7 +113,7 @@
 //Social media
 .social-fixed {
   position: fixed;
-  right: 20px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 9999;
@@ -113,8 +124,8 @@
 }
 
 .social-fixed a {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 
   display: flex;
@@ -122,7 +133,7 @@
   justify-content: center;
 
   color: #fff;
-  font-size: 22px;
+  font-size: 18px;
   text-decoration: none;
 
   transition: all 0.3s ease;
@@ -148,4 +159,8 @@
 
 .whatsapp {
   background: #25d366;
+}
+
+.bookNow {
+  background: #de6e12;
 }

@@ -1,32 +1,34 @@
 <section class="gallery-page p-b-60">
 
-    <!-- HERO -->
-    <section class="gallery-hero">
-        <div class="container">
-            <h1>Our Gallery</h1>
-            <p>Moments we created with love, taste, and perfection</p>
-        </div>
-    </section>
+  <!-- HERO -->
+  <section class="gallery-hero">
+    <div class="container">
+      <h1 data-aos="zoom-in" data-aos-delay="100">Our Gallery</h1>
+      <p data-aos="fade-up" data-aos-delay="200">
+        Moments we created with love, taste, and perfection
+      </p>
+    </div>
+  </section>
 
-    <!-- FILTER BUTTONS -->
-    <section class="filter">
-        <button (click)="setFilter('all')" [class.active]="selectedFilter === 'all'">All</button>
-        <button (click)="setFilter('wedding')" [class.active]="selectedFilter === 'wedding'">Wedding</button>
-        <button (click)="setFilter('corporate')" [class.active]="selectedFilter === 'corporate'">Corporate</button>
-        <button (click)="setFilter('birthday')" [class.active]="selectedFilter === 'birthday'">Birthday</button>
-        <button (click)="setFilter('decoration')" [class.active]="selectedFilter === 'decoration'">Decoration</button>
-    </section>
+  <!-- FILTER BUTTONS -->
+  <section class="filter" data-aos="fade-up" data-aos-delay="300">
+    <button (click)="setFilter('all')" [class.active]="selectedFilter === 'all'">All</button>
+    <button (click)="setFilter('wedding')" [class.active]="selectedFilter === 'wedding'">Wedding</button>
+    <button (click)="setFilter('corporate')" [class.active]="selectedFilter === 'corporate'">Corporate</button>
+    <button (click)="setFilter('birthday')" [class.active]="selectedFilter === 'birthday'">Birthday</button>
+    <button (click)="setFilter('decoration')" [class.active]="selectedFilter === 'decoration'">Decoration</button>
+  </section>
 
+  <!-- GALLERY GRID -->
+  <section class="grid-gallery">
+    <div class="item" *ngFor="let item of filteredItems; let i = index"
+         data-aos="fade-up"
+         [attr.data-aos-delay]="i * 100">
+      <img [src]="item.image" [alt]="item.title">
+      <div class="overlay">
+        <h3>{{ item.title }}</h3>
+      </div>
+    </div>
+  </section>
 
-    <!-- GALLERY GRID -->
-    <section class="grid-gallery">
-
-        <div class="item" *ngFor="let item of filteredItems">
-            <img [src]="item.image" [alt]="item.title">
-            <div class="overlay">
-                <h3>{{ item.title }}</h3>
-            </div>
-        </div>
-
-    </section>
 </section>

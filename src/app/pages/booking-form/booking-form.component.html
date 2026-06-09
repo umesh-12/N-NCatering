@@ -1,0 +1,87 @@
+<section class="reservation-section">
+    <!-- HERO -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1>Reservation Form</h1>
+            <p>Latest tips, ideas, and inspiration for catering & event planning</p>
+        </div>
+    </section>
+    <div class="container p-tb-60">
+
+        <div class="reservation-outer">
+            <!-- FORM -->
+            <form class="reservation-form col-md-8 mx-auto">
+
+                <input type="text" placeholder="Enter Your Name" data-aos="fade-left" data-aos-delay="100"
+                    data-aos-duration="700">
+
+                <input type="email" placeholder="Enter Your Email" data-aos="fade-left" data-aos-delay="150"
+                    data-aos-duration="700">
+
+                <input type="text" placeholder="Enter Your Phone Number" data-aos="fade-left" data-aos-delay="200"
+                    data-aos-duration="700">
+
+                <input type="date" data-aos="fade-left" data-aos-delay="250" data-aos-duration="700">
+
+                <input type="number" placeholder="Number Of Guest" data-aos="fade-left" data-aos-delay="300"
+                    data-aos-duration="700">
+
+                <div data-aos="fade-left" data-aos-delay="300" data-aos-duration="700">
+                    <select id="multiSelect" multiple style="width: 100%">
+                        <option *ngFor="let opt of options" [value]="opt.id">{{ opt.text }}</option>
+                    </select>
+                </div>
+
+                <!-- RADIO 1 -->
+                <div class="radio-group m-t-20" data-aos="fade-left" data-aos-delay="350" data-aos-duration="700">
+                    <div class="radio-type">
+                        Function Type
+                    </div>
+                    <div class="radio-type">
+                        <label class="d-flex gap-2 align-items-center">
+                            <input type="radio" name="type">
+                            <span>Party</span>
+                        </label>
+
+                        <label class="d-flex gap-2 align-items-center">
+                            <input type="radio" name="type">
+                            <span>Wedding</span>
+                        </label>
+
+                        <label class="d-flex gap-2 align-items-center">
+                            <input type="radio" name="type">
+                            <span>Conference</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- RADIO 2 -->
+                <div class="radio-group" data-aos="fade-left" data-aos-delay="400" data-aos-duration="700">
+                    <div class="radio-type">
+                        Time
+                    </div>
+                    <div class="radio-type">
+                        <label class="d-flex gap-2 align-items-center">
+                            <input type="radio" name="time">
+                            <span>Day</span>
+                        </label>
+
+                        <label class="d-flex gap-2 align-items-center">
+                            <input type="radio" name="time">
+                            <span>Evening</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- BUTTON -->
+                <button type="submit" data-aos="zoom-in" data-aos-delay="450" data-aos-duration="700">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>

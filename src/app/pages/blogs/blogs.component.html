@@ -1,10 +1,12 @@
 <section class="blog-page p-b-60">
 
     <!-- HERO -->
-    <section class="blog-hero">
+    <section class="blog-hero" >
         <div class="container">
-            <h1>Our Blog</h1>
-            <p>Latest tips, ideas, and inspiration for catering & event planning</p>
+            <h1 data-aos="zoom-in" data-aos-delay="100"> News & Events</h1>
+            <p data-aos="fade-up" data-aos-delay="200">
+                Latest tips, ideas, and inspiration for catering & event planning
+            </p>
         </div>
     </section>
 
@@ -16,34 +18,34 @@
             <div class="blog-posts">
 
                 <!-- BLOG CARD -->
-                <div class="blog-card">
+                <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
                     <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba" alt="">
                     <div class="blog-content">
                         <span class="tag">Wedding</span>
                         <h3>Top Catering Ideas for Wedding Events</h3>
-                        <p>Discover how to make your wedding unforgettable with premium food and decoration styles.
-                        </p>
-                        <a href="#">Read More <i class="ri-arrow-right-line"></i></a>
+                        <p>Discover how to make your wedding unforgettable with premium food and decoration styles.</p>
+                        <a routerLink="/blog-single" class="btn-link">Read More <i class="ri-arrow-right-line"></i></a>
+                        
                     </div>
                 </div>
 
-                <div class="blog-card">
+                <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
                     <img src="https://images.unsplash.com/photo-1555244162-803834f70033" alt="">
                     <div class="blog-content">
                         <span class="tag">Corporate</span>
                         <h3>Professional Catering for Corporate Events</h3>
                         <p>Learn how catering impacts your business events and client impressions.</p>
-                        <a href="#">Read More <i class="ri-arrow-right-line"></i></a>
+                        <a routerLink="/blog-single" class="btn-link">Read More <i class="ri-arrow-right-line"></i></a>
                     </div>
                 </div>
 
-                <div class="blog-card">
+                <div class="blog-card" data-aos="fade-up" data-aos-delay="300">
                     <img src="https://images.unsplash.com/photo-1521305916504-4a1121188589" alt="">
                     <div class="blog-content">
                         <span class="tag">Birthday</span>
                         <h3>Creative Birthday Party Catering Ideas</h3>
                         <p>Make birthdays special with unique food setups and themes.</p>
-                        <a href="#">Read More <i class="ri-arrow-right-line"></i></a>
+                        <a routerLink="/blog-single" class="btn-link">Read More <i class="ri-arrow-right-line"></i></a>
                     </div>
                 </div>
 
@@ -52,28 +54,28 @@
             <!-- SIDEBAR -->
             <aside class="sidebar">
 
-                <div class="search-box">
+                <div class="search-box" data-aos="fade-left" data-aos-delay="100">
                     <input type="text" placeholder="Search blog...">
                     <button><i class="ri-search-line"></i></button>
                 </div>
 
-                <div class="sidebar-box">
+                <div class="sidebar-box" data-aos="fade-left" data-aos-delay="200">
                     <h3>Categories</h3>
                     <ul>
-                        <li>Wedding Events</li>
-                        <li>Corporate Events</li>
-                        <li>Birthday Parties</li>
-                        <li>Anniversary</li>
-                        <li>Catering Tips</li>
+                        <li><a href=""> Wedding Events</a></li>
+                        <li><a href="">Corporate Events</a></li>
+                        <li><a href="">Birthday Parties</a></li>
+                        <li><a href="">Anniversary</a></li>
+                        <li><a href="">Catering Tips</a></li>
                     </ul>
                 </div>
 
-                <div class="sidebar-box">
+                <div class="sidebar-box" data-aos="fade-left" data-aos-delay="300">
                     <h3>Recent Posts</h3>
                     <ul>
-                        <li>How to Plan Perfect Wedding Catering</li>
-                        <li>Top 10 Event Decoration Ideas</li>
-                        <li>Food Trends for Events 2026</li>
+                        <li><a href="">How to Plan Perfect Wedding Catering</a></li>
+                        <li><a href="">Top 10 Event Decoration Ideas</a></li>
+                        <li><a href="">Food Trends for Events 2026</a></li>
                     </ul>
                 </div>
 
@@ -81,12 +83,14 @@
 
         </div>
     </section>
-    <div class="pagination-outer text-center m-t-40">
+
+    <div class="pagination-outer text-center" data-aos="fade-up" data-aos-delay="100">
         <ul class="pagination">
             <li class="page-item">
                 <a class="page-link pren prev" href="#" aria-label="Previous">
-                    <span aria-hidden="true"><i class="fas
-                                                    fa-long-arrow-alt-left"></i></span>
+                    <span aria-hidden="true">
+                        <i class="fas fa-long-arrow-alt-left"></i>
+                    </span>
                     <span class="sr-only">Previous</span>
                 </a>
             </li>
@@ -94,15 +98,16 @@
             <li class="page-item active"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
+
             <li class="page-item">
                 <a class="page-link pren next" href="#" aria-label="Next">
-                    <span aria-hidden="true"><i class="fas
-                                                    fa-long-arrow-alt-right"></i></span>
+                    <span aria-hidden="true">
+                        <i class="fas fa-long-arrow-alt-right"></i>
+                    </span>
                     <span class="sr-only">Next</span>
                 </a>
             </li>
         </ul>
     </div>
-
 
 </section>

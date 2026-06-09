@@ -3,11 +3,11 @@ import { AfterViewInit, Component, HostListener } from '@angular/core';
 declare var jQuery: any;
 import * as jquery from 'jquery';
 import { RouterModule } from '@angular/router';
-
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, NgbTooltipModule],
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements AfterViewInit {
