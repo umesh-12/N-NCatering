@@ -1,0 +1,59 @@
+@use "../abstracts/variables" as vars;
+
+.menu-header {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  max-width: 700px;
+}
+
+.package-tag {
+  background: #e85d42;
+  padding: 8px 20px;
+  border-radius: 30px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.menu-header h1 {
+  font-size: 55px;
+  margin-bottom: 15px;
+}
+
+.menu-header p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.menu-image img {
+  width: 100%;
+  border-radius: 20px;
+  margin-bottom: 50px;
+}
+
+.menu-category {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+
+.menu-category h2 {
+  color: #203a8e;
+  margin-bottom: 20px;
+}
+
+.menu-category ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-category ul li {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.menu-category ul li:last-child {
+  border-bottom: none;
+}
