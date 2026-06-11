@@ -11,17 +11,33 @@ declare var lightbox: any;
 export class GalleryComponent implements AfterViewInit {
   @ViewChild('gallery') splideElement!: ElementRef;
 
-  ngAfterViewInit() {
-    new Splide(this.splideElement.nativeElement, {
-      perPage: 5,
-      gap: '20px',
-      type: 'loop',
-      pagination: false,
-    }).mount();
+ngAfterViewInit() {
+  new Splide(this.splideElement.nativeElement, {
+    type: 'loop',
+    gap: '20px',
+    pagination: false,
 
-    lightbox.option({
-      resizeDuration: 200,
-      wrapAround: true,
-    });
-  }
+    perPage: 5, // default (large screens)
+
+    breakpoints: {
+      1200: {
+        perPage: 4,
+      },
+      992: {
+        perPage: 3,
+      },
+      768: {
+        perPage: 2,
+      },
+      576: {
+        perPage: 1,
+      },
+    },
+  }).mount();
+
+  lightbox.option({
+    resizeDuration: 200,
+    wrapAround: true,
+  });
+}
 }
