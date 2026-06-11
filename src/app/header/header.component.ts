@@ -29,7 +29,7 @@ export class HeaderComponent implements AfterViewInit {
             openClass: 'th-open',
             speed: 300,
           },
-          opts
+          opts,
         );
 
         return this.each(function (this: HTMLElement) {
@@ -55,13 +55,27 @@ export class HeaderComponent implements AfterViewInit {
                 .children('ul')
                 .slideToggle(settings.speed)
                 .toggleClass(settings.openClass);
-            }
+            },
           );
 
           // Toggle menu visibility
           $(settings.toggleBtn).on('click', (e: JQuery.ClickEvent) => {
             e.stopPropagation();
             $menu.toggleClass(settings.bodyClass);
+          });
+
+          //close menu on link click
+          $menu.on('click', 'a', function () {
+            $menu.removeClass(settings.bodyClass);
+
+            $menu
+              .find(`.${settings.submenuClass}`)
+              .slideUp(settings.speed)
+              .removeClass(settings.openClass);
+
+            $menu
+              .find(`.${settings.parentClass}`)
+              .removeClass(settings.activeClass);
           });
 
           // Close on outside click
@@ -77,7 +91,7 @@ export class HeaderComponent implements AfterViewInit {
           });
 
           $menu.on('click', '.th-menu-area', (e: JQuery.ClickEvent) =>
-            e.stopPropagation()
+            e.stopPropagation(),
           );
         });
       };
@@ -98,7 +112,7 @@ export class HeaderComponent implements AfterViewInit {
     this.isSticky = scrollTop > 200;
   }
 
-   Menulist: any[] = [
+  Menulist: any[] = [
     {
       menuId: 1,
       menuName: 'shop',
@@ -113,7 +127,6 @@ export class HeaderComponent implements AfterViewInit {
               menuId: 14,
               menuName: 'test 1',
               path: '',
-            
             },
             {
               menuId: 15,
@@ -122,13 +135,7 @@ export class HeaderComponent implements AfterViewInit {
             },
           ],
         },
-     
       ],
     },
-
   ];
-
-
-
-
 }
