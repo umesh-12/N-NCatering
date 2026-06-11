@@ -8,7 +8,8 @@
 
 .splide__slide {
   border: none !important;
-  img{
+
+  img {
     width: 100%;
     object-fit: cover;
   }
@@ -31,32 +32,37 @@
   top: 0;
   z-index: 100;
 
-  p{
-    
+  p {
+
     color: #fff;
   }
 
-  h2{
+  h2 {
     color: #fff;
   }
 }
 
-.hero-slider{
-.splide__slide {
-  position: relative;
+.hero-slider {
+  .splide__slide {
+    position: relative;
+    overflow: hidden;
+  }
 
-  &::before {
+  .splide__slide img {
+    width: 100%;
+    height: 600px; // important for consistent overlay
+    object-fit: cover;
+    display: block;
+  }
+
+  .splide__slide::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0; // better than top/left/width/height
     background: rgba(0, 0, 0, 0.5);
     z-index: 1;
+    pointer-events: none;
   }
-}
-
 }
 
 // .splide__slide img {
@@ -69,43 +75,60 @@
 .splide__slide:first-child .slider-content h2,
 .splide__slide:first-child .slider-content p,
 .splide__slide:first-child .slider-content .btn {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .slider-content h2,
 .slider-content p,
 .slider-content .btn {
-    opacity: 0;
-    transform: translateY(40px);
+  opacity: 0;
+  transform: translateY(40px);
 }
 
 /* Active slide animations */
 .splide__slide.is-active .slider-content h2 {
-    animation: slideUpFade 0.8s ease forwards;
+  animation: slideUpFade 0.8s ease forwards;
 }
 
 .splide__slide.is-active .slider-content p {
-    animation: slideUpFade 0.8s ease forwards;
-    animation-delay: 0.4s;
+  animation: slideUpFade 0.8s ease forwards;
+  animation-delay: 0.4s;
 }
 
 .splide__slide.is-active .slider-content .btn {
-    animation: slideUpFade 0.8s ease forwards;
-    animation-delay: 0.8s;
+  animation: slideUpFade 0.8s ease forwards;
+  animation-delay: 0.8s;
 }
 
 
 
 @keyframes slideUpFade {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+@media only screen and (max-width: 992px) {}
+
+@media only screen and (max-width: 767px) {
+  .slider-content {
+    width: 28%;
+  }
+  .slider-content{
+    left: 60px;
+  }
+}
+
+
+@media only screen and (max-width: 500px) {
+  .slider-content {
+    width: 21%;
+  }
+}

@@ -65,8 +65,6 @@ font-family: "Cinzel Decorative", serif;
 }
 
 .header-contact {
-  display: flex;
-  justify-content: flex-end;
   gap: 40px;
 }
 
@@ -89,7 +87,7 @@ font-family: "Cinzel Decorative", serif;
   i {
     font-size: 1.5rem;
     height: 40px;
-    width: 40px;
+    flex: 0 0 40px;
     display: flex;
     justify-content: center;
     color: vars.$primary-500;
@@ -151,6 +149,7 @@ font-family: "Cinzel Decorative", serif;
 
 .youtube {
   background: #ff0000;
+
 }
 
 .instagram {
@@ -164,3 +163,30 @@ font-family: "Cinzel Decorative", serif;
 .bookNow {
   background: #de6e12;
 }
+
+@media only screen and (max-width: 992px) {}
+
+@media only screen and (max-width: 767px) {
+  .header-top{
+    height: auto;
+  }
+  .social-fixed{
+    display: none;
+  }
+    .logo h2 {
+      font-size: 21px;
+  }
+}
+
+
+
+@media only screen and (max-width: 400px) {
+  .logo h2 {
+      font-size: 19px;
+  }
+
+}
+
+
+
+
