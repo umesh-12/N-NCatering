@@ -21,13 +21,18 @@
 
   <!-- GALLERY GRID -->
   <section class="grid-gallery">
-    <div class="item" *ngFor="let item of filteredItems; let i = index"
-         data-aos="fade-up"
-         [attr.data-aos-delay]="i * 100">
-      <img [src]="item.image" [alt]="item.title">
-      <div class="overlay">
+    <div class="item" *ngFor="let item of filteredItems; let i = index" data-aos="fade-up"
+      [attr.data-aos-delay]="i * 100">
+
+      <a [href]="item.image" data-lightbox="gallery" data-title="Image 1">
+        <img [src]="item.image" [alt]="item.title">
+      </a>
+
+
+
+      <!-- <div class="overlay">
         <h3>{{ item.title }}</h3>
-      </div>
+      </div> -->
     </div>
   </section>
 
