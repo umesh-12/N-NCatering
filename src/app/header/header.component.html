@@ -3,7 +3,7 @@
         <button class="th-menu-toggle"> <i class="fa-solid fa-xmark"></i></button>
 
         <div class="th-mobile-menu">
-                   <ul>
+            <ul>
 
                 <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                     <a routerLink="">Home</a>
@@ -16,15 +16,15 @@
 
                 </li>
 
-                 <li class="menu-item-has-children" routerLinkActive="active">
-                                    <a>Products</a>
-                                    <ul class="sub-menu">
-                                        <li routerLinkActive="active"><a routerLink="/shop/categories">Product Categories</a></li>
-                                        <li routerLinkActive="active"><a routerLink="/shop/shop-single">Product Details</a></li>
-                                        <li routerLinkActive="active"><a routerLink="/shop/shop-cart">Cart Page</a></li>
-                
-                                    </ul>
-                                </li> 
+                <li class="th-item-has-children" routerLinkActive="active">
+                    <a>Products</a>
+                    <ul class="sub-menu">
+                        <li routerLinkActive="active"><a routerLink="/shop/categories">Product Categories</a></li>
+                        <li routerLinkActive="active"><a routerLink="/shop/shop-single">Product Details</a></li>
+                        <li routerLinkActive="active"><a routerLink="/shop/shop-cart">Cart Page</a></li>
+
+                    </ul>
+                </li>
 
                 <li routerLinkActive="active">
                     <a routerLink="/services">services</a>
@@ -90,7 +90,7 @@
                 <div class="col-10  col-lg-6">
                     <div class="logo d-flex   justify-content-lg-start">
                         <img src="../../assets/img/logo.jpg" alt="" height="60px">
-                        <div>   
+                        <div>
                             <h2>N & N Catering Event <br> Management Service</h2>
 
                         </div>

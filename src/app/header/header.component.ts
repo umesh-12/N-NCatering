@@ -65,18 +65,22 @@ export class HeaderComponent implements AfterViewInit {
           });
 
           //close menu on link click
-          $menu.on('click', 'a', function () {
-            $menu.removeClass(settings.bodyClass);
+          $menu.on(
+            'click',
+            '.th-submenu a, li:not(.th-item-has-children) > a',
+            function () {
+              $menu.removeClass(settings.bodyClass);
 
-            $menu
-              .find(`.${settings.submenuClass}`)
-              .slideUp(settings.speed)
-              .removeClass(settings.openClass);
+              $menu
+                .find(`.${settings.submenuClass}`)
+                .slideUp(settings.speed)
+                .removeClass(settings.openClass);
 
-            $menu
-              .find(`.${settings.parentClass}`)
-              .removeClass(settings.activeClass);
-          });
+              $menu
+                .find(`.${settings.parentClass}`)
+                .removeClass(settings.activeClass);
+            },
+          );
 
           // Close on outside click
           $(document).on('click', () => {
