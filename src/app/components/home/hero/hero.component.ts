@@ -19,7 +19,7 @@ export class HeroComponent implements AfterViewInit {
       perPage: 1,
       perMove: 1,
       autoplay: true,
-      interval: 3000,
+      interval: 3500,
       pauseOnHover: false,
       arrows: true,
       pagination: true,
