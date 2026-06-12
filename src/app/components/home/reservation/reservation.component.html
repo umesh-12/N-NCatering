@@ -40,6 +40,10 @@
         <input type="number" placeholder="Number Of Guest" data-aos="fade-left" data-aos-delay="300"
           data-aos-duration="700">
 
+        <ng-select [items]="countries" bindLabel="name" [multiple]="true" [searchable]="true"
+          [(ngModel)]="selectedCountries">
+        </ng-select>
+
         <div data-aos="fade-left" data-aos-delay="300" data-aos-duration="700">
           <select id="multiSelect" multiple style="width: 100%">
             <option *ngFor="let opt of options" [value]="opt.id">{{ opt.text }}</option>

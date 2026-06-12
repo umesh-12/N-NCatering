@@ -4,8 +4,7 @@
 .gallery-hero {
   background:
     linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba")
-      center/cover;
+    url("../../assets/img/gallery/photo-1.jpeg") no-repeat center/cover;
   color: #fff;
   text-align: center;
   padding: 80px 20px;
@@ -89,7 +88,7 @@
   opacity: 0;
   transition: 0.3s;
 
-  h3{
+  h3 {
     color: #fff;
     margin-bottom: 0;
     font-size: 18px;

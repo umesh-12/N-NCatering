@@ -1,15 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { Component, AfterViewInit } from '@angular/core';
-declare var $: any; // jQuery
-
+import { FormsModule } from '@angular/forms';
+declare var $: any;
 @Component({
   selector: 'app-reservation',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './reservation.component.html'
+  imports: [CommonModule, FormsModule],
+  templateUrl: './reservation.component.html',
 })
 export class ReservationComponent implements AfterViewInit {
+  countries = [
+    { name: 'Nepal', code: 'NP' },
+    { name: 'India', code: 'IN' },
+    { name: 'China', code: 'CN' },
+    { name: 'Japan', code: 'JP' },
+  ];
 
+  selectedCountries: any[] = [];
   options = [
     { id: 1, text: 'Silver' },
     { id: 2, text: 'Gold' },
@@ -25,11 +32,9 @@ export class ReservationComponent implements AfterViewInit {
         placeholder: 'Select Event Types',
         allowClear: true,
         data: this.options,
-        width: '100%'
+        width: '100%',
       });
-
     }, 200);
-
 
     // Update Angular model on change
     $('#multiSelect').on('change', (e: any) => {
@@ -38,7 +43,7 @@ export class ReservationComponent implements AfterViewInit {
     });
 
     // Refresh AOS after Select2 renders
-    import('aos').then(AOS => {
+    import('aos').then((AOS) => {
       AOS.refresh();
     });
   }
