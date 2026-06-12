@@ -1,40 +1,49 @@
-@use '../abstracts/variables' as vars;
+@use "../abstracts/variables" as vars;
+
+.services-page .service-card:hover img {
+  transform: scale(1.1);
+}
+
+.service-card-img {
+  border-top-right-radius: 60px;
+  border-bottom-left-radius: 60px;
+  overflow: hidden;
+  height: 220px;
+  margin-bottom: 24px;
+}
 
 .services-page .service-card img {
-    height: 220px;
-    border-top-right-radius: 60px;
-    border-bottom-left-radius: 60px;
-
+  height: 220px;
+  transition: 0.5s;
 }
 
 .services-page .service-card:hover {
-    background: #fff;
+  background: #fff;
 }
 
 .services-page .service-card:hover {
-    background: #fff;
+  background: #fff;
 }
 
 .services-page {
-    .service-card {
-        padding: 2rem;
-        &:hover {
-            background: #fff;
+  .service-card {
+    padding: 2rem;
+    &:hover {
+      background: #fff;
 
-
-            svg {
-                path {
-                    fill: inherit;
-                }
-            }
-
-            h3 {
-                color: inherit;
-            }
-
-            p {
-                color: inherit;
-            }
+      svg {
+        path {
+          fill: inherit;
         }
+      }
+
+      h3 {
+        color: vars.$primary-500;
+      }
+
+      p {
+        color: inherit;
+      }
     }
+  }
 }
