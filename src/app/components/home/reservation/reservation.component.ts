@@ -9,14 +9,6 @@ declare var $: any;
   templateUrl: './reservation.component.html',
 })
 export class ReservationComponent implements AfterViewInit {
-  countries = [
-    { name: 'Nepal', code: 'NP' },
-    { name: 'India', code: 'IN' },
-    { name: 'China', code: 'CN' },
-    { name: 'Japan', code: 'JP' },
-  ];
-
-  selectedCountries: any[] = [];
   options = [
     { id: 1, text: 'Silver' },
     { id: 2, text: 'Gold' },
