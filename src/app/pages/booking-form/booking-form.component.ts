@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, AfterViewInit } from '@angular/core';
+import { HeaderComponent } from '../../header/header.component';
+import { FooterComponent } from '../../footer/footer.component';
 declare var $: any; // jQuery
 
 
 @Component({
   selector: 'app-booking-form',
-  imports: [CommonModule],
+  imports: [CommonModule, HeaderComponent, FooterComponent],
   templateUrl: './booking-form.component.html'
 })
 export class BookingFormComponent implements AfterViewInit {

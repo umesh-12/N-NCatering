@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HeaderComponent } from '../../header/header.component';
+import { FooterComponent } from '../../footer/footer.component';
 
 @Component({
   selector: 'app-blogs',
-  imports: [CommonModule, RouterModule,],
+  imports: [CommonModule, RouterModule,HeaderComponent, FooterComponent],
   templateUrl: './blogs.component.html'
 })
 export class BlogsComponent {

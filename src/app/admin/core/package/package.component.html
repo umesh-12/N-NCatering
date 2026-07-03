@@ -1,0 +1,128 @@
+<div class="body-layout admin">
+    <div class="row">
+
+        <div class="col-lg-9 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center pt-0 pe-0">
+                    <h3 class="mb-0"> Package</h3>
+                    <input type="text" class="search-input form-control" style="width: 250px;"
+                        placeholder="Search item..." [(ngModel)]="searchTerm" (input)="filterCategories()">
+                </div>
+
+                <div class="card-body px-0">
+                    <div class="row">
+                        <div class="card-table">
+                            <div class="table-responsive-sm">
+                                <div class="table__wrapper table__wrapper-70">
+                                    <table class="table" style="width: 100%;">
+                                        <thead class="table__head">
+                                            <tr>
+                                                <th style="width: 90px;">S.N.</th>
+                                                <th class="text-center" style="width: 120px;">Package Name</th>
+                                                <th>Description</th>
+                                                <th>Price</th>
+                                                <th>Image</th>
+                                                <th>is Active</th>
+                                                <th style="width: 150px; text-align: right; padding-right: 20px;">
+                                                    Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of filteredpackageList; let i = index">
+                                                <td class="text-center">{{i+1}}</td>
+                                                <td>{{item.packageName}}</td>
+                                                <td class="text-center">{{item.description}}</td>
+                                                <td>{{item.price}}</td>
+                                                <td>
+                                                    <img [src]="baseurl + item.imageUrl" [alt]="item.packageName"
+                                                        width="60" style="border-radius: 5px; object-fit: cover;">
+                                                </td>
+                                                <td>{{item.isActive}}</td>
+
+                                                <!-- <td>
+                                                    <div class="d-flex gap-2 justify-content-end">
+                                                        <button class="btn btn-sm btn-primary me-2"
+                                                            (click)="getMenuItemId(item.menuItemId)">
+                                                            Edit
+                                                        </button>
+                                                        <button class="btn btn-sm btn-danger"
+                                                            (click)="deleteMenuItem(item.menuItemId)">
+                                                            Delete
+                                                        </button>
+                                                    </div>
+                                                </td> -->
+                                            </tr>
+                                            <!-- <tr *ngIf="filteredMenuItemList.length === 0">
+                                                <td colspan="4" class="text-center text-muted py-3">No categories found.</td>
+                                            </tr> -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="card shadow-sm">
+                <form action="" #packageForm="ngForm">
+                    <div class="mb-3">
+                        <label class="form-label">Package Name</label>
+                        <input type="text" [(ngModel)]="this.service.packageModel.packageName" name="packageName"
+                            class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <input type="text" [(ngModel)]="this.service.packageModel.description" name="description"
+                            class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Price</label>
+                        <input type="text" [(ngModel)]="this.service.packageModel.price" name="price"
+                            class="form-control">
+                    </div>
+
+
+                      <div class="mb-3">
+                            <label class="form-label">Product Image</label>
+                            <input type="file" class="form-control" (change)="onFileSelected($event)">
+
+                            <div *ngIf="imagePreview" class="mt-2 text-center border p-2 rounded">
+                                <img [src]="imagePreview" alt="Product Preview"
+                                    style="max-height: 120px; object-fit: contain;">
+                            </div>
+                        </div>
+
+                 
+                       <div class="mb-3">
+                        <label class="form-label">IsActive</label>
+                        <!-- Select2 सँग राम्रो काम गरोस् भनेर यहाँ value स्ट्रिङमा मिलाइएको छ -->
+                        <select name="isActive" id="isActive" [(ngModel)]="this.service.packageModel.isActive"
+                            class="form-control">
+                            <option value="">Select</option>
+                     
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                        </select>
+                    </div>
+
+
+                    <div class="flex-wrap gap-2 d-flex">
+                        <button type="button" class="btn btn-primary flex-grow-1" (click)="savePackage()">
+                            <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-1"></span>
+                            Save Package
+                        </button>
+                        <button type="button" class="btn btn-secondary" (click)="reset()">
+                            Cancel
+                        </button>
+                    </div> 
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+

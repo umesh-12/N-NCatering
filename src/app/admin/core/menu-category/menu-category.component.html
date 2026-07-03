@@ -1,0 +1,87 @@
+<div class="body-layout admin">
+    <div class="row">
+
+        <div class="col-lg-8 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center pt-0 pe-0">
+                    <h3 class="mb-0"> Menu Category</h3>
+                    <input type="text" 
+                           class="search-input form-control" 
+                           style="width: 250px;" 
+                           placeholder="Search category..." 
+                           [(ngModel)]="searchTerm" 
+                           (input)="filterCategories()">
+                </div>
+
+                <div class="card-body px-0">
+                    <div class="row">
+                        <div class="card-table">
+                            <div class="table-responsive-sm">
+                                <div class="table__wrapper table__wrapper-70">
+                                    <table class="table" style="width: 100%;">
+                                        <thead class="table__head">
+                                            <tr>
+                                                <th style="width: 90px;">S.N.</th>
+                                                <th>Category Name</th>
+                                                <th class="text-center" style="width: 120px;">Display Order</th>
+                                                <th style="width: 150px; text-align: right; padding-right: 20px;"> Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of filteredMenuCategoryList; let i = index">
+                                                <td>{{i+1}}</td>
+                                                <td>{{item.categoryName}}</td>
+                                                <td class="text-center">{{item.displayOrder}}</td>
+                                                <td>
+                                                    <div class="d-flex gap-2 justify-content-end">
+                                                        <button class="btn btn-sm btn-primary me-2"
+                                                            (click)="getMenuCategoryId(item.categoryId)">
+                                                            Edit
+                                                        </button>
+                                                        <button class="btn btn-sm btn-danger"
+                                                            (click)="deleteMenuCategory(item.categoryId)">
+                                                            Delete
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr *ngIf="filteredMenuCategoryList.length === 0">
+                                                <td colspan="4" class="text-center text-muted py-3">No categories found.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card shadow-sm">
+                <form action="" #MenucategoryForm="ngForm">
+                    <div class="mb-3">
+                        <label class="form-label">Category Name</label>
+                        <input type="text" [(ngModel)]="this.service.menuCategoryModel.categoryName" name="categoryName" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Display Order</label>
+                        <input type="text" [(ngModel)]="this.service.menuCategoryModel.displayOrder" name="displayOrder" class="form-control">   
+                    </div>
+
+                    <div class="flex-wrap gap-2 d-flex">
+                        <button type="button" class="btn btn-primary flex-grow-1" (click)="saveMenuCategory()">
+                            <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-1"></span>
+                            Save Category
+                        </button>
+                        <button type="button" class="btn btn-secondary" (click)="reset()">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div> 
+
+    </div>
+</div>

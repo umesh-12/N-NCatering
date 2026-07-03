@@ -1,5 +1,4 @@
 <section class="menu-section m-t-60">
-
     <div class="container">
 
         <div class="section-header m-b-40">
@@ -8,82 +7,39 @@
                     <span>Menu List</span>
                 </div>
             </div>
-
-
-            <h2 class="text-center mb-0">
-                Choose Your Menu
-            </h2>
+            <h2 class="text-center mb-0">Choose Your Menu</h2>
         </div>
 
-
-        <div class="menu-grid">
-
-            <!-- CARD -->
-
-            <div class="menu-card silver" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-
-                <h3>N&N Silver</h3>
-                <span>Conditions Apply *</span>
-
-                <img src="../../../../assets/img/silver-menu.jpg" alt="">
-
-                <p>
-                    Snacks [2], Main Course [8], Pickle [5],
-                    Salad [5], Dessert [2]
-                </p>
-
-                <a routerLink="/menu-single" class="btn btn-outline-white">
-                    View Menu
-                    <i class="ri-arrow-right-long-line"></i>
-                </a>
-
+        <div *ngIf="isLoading" class="text-center my-5">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
             </div>
+        </div>
 
-            <!-- CARD -->
+        <div class="menu-grid" *ngIf="!isLoading">
 
-            <div class="menu-card gold" data-aos="fade-up" data-aos-duration="800" data-aos-delay="250">
+            <div *ngFor="let item of packageList; let i = index" class="menu-card" [ngClass]="{
+                    'silver': i % 3 === 0,
+                    'gold': i % 3 === 1,
+                    'diamond': i % 3 === 2
+                 }" data-aos="fade-up" [attr.data-aos-duration]="800" [attr.data-aos-delay]="100 * (i + 1)">
 
-                <h3>N&N Gold</h3>
+                <h3>{{ item.packageName }}</h3>
                 <span>Conditions Apply *</span>
 
-                <img src="../../../../assets/img/gold-menu.jpg" alt="">
+                <img [src]="item.imageUrl || '../../../../assets/img/silver-menu.jpg'" [alt]="item.packageName">
 
-                <p>
-                    Snacks [3], Main Course [10], Pickle [5],
-                    Salad [5], Dessert [3]
-                </p>
+                <p>{{ item.description }}</p>
 
-              <a routerLink="/menu-single" class="btn btn-outline-white">
+                <a [routerLink]="['/menu-single', item.packageId || item.id]" class="btn btn-outline-white">
                     View Menu
                     <i class="ri-arrow-right-long-line"></i>
                 </a>
 
-            </div>
-
-            <!-- CARD -->
-
-            <div class="menu-card diamond" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
-
-                <h3>N & N Platinum</h3>
-
-                <span>Conditions Apply *</span>
-
-                <img src="../../../../assets/img/dimond-menu.jpg" alt="">
-
-                <p>
-                    Snacks [5], Main Course [12], Pickle [5],
-                    Salad [5], Dessert [5]
-                </p>
-
-              <a routerLink="/menu-single" class="btn btn-outline-white">
-                    View Menu
-                    <i class="ri-arrow-right-long-line"></i>
-                </a>
+  
 
             </div>
 
         </div>
-
     </div>
-
 </section>

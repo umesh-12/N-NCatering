@@ -1,3 +1,4 @@
+<app-header></app-header>
 <section class="menu-single-page p-b-60">
 
     <!-- HERO -->
@@ -17,26 +18,32 @@
             <div class="single-menu-grid">
 
                 <div class="menu-image" data-aos="fade-right" data-aos-duration="800">
-                    <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800" alt="Silver Menu">
+                    <!-- <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800" alt="Silver Menu"> -->
+
+                    <img [src]="" alt="">
                 </div>
 
                 <div class="menu-details" data-aos="fade-left" data-aos-duration="800">
 
-                    <h3>N&N Silver</h3>
+                    <h3>{{packageDetail.packageName}}</h3>
                     <span>Conditions Apply *</span>
+                    <h4>Rs {{packageDetail.price}}</h4>
 
-                    <ul>
+                    <!-- <ul>
                         <li><strong>Snacks:</strong> 2 Items</li>
                         <li><strong>Main Course:</strong> 8 Items</li>
                         <li><strong>Pickle:</strong> 5 Items</li>
                         <li><strong>Salad:</strong> 5 Items</li>
                         <li><strong>Dessert:</strong> 2 Items</li>
-                    </ul>
+                    </ul> -->
 
-                    <p>Our N&N Silver menu is perfect for intimate gatherings and small events. It offers a balanced
-                        combination of snacks, main courses, and desserts tailored for your guests’ satisfaction.</p>
+                    <p>{{packageDetail.description}}</p>
 
                     <a href="/contact" class="btn btn-primary">Book Now <i class="ri-arrow-right-line"></i></a>
+                    <!-- <a [routerLink]="['/menu-single', 3]" class="btn btn-primary">
+                        View Menu
+                        <i class="ri-arrow-right-long-line"></i>
+                    </a> -->
 
                 </div>
 
@@ -46,3 +53,4 @@
 
     </section>
 </section>
+<app-footer></app-footer>

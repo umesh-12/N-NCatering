@@ -7,10 +7,14 @@ import { MenuCardComponent } from '../../components/home/menu-card/menu-card.com
 import { GalleryComponent } from '../../components/home/gallery/gallery.component';
 import { TestimonialsComponent } from '../../components/home/testimonials/testimonials.component';
 import { ReservationComponent } from '../../components/home/reservation/reservation.component';
+import { HeaderComponent } from '../../header/header.component';
+import { FooterComponent } from '../../footer/footer.component';
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
+    HeaderComponent,
+    FooterComponent,
     HeroComponent,
     AboutComponent,
     ServicesComponent,

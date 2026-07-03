@@ -1,10 +1,39 @@
-/// <reference types="@angular/localize" />
-
 import { bootstrapApplication } from '@angular/platform-browser';
-
-import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 
-bootstrapApplication(AppComponent, appConfig).catch((err) =>
-  console.error(err)
-);
+import { importProvidersFrom } from '@angular/core';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr'; // RedZoomModule यहाँबाट हटाइयो
+
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
+import { routes } from './app/app.routes';
+
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { tokenInterceptor } from './app/admin/core/Auth/encryptionservice/returntoken/token-interceptor.service';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideAnimations(),
+
+    importProvidersFrom(
+      ToastrModule.forRoot({
+        positionClass: 'toast-top-right',
+        timeOut: 1500,
+        preventDuplicates: true
+      })
+      // RedZoomModule लाई यहाँबाट पनि हटाइयो
+    ),
+
+    provideRouter(
+      routes,
+      withInMemoryScrolling({
+        scrollPositionRestoration: 'enabled',
+        anchorScrolling: 'enabled',
+      })
+    ),
+
+    provideHttpClient(
+      withInterceptors([tokenInterceptor])
+    )
+  ]
+}).catch(err => console.error(err));
