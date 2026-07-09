@@ -111,45 +111,6 @@ export const routes: Routes = [
         path: '',
         component: LayoutComponent,
         children: [
-
-          {
-            path: 'package-menu',
-            loadComponent: () =>
-              import('./admin/core/package-menu/package-menu.component').then(
-                (m) => m.PackageMenuComponent,
-
-              ),
-            canActivate: [authGuard],
-          },
-
-          {
-            path: 'menu-category',
-            loadComponent: () =>
-              import('./admin/core/menu-category/menu-category.component').then(
-                (m) => m.MenuCategoryComponent,
-
-              ),
-            canActivate: [authGuard],
-          },
-
-          {
-            path: 'menu-item',
-            loadComponent: () =>
-              import('./admin/core/menu-item/menu-item.component').then(
-                (m) => m.MenuItemComponent,
-
-              ),
-            canActivate: [authGuard],
-          },
-          {
-            path: 'package',
-            loadComponent: () =>
-              import('./admin/core/package/package.component').then(
-                (m) => m.PackageComponent,
-
-              ),
-            canActivate: [authGuard],
-          },
           {
             path: 'profile',
             loadComponent: () =>
@@ -159,42 +120,26 @@ export const routes: Routes = [
               ),
             canActivate: [authGuard],
           },
-          {
-            path: 'products',
-            loadComponent: () =>
-              import('./admin/core/products/products.component').then(
-                (m) => m.ProductsComponent,
 
+          {
+            path: 'menu',
+            loadChildren: () =>
+              import('./admin/core/menu/menu.routes').then(
+                (m) => m.menuRoutes
               ),
             canActivate: [authGuard],
           },
-          {
-            path: 'gallery-category',
-            loadComponent: () =>
-              import('./admin/core/gallery-category/gallery-category.component').then(
-                (m) => m.GalleryCategoryComponent,
 
+          {
+            path: 'gallery',
+            loadChildren: () =>
+              import('./admin/core/gallery/gallery.routes').then(
+                (m) => m.galleryRoutes
               ),
             canActivate: [authGuard],
           },
-          {
-            path: 'admin-orders',
-            loadComponent: () =>
-              import('./admin/core/orders/orders.component').then(
-                (m) => m.OrdersComponent,
 
-              ),
-            canActivate: [authGuard],
-          },
-          {
-            path: 'category',
-            loadComponent: () =>
-              import('./admin/core/category/category.component').then(
-                (m) => m.CategoryComponent,
 
-              ),
-            canActivate: [authGuard],
-          },
         ],
       },
 

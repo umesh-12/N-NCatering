@@ -1,13 +1,12 @@
 <aside class="sidebar">
   <a class="admin-logo" [routerLink]="['/dashboard']">
-    <img [src]="isSidebarCollapsed ? 'assets/img/logo.png' : 'assets/img/logo.png'" alt="logo" [ngStyle]="{
-        height: isSidebarCollapsed ? '32px' : '50px'
-      }" />
+    <img [src]="'assets/img/logo.png'" alt="logo" [ngStyle]="{ 'height': isSidebarCollapsed ? '32px' : '50px' }" />
   </a>
+
   <div class="navigation-outer">
     <mat-accordion class="sidemenu">
       
-      <mat-expansion-panel *ngFor="let menus of Menulist" [disabled]="!menus.children || menus.children.length === 0">
+      <mat-expansion-panel *ngFor="let menus of MenuList" [disabled]="!menus.children || menus.children.length === 0">
         
         <mat-expansion-panel-header 
           [routerLink]="menus.children && menus.children.length > 0 ? null : [menus.path]"
@@ -15,7 +14,7 @@
           
           <mat-panel-title>
             <span class="matMenuIcon">
-              <i class="{{ menus.Menuicon }}"></i>
+              <i class="{{ menus.menuIcon }}"></i>
             </span>
             <span class="ps-2 user-select-none fs-5 matMenuName">
               {{ menus.menuName }}
@@ -23,50 +22,42 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <ul *ngIf="menus.children && menus.children.length > 0">
-          <li *ngFor="let subMenu of menus.children">
-            <div *ngIf="subMenu.children != ''">
-              <mat-expansion-panel>
-                <mat-expansion-panel-header class="" (click)="collapseSidebar()">
-                  <mat-panel-title>
-                    <span> <i class="{{ subMenu.Menuicon }}"></i></span>
-                    <span class="ps-2 user-select-none fs-5 matMenuName">
-                      {{ subMenu.menuName }}
-                    </span>
-                  </mat-panel-title>
-                </mat-expansion-panel-header>
-                
-                <ul>
-                  <li *ngFor="let subsubMenu of subMenu.children">
-                    <div *ngIf="subsubMenu.children != ''">
-                      <mat-expansion-panel>
-                        <mat-expansion-panel-header class="">
-                          <mat-panel-title class=" ">
-                            <span class="matMenuIcon">
-                              <i class="{{ subsubMenu.Menuicon }}"></i>
-                            </span>
-                            <span class="ps-2 user-select-none fs-5 matMenuName">
-                              {{ subsubMenu.menuName }}
-                            </span>
-                          </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        
-                        <ul>
-                          <li *ngFor="let subsubsubMenu of subsubMenu.children">
-                            <a [routerLink]="[subsubsubMenu.path]" (click)="closeMenu()">
-                              {{ subsubsubMenu.menuName }}
-                            </a>
-                          </li>
-                        </ul>
-                      </mat-expansion-panel>
-                    </div>
-                  </li>
-                </ul>
+        <div class="submenu-wrapper" *ngIf="menus.children && menus.children.length > 0">
+          <ul class="submenu-list list-unstyled ps-3 m-0">
+            <li *ngFor="let subMenu of menus.children" class="py-1">
+              
+              <div *ngIf="subMenu.children && subMenu.children.length > 0; else flatLink">
+                <mat-expansion-panel class="mat-elevation-z0 inner-accordion">
+                  <mat-expansion-panel-header (click)="collapseSidebar()">
+                    <mat-panel-title>
+                      <span><i class="{{ subMenu.menuIcon }}"></i></span>
+                      <span class="ps-2 user-select-none fs-5 matMenuName">
+                        {{ subMenu.menuName }}
+                      </span>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  
+                  <ul class="sub-submenu-list list-unstyled ps-3 m-0">
+                    <li *ngFor="let subsubMenu of subMenu.children" class="py-1">
+                      <a [routerLink]="[subsubMenu.path]" (click)="closeMenu()" class="nav-link d-flex align-items-center text-decoration-none">
+                        <span class="matMenuIcon"><i class="{{ subsubMenu.menuIcon }}"></i></span>
+                        <span class="ms-2">{{ subsubMenu.menuName }}</span>
+                      </a>
+                    </li>
+                  </ul>
+                </mat-expansion-panel>
+              </div>
 
-              </mat-expansion-panel>
-            </div>
-          </li>
-        </ul>
+              <ng-template #flatLink>
+                <a [routerLink]="[subMenu.path]" (click)="closeMenu()" class="nav-link-flat d-flex align-items-center text-decoration-none py-2">
+                  <span class="matMenuIcon"><i class="{{ subMenu.menuIcon }}"></i></span>
+                  <span class="ms-2 fs-5 matMenuName">{{ subMenu.menuName }}</span>
+                </a>
+              </ng-template>
+
+            </li>
+          </ul>
+        </div>
 
       </mat-expansion-panel>
     </mat-accordion>

@@ -70,63 +70,98 @@ export class PageSidebarComponent implements AfterViewInit {
   }
 
 
-  Menulist: any[] = [
-    // {
-    //   menuId: 1,
-    //   menuName: 'Profile',
-    //   Menuicon: 'ri-shopping-bag-3-line',
-    //   path: '/profile',
-    //   shortCutKey: '',
-    //   formName: 'Product',
-    //   extra1: 'HMS',
-
-    // },
+  MenuList: any[] = [
     {
-      menuId: 2,
-      menuName: 'Menu Item',
-      Menuicon: 'ri-shopping-bag-3-line',
+      menuId: 1,
+      menuName: 'Menu',
+      menuIcon: 'ri-shopping-bag-3-line',
       path: '/menu-item',
       shortCutKey: '',
       formName: 'Product',
       extra1: 'next',
-
+      children: [
+        {
+          menuId: 1.1,
+          menuName: 'Menu Item',
+          menuIcon: 'ri-shopping-bag-3-line',
+          path: 'menu/menu-item',
+          shortCutKey: '',
+          formName: 'Product',
+          extra1: 'next',
+        },
+        {
+          menuId: 1.2,
+          menuName: 'Menu Category',
+          menuIcon: 'ri-price-tag-3-line',
+          path: 'menu/menu-category',
+          shortCutKey: '',
+          formName: 'Category',
+          extra1: 'next',
+        },
+        {
+          menuId: 1.3,
+          menuName: 'Package',
+          menuIcon: 'ri-price-tag-3-line',
+          path: 'menu/package',
+          shortCutKey: '',
+          formName: 'Category',
+          extra1: 'next',
+        },
+        {
+          menuId: 1.4,
+          menuName: 'Package Menu',
+          menuIcon: 'ri-price-tag-3-line',
+          path: 'menu/package-menu',
+          shortCutKey: '',
+          formName: 'Category',
+          extra1: 'next',
+        },
+      ]
     },
     {
-      menuId: 3,
-      menuName: 'Menu Category',
-      Menuicon: 'ri-price-tag-3-line',
-      path: '/menu-category',
+      menuId: 2,
+      menuName: 'Gallery',
+      menuIcon: 'ri-price-tag-3-line',
+      path: '/gallery-Item',
       shortCutKey: '',
       formName: 'Category',
       extra1: 'next',
+      children: [
+
+        {
+          menuId: 2.1,
+          menuName: 'Gallery Item',
+          menuIcon: 'ri-price-tag-3-line',
+          path: 'gallery/gallery-item',
+          shortCutKey: '',
+          formName: 'Category',
+          extra1: 'next',
+        },
+        {
+          menuId: 2.2,
+          menuName: 'Gallery Category',
+          menuIcon: 'ri-price-tag-3-line',
+          path: 'gallery/gallery-category',
+          shortCutKey: '',
+          formName: 'Category',
+          extra1: 'next',
+        },
+        {
+          menuId: 2.3,
+          menuName: 'Gallery Featured',
+          menuIcon: 'ri-price-tag-3-line',
+          path: 'gallery/gallery-featured',
+          shortCutKey: '',
+          formName: 'Category',
+          extra1: 'next',
+        },
+      ],
     },
 
     {
-      menuId: 3,
-      menuName: 'Package',
-      Menuicon: 'ri-price-tag-3-line',
-      path: '/package',
-      shortCutKey: '',
-      formName: 'Category',
-      extra1: 'next',
-    },
-
-    
-    {
-      menuId: 4,
-      menuName: 'Gallery Category',
-      Menuicon: 'ri-price-tag-3-line',
-      path: '/gallery-category',
-      shortCutKey: '',
-      formName: 'Category',
-      extra1: 'next',
-    },
-
-
-    {
-      menuId: 5,
+      menuId: 6,
       menuName: 'Orders',
-      Menuicon: 'ri-price-tag-3-line',
+      menuIcon: 'ri-price-tag-3-line',
       path: '/admin-orders',
       shortCutKey: '',
       formName: 'Category',

@@ -111,7 +111,7 @@ export class AdminloginComponent implements AfterViewInit {
           // console.log('Stored token:', localStorage.getItem('token'));
           // console.log('Decrypted token:', this.authService.gettoken());
           this.toastr.success('Login successful');
-          this.router.navigate(['/products']);
+          this.router.navigate(['/menu/menu-item']);
 
           this.loginForm.value.username = '';
           this.loginForm.value.password = '';
