@@ -100,9 +100,9 @@
                        <div class="mb-3">
                         <label class="form-label">IsActive</label>
                         <!-- Select2 सँग राम्रो काम गरोस् भनेर यहाँ value स्ट्रिङमा मिलाइएको छ -->
-                        <select name="isActive" id="isActive" [(ngModel)]="this.service.packageModel.isActive"
+                        <select data-placeholder="--select--" name="isActive" id="isActive" [(ngModel)]="this.service.packageModel.isActive"
                             class="form-control">
-                            <option value="">Select</option>
+                            <option></option>
                      
                             <option value="true">True</option>
                             <option value="false">False</option>

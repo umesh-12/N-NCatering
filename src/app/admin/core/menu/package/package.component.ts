@@ -106,12 +106,39 @@ export class PackageComponent implements OnInit, AfterViewInit {
     }
 
 
+    if (!model.description || model.description.trim() === '') {
+      this.toastr.error('Description is required.');
+      return false;
+    }
+
     if (!model.price || model.price == 0) {
       this.toastr.error('Price is required.');
       return false;
     }
 
-    // ३. डुप्लिकेट नाम चेक गर्ने लजिक
+
+    if (model.packageId === 0) {
+      // नयाँ प्याकेज थप्दा अनिवार्य रूपमा फाइल छानिएको हुनुपर्छ
+      if (!this.selectedFile) {
+        this.toastr.error('Product Image is required.');
+        return false;
+      }
+    } else {
+      // इडिट गर्दा कि त नयाँ फाइल छानेको हुनुपर्छ कि पहिलेकै इमेज URL हुनुपर्छ
+      if (!this.selectedFile && (!model.imageUrl || model.imageUrl.trim() === '')) {
+        this.toastr.error('Product Image is required.');
+        return false;
+      }
+    }
+
+    // ५. IsActive ड्रपडाउन छानिएको छ कि छैन चेक गर्ने (नयाँ थपिएको)
+    // Select2 मा खाली हुँदा यसको भ्यालु '', null वा undefined हुन सक्छ
+    if (model.isActive === null || model.isActive === undefined || String(model.isActive).trim() === '') {
+      this.toastr.error('Please select Active Status (IsActive).');
+      return false;
+    }
+
+    // ६. डुप्लिकेट नाम चेक गर्ने लजिक
     const isDuplicate = this.packageList.some(item => {
       const sameName = item.packageName?.toLowerCase().trim() === model.packageName?.toLowerCase().trim();
 
@@ -149,7 +176,6 @@ export class PackageComponent implements OnInit, AfterViewInit {
     //   formData.append('id', String(this.selectedProductId));
     // }
 
-    debugger;
     formData.append('packageId', String(this.service.packageModel.packageId));
     formData.append('packageName', this.service.packageModel.packageName);
     formData.append('description', this.service.packageModel.description.trim());
