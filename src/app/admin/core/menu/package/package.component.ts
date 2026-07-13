@@ -6,6 +6,7 @@ import { PackageService } from './package.service';
 declare var $: any;
 import 'select2';
 import { environment } from '../../../../../environments/environment';
+
 @Component({
   selector: 'app-package',
   imports: [CommonModule, FormsModule],
@@ -21,7 +22,6 @@ export class PackageComponent implements OnInit, AfterViewInit {
   selectedFile: File | null = null;
   imagePreview: string | ArrayBuffer | null = null;
 
-
   // Track selected category ID for editing
   selectedCategoryId: number | null = null;
 
@@ -32,10 +32,10 @@ export class PackageComponent implements OnInit, AfterViewInit {
     private toastr: ToastrService,
     private el: ElementRef
   ) { }
+
   ngOnInit(): void {
     this.fetchpackageList()
   }
-
 
   ngAfterViewInit(): void {
     const selectEl = $('#isActive');
@@ -52,6 +52,7 @@ export class PackageComponent implements OnInit, AfterViewInit {
       else this.service.packageModel.isActive = null as any;
     });
   }
+
   // Fetch Menu category List
   fetchpackageList() {
     this.isLoading = true;
@@ -95,7 +96,47 @@ export class PackageComponent implements OnInit, AfterViewInit {
   }
 
 
+  validateForm(): boolean {
+    const model = this.service.packageModel;
+
+
+    if (!model.packageName || model.packageName.trim() === '') {
+      this.toastr.error('Package Name is required.');
+      return false;
+    }
+
+
+    if (!model.price || model.price == 0) {
+      this.toastr.error('Price is required.');
+      return false;
+    }
+
+    // ३. डुप्लिकेट नाम चेक गर्ने लजिक
+    const isDuplicate = this.packageList.some(item => {
+      const sameName = item.packageName?.toLowerCase().trim() === model.packageName?.toLowerCase().trim();
+
+      if (model.packageId === 0) {
+        // नयाँ थप्दा: नाम म्याच भयो भने डुप्लिकेट
+        return sameName;
+      } else {
+        // इडिट गर्दा: आफ्नै ID बाहेक अरुसँग नाम मिल्यो भने मात्र डुप्लिकेट
+        return sameName && item.packageId !== model.packageId;
+      }
+    });
+
+    if (isDuplicate) {
+      this.toastr.error('This Package Name already exists!', 'Duplicate Entry');
+      return false;
+    }
+
+    return true;
+  }
+
   savePackage() {
+    // यहाँ भ्यालिडेशन फङ्सन कल गरिएको छ
+    if (!this.validateForm()) {
+      return;
+    }
 
     const formData = new FormData();
 
@@ -103,13 +144,10 @@ export class PackageComponent implements OnInit, AfterViewInit {
     //   return;
     // }
 
-
-
     // १. अपडेट मोड हो भने सानो अक्षरमा मात्र 'id' पठाउने
     // if (this.selectedProductId) {
     //   formData.append('id', String(this.selectedProductId));
     // }
-
 
     debugger;
     formData.append('packageId', String(this.service.packageModel.packageId));
@@ -122,7 +160,6 @@ export class PackageComponent implements OnInit, AfterViewInit {
     formData.append('isActive', isActiveValue);
     
     if (this.selectedFile) {
-
       formData.append('Image', this.selectedFile);
     }
     // else if (this.service.packageModel.imageUrl) {
@@ -135,7 +172,6 @@ export class PackageComponent implements OnInit, AfterViewInit {
     } 
 
     this.isLoading = true;
-
 
     if (this.service.packageModel.packageId === 0) {
       this.service.postPackage(formData).subscribe({
@@ -167,20 +203,14 @@ export class PackageComponent implements OnInit, AfterViewInit {
     }
   }
 
-
-
   // ==========================================
   // ३. Edit मोडमा फारम भर्ने फङ्सन
   // ==========================================
   getPackageId(ID: number) {
     this.isLoading = true;
 
-
     this.service.getPackageById(ID).subscribe({
-
       next: (res: any) => {
-
-
         this.service.packageModel = {
           packageId: res.data.packageId ?? 0,
           packageName: res.data.packageName ?? '',
@@ -197,7 +227,6 @@ export class PackageComponent implements OnInit, AfterViewInit {
           const Id = res.data.isActive;
           $('#isActive').val(String(Id)).trigger('change');
         }, 0);
-
 
         this.isLoading = false;
       },
@@ -227,7 +256,6 @@ export class PackageComponent implements OnInit, AfterViewInit {
   }
 
   // Reset Form
-
   reset() {
     this.service.packageModel = {
       packageId: 0,
@@ -241,6 +269,4 @@ export class PackageComponent implements OnInit, AfterViewInit {
     this.selectedFile = null;
     this.imagePreview = null;
   }
-
-
 }

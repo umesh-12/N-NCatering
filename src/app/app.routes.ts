@@ -5,8 +5,6 @@ import { LayoutComponent } from './admin/core/shared/components/layouts/layout/l
 import { authGuard } from './admin/core/Auth/Authguard/auth.guard';
 
 export const routes: Routes = [
-
-
   {
     path: '',
     children: [
@@ -31,7 +29,6 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/about/about.component').then((m) => m.AboutComponent),
       },
-
       {
         path: 'gallery',
         loadComponent: () =>
@@ -39,13 +36,13 @@ export const routes: Routes = [
             (m) => m.GalleryPageComponent,
           ),
       },
+
+
       {
         path: 'blog',
         loadComponent: () =>
           import('./pages/blogs/blogs.component').then((m) => m.BlogsComponent),
       },
-
-
       {
         path: 'blog-single',
         loadComponent: () =>
@@ -53,7 +50,6 @@ export const routes: Routes = [
             (m) => m.BlogSingleComponent,
           ),
       },
-
       {
         path: 'services',
         loadComponent: () =>
@@ -61,18 +57,21 @@ export const routes: Routes = [
             (m) => m.ServicePageComponent,
           ),
       },
-
-
-
       {
-        path: 'menu',
+        path: 'package',
         loadComponent: () =>
-          import('./pages/menu-categories-page/menu-categories-page.component').then(
-            (m) => m.MenuCategoriesPageComponent,
+          import('./pages/package/package.component').then(
+            (m) => m.PackageComponent,
           ),
       },
 
-
+            {
+        path: 'package-menu/:id',
+        loadComponent: () =>
+          import('./pages/package-menu/package-menu.component').then(
+            (m) => m.PackageMenuComponent,
+          ),
+      },
       {
         path: 'reservation',
         loadComponent: () =>
@@ -81,16 +80,6 @@ export const routes: Routes = [
           ),
       },
 
-
-      {
-        path: 'menu-single/:id',
-        loadComponent: () =>
-          import('./pages/menu-single-page/menu-single-page.component').then(
-            (m) => m.MenuSinglePageComponent,
-          ),
-      },
-
-
       {
         path: 'service-single',
         loadComponent: () =>
@@ -98,7 +87,6 @@ export const routes: Routes = [
             (m) => m.ServiceSingleComponent,
           ),
       },
-
       {
         path: 'contact',
         loadComponent: () =>
@@ -107,6 +95,7 @@ export const routes: Routes = [
           ),
       },
 
+      // === ADMIN LAYOUT COMPONENTS ===
       {
         path: '',
         component: LayoutComponent,
@@ -116,11 +105,9 @@ export const routes: Routes = [
             loadComponent: () =>
               import('./admin/core/company-profile/company-profile.component').then(
                 (m) => m.CompanyProfileComponent,
-
               ),
             canActivate: [authGuard],
           },
-
           {
             path: 'menu',
             loadChildren: () =>
@@ -129,7 +116,6 @@ export const routes: Routes = [
               ),
             canActivate: [authGuard],
           },
-
           {
             path: 'gallery',
             loadChildren: () =>
@@ -138,17 +124,12 @@ export const routes: Routes = [
               ),
             canActivate: [authGuard],
           },
-
-
+          // यहाँबाट gallery-single/:id हटाइएको छ ताकी यो बाहिर सहजै खुलोस्
         ],
       },
 
-      { path: 'error', component: ErrorPageComponent }, // Define error page route
-      { path: '**', redirectTo: 'error' }, // Wildcard route for 404 pages
+      { path: 'error', component: ErrorPageComponent }, 
+      { path: '**', redirectTo: 'error' }, 
     ]
   },
-
-
-
-
 ];

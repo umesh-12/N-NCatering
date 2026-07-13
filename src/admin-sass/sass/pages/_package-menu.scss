@@ -1,0 +1,100 @@
+@use 'sass:color'; // Importing the Sass color module
+@use '../abstracts/variables' as vars;
+
+/* क्याटेगोरीको मुख्य हेडिङ */
+.menu-category-header {
+    font-size: 14px;
+    font-weight: 700;
+    color: #666;
+    letter-spacing: 1px;
+    padding: 10px 15px;
+    background-color: #ffffff;
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.menu-category-header .choose-count {
+    color: #888;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.icon-finger {
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+/* फ्लेक्स कन्टेनर (इमेज र कालो बक्स जोड्ने) */
+.menu-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* बायाँ पट्टीको इमेज साइज मिलाउने */
+.menu-image-side {
+    flex: 1 1 45%;
+    min-height: 280px;
+    position: relative;
+}
+
+.menu-image-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* दायाँ पट्टीको डार्क प्रिमियम मेनु बक्स */
+.menu-items-side {
+    flex: 1 1 55%;
+    background-color: vars.$primary-500; 
+    color: #ffffff;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.items-inner-wrapper {
+    width: 100%;
+}
+
+/* मेनु आइटमको स्टाइल */
+.menu-item-name {
+    font-size: 15px;
+    color: #cccccc;
+    font-weight: 400;
+    text-transform: capitalize;
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.menu-item-name:hover {
+    color: #ffffff;
+}
+
+/* आइटमको अगाडि सानो डट थप्न */
+.bullet-dot {
+    width: 5px;
+    height: 5px;
+    background-color: #888;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* रेस्पोन्सिभ (मोबाइल स्क्रिनको लागि मिलाइएको) */
+@media (max-width: 768px) {
+    .menu-flex-container {
+        flex-direction: column;
+    }
+    .menu-image-side {
+        min-height: 200px;
+    }
+    .menu-items-side {
+        padding: 25px;
+    }
+}

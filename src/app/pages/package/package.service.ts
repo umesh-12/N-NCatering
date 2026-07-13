@@ -1,21 +1,22 @@
 
+
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-;
+import { Endpoint } from './package-Urls';
 import { environment } from '../../../environments/environment';
-import { Endpoint } from './menu-single-Urls';
 
 @Injectable({
   providedIn: 'root',
 })
-export class MenuSingleService {
+export class PackageService {
   private baseurl = environment.apiBaseUrl;
 
 
   constructor(private http: HttpClient) { }
 
-  getPackageDetailById(id: number) {
-    return this.http.get(`${this.baseurl}${Endpoint.packageDetailById}/${id}`);
+  getPackageList() {
+    return this.http.get(`${this.baseurl}${Endpoint.Package}`);
   }
 
 

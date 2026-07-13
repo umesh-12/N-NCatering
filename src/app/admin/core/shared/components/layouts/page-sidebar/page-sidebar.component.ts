@@ -82,7 +82,7 @@ export class PageSidebarComponent implements AfterViewInit {
       children: [
         {
           menuId: 1.1,
-          menuName: 'Menu Item',
+          menuName: 'Create Menu Item',
           menuIcon: 'ri-shopping-bag-3-line',
           path: 'menu/menu-item',
           shortCutKey: '',
@@ -91,7 +91,7 @@ export class PageSidebarComponent implements AfterViewInit {
         },
         {
           menuId: 1.2,
-          menuName: 'Menu Category',
+          menuName: 'Create Menu Category',
           menuIcon: 'ri-price-tag-3-line',
           path: 'menu/menu-category',
           shortCutKey: '',
@@ -116,6 +116,7 @@ export class PageSidebarComponent implements AfterViewInit {
           formName: 'Category',
           extra1: 'next',
         },
+        
       ]
     },
     {
@@ -158,14 +159,14 @@ export class PageSidebarComponent implements AfterViewInit {
       ],
     },
 
-    {
-      menuId: 6,
-      menuName: 'Orders',
-      menuIcon: 'ri-price-tag-3-line',
-      path: '/admin-orders',
-      shortCutKey: '',
-      formName: 'Category',
-      extra1: 'next',
-    }
+    // {
+    //   menuId: 6,
+    //   menuName: 'contact',
+    //   menuIcon: 'ri-price-tag-3-line',
+    //   path: '/contact',
+    //   shortCutKey: '',
+    //   formName: 'Category',
+    //   extra1: 'next',
+    // }
   ];
 }

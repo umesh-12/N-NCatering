@@ -1,78 +1,88 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../header/header.component';
 import { FooterComponent } from '../../footer/footer.component';
+import { environment } from '../../../environments/environment';
+import { ToastrService } from 'ngx-toastr';
+import { GalleryPageService } from './gallery-page.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-gallery',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, FooterComponent],
+  imports: [CommonModule, HeaderComponent, FooterComponent, RouterModule],
   templateUrl: './gallery-page.component.html',
 })
-export class GalleryPageComponent {
+export class GalleryPageComponent implements OnInit, AfterViewInit {
+  isLoading: boolean = false;
+  gallerycategoryList: any[] = [];
+  galleryList: any[] = [];
   selectedFilter: string = 'all';
 
-  galleryItems = [
-    {
-      id: 1,
-      category: 'wedding',
-      title: 'Wedding Event',
-      image: '/assets/img/gallery/photo-1.jpeg',
-    },
-    {
-      id: 2,
-      category: 'corporate',
-      title: 'Corporate Setup',
-      image: '/assets/img/gallery/g-8.jpg',
-    },
-    {
-      id: 3,
-      category: 'birthday',
-      title: 'Birthday Party',
-      image: '/assets/img/gallery/g-1.jpg',
-    },
-    {
-      id: 4,
-      category: 'decoration',
-      title: 'Stage Decoration',
-      image: '/assets/img/gallery/g-2.jpg',
-    },
-    {
-      id: 5,
-      category: 'wedding',
-      title: 'Wedding Buffet',
-      image: '/assets/img/gallery/g-3.jpg',
-    },
-    {
-      id: 6,
-      category: 'corporate',
-      title: 'Corporate Meeting',
-      image: '/assets/img/gallery/g-4.jpg',
-    },
-    {
-      id: 7,
-      category: 'decoration',
-      title: 'Elegant Setup',
-      image: '/assets/img/gallery/g-5.jpg',
-    },
-    {
-      id: 8,
-      category: 'birthday',
-      title: 'Food Setup',
-      image: '/assets/img/gallery/g-6.jpg',
-    },
-  ];
+  public baseurl = environment.apiBaseUrl;
+
+  constructor(
+    public service: GalleryPageService,
+    private toastr: ToastrService,
+    private el: ElementRef
+  ) { }
+
+  ngOnInit(): void {
+    this.fetchgalleryList();
+    this.fetchGalleryCategories();
+  }
+
+  ngAfterViewInit(): void {
+    // यहाँ आवश्यक्ता अनुसार Lightbox वा AOS इनिसियलाइज गर्न सक्नुहुन्छ
+  }
 
   setFilter(filter: string) {
     this.selectedFilter = filter;
   }
 
+  // ग्यालेरी लिस्टलाई क्याटेगोरी अनुसार फिल्टर गर्ने Getter फङ्सन
   get filteredItems() {
     if (this.selectedFilter === 'all') {
-      return this.galleryItems;
+      return this.galleryList;
     }
-    return this.galleryItems.filter(
-      (item) => item.category === this.selectedFilter,
+    // API बाट आउने र सिलेक्ट भएको categoryName लाई सानो अक्षर (lowercase) बनाएर दाँज्ने
+    return this.galleryList.filter(
+      (item) => item.categoryName?.toLowerCase() === this.selectedFilter?.toLowerCase()
     );
+  }
+
+  // Fetch Gallery List
+  fetchgalleryList() {
+    this.isLoading = true;
+    this.service.getGalleryList().subscribe({
+      next: (res: any) => {
+        // यदि एपीआई रेस्पोन्स सिधै एरे हो भने 'res' र यदि अब्जेक्ट हो भने 'res.data' लिने
+        this.galleryList = res.data || res;
+            console.log(res,'gallery')
+        this.isLoading = false;
+      },
+      error: (err: any) => {
+        console.error(err);
+        this.isLoading = false;
+        this.toastr.error('Can not get gallery item', 'Error');
+      }
+    });
+  }
+
+  // Fetch gallery category List
+  fetchGalleryCategories() {
+    this.isLoading = true;
+    this.service.getGalleryCategories().subscribe({
+      next: (res: any) => {
+    
+        this.gallerycategoryList = res.data || res;
+        this.isLoading = false;
+      },
+      error: (err: any) => {
+        console.error(err);
+        this.isLoading = false;
+        this.toastr.error('Can not get gallery category', 'Error');
+      }
+    });
   }
 }

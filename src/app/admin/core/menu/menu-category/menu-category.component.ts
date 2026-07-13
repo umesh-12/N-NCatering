@@ -5,8 +5,10 @@ declare var $: any;
 import 'select2';
 import { MenuCategoryService } from './menu-category.service';
 import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-menu-category',
+  standalone: true, // आवश्यक परेमा standalone राखिएको छ
   imports: [CommonModule, FormsModule],
   templateUrl: './menu-category.component.html'
 })
@@ -23,13 +25,12 @@ export class MenuCategoryComponent implements OnInit, AfterViewInit {
     private toastr: ToastrService,
     private el: ElementRef
   ) { }
+  
   ngOnInit(): void {
     this.fetchMenucategoryList()
   }
 
-  ngAfterViewInit(): void {
-
-  }
+  ngAfterViewInit(): void { }
 
   // Fetch Menu category List
   fetchMenucategoryList() {
@@ -49,7 +50,7 @@ export class MenuCategoryComponent implements OnInit, AfterViewInit {
     });
   }
 
-  // ३. यो नयाँ सर्च फङ्सन थप्नुहोस्:
+  // नयाँ सर्च फङ्सन:
   filterCategories() {
     if (!this.searchTerm || this.searchTerm.trim() === '') {
       // यदि सर्च बक्स खाली छ भने सबै डाटा देखाउने
@@ -62,7 +63,6 @@ export class MenuCategoryComponent implements OnInit, AfterViewInit {
       );
     }
   }
-
 
   getMenuCategoryId(ID: number) {
     this.isLoading = true;
@@ -86,8 +86,7 @@ export class MenuCategoryComponent implements OnInit, AfterViewInit {
     });
   }
 
-
-  // 1. Separate Validation Function
+  // 1. Separate Validation Function (डुप्लिकेट रोक्ने लजिक यहाँ थपिएको छ)
   validateForm(): boolean {
     const model = this.service.menuCategoryModel;
 
@@ -98,13 +97,30 @@ export class MenuCategoryComponent implements OnInit, AfterViewInit {
     }
 
     if (!model.displayOrder || model.displayOrder == 0) {
-      this.toastr.error('Please select a valid Menu Category.');
+      this.toastr.error('DisplayOrder is required.');
+      return false;
+    }
+
+    // डुप्लिकेट चेक गर्ने मुख्य लजिक:
+    const isDuplicate = this.menucategoryList.some(item => {
+      const sameName = item.categoryName.toLowerCase().trim() === model.categoryName.toLowerCase().trim();
+
+      if (model.categoryId === 0) {
+        // नयाँ थप्दा: नाम म्याच भयो भने डुप्लिकेट मानिनेछ
+        return sameName;
+      } else {
+        // इडिट गर्दा: आफ्नै ID बाहेक अरुसँग नाम म्याच भयो भने मात्र डुप्लिकेट मानिनेछ
+        return sameName && item.categoryId !== model.categoryId;
+      }
+    });
+
+    if (isDuplicate) {
+      this.toastr.error('This Category Name already exists!', 'Duplicate Entry');
       return false;
     }
 
     return true;
   }
-
 
   saveMenuCategory() {
     if (!this.validateForm()) return;
@@ -117,7 +133,6 @@ export class MenuCategoryComponent implements OnInit, AfterViewInit {
       categoryName: model.categoryName,
       displayOrder: model.displayOrder
     };
-
 
     if (model.categoryId === 0) {
       this.service.postMenuCategory(payload).subscribe({
@@ -139,12 +154,10 @@ export class MenuCategoryComponent implements OnInit, AfterViewInit {
     this.isLoading = false;
   }
 
-
   private handleError(err: any) {
     console.error(err);
     this.isLoading = false;
   }
-
 
   // deleteCategory
   deleteMenuCategory(ID: number) {
@@ -164,8 +177,7 @@ export class MenuCategoryComponent implements OnInit, AfterViewInit {
     });
   }
 
-
-// reset category
+  // reset category
   reset() {
     this.service.menuCategoryModel = {
       categoryId: 0,
@@ -173,6 +185,5 @@ export class MenuCategoryComponent implements OnInit, AfterViewInit {
       displayOrder: 0,
       test: ''
     };
-
   }
 }

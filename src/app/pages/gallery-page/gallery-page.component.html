@@ -2,7 +2,6 @@
 
 <section class="gallery-page p-b-60">
 
-  <!-- HERO -->
   <section class="gallery-hero">
     <div class="container">
       <h1 data-aos="zoom-in" data-aos-delay="100">Our Gallery</h1>
@@ -12,31 +11,40 @@
     </div>
   </section>
 
-  <!-- FILTER BUTTONS -->
-  <section class="filter" data-aos="fade-up" data-aos-delay="300">
-    <button (click)="setFilter('all')" [class.active]="selectedFilter === 'all'">All</button>
-    <button (click)="setFilter('wedding')" [class.active]="selectedFilter === 'wedding'">Wedding</button>
-    <button (click)="setFilter('corporate')" [class.active]="selectedFilter === 'corporate'">Corporate</button>
-    <button (click)="setFilter('birthday')" [class.active]="selectedFilter === 'birthday'">Birthday</button>
-    <button (click)="setFilter('decoration')" [class.active]="selectedFilter === 'decoration'">Decoration</button>
+  <section class="filter d-flex gap-2 justify-content-center my-4" data-aos="fade-up" data-aos-delay="300">
+    <button (click)="setFilter('all')" [class.active]="selectedFilter === 'all'" class="btn btn-outline-primary">
+      All
+    </button>
+
+    <button *ngFor="let item of gallerycategoryList | slice:0:6" (click)="setFilter(item.categoryName)"
+      [class.active]="selectedFilter === item.categoryName" class="btn btn-outline-primary">
+      {{item.categoryName}}
+    </button>
   </section>
 
-  <!-- GALLERY GRID -->
-  <section class="grid-gallery">
-    <div class="item" *ngFor="let item of filteredItems; let i = index" data-aos="fade-up"
-      [attr.data-aos-delay]="i * 100">
+  <section class="gallery-list">
+    <div class="container">
+      <div class="row">
+        <div *ngIf="isLoading" class="text-center w-100 my-5">
+          <div class="spinner-border text-primary" role="status"></div>
+        </div>
 
-      <a [href]="item.image" data-lightbox="gallery" data-title="Image 1">
-        <img [src]="item.image" [alt]="item.title">
-      </a>
+        <div class="col-md-3 mb-4 item" *ngFor="let item of filteredItems; let i = index" data-aos="fade-up"
+          [attr.data-aos-delay]="i * 100">
 
+          <a [href]="baseurl + item.imageUrl" data-lightbox="gallery" [attr.data-title]="item.title || 'Gallery Image'">
+            <img [src]="baseurl + item.imageUrl" [alt]="item.title" class="img-fluid rounded shadow-sm">
+          </a>
 
+        </div>
 
-      <!-- <div class="overlay">
-        <h3>{{ item.title }}</h3>
-      </div> -->
+        <div *ngIf="!isLoading && filteredItems.length === 0" class="text-center w-100 my-5 text-muted">
+          No images found for this category.
+        </div>
+      </div>
     </div>
   </section>
 
 </section>
+
 <app-footer></app-footer>

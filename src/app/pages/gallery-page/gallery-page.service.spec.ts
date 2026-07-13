@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MenuSingleService } from './menu-single.service';
+import { GalleryPageService } from './gallery-page.service';
 
-describe('MenuSingleService', () => {
-  let service: MenuSingleService;
+describe('GalleryPageService', () => {
+  let service: GalleryPageService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(MenuSingleService);
+    service = TestBed.inject(GalleryPageService);
   });
 
   it('should be created', () => {

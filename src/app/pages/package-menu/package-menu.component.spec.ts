@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MenuSinglePageComponent } from './menu-single-page.component';
+import { PackageMenuComponent } from './package-menu.component';
 
-describe('MenuSinglePageComponent', () => {
-  let component: MenuSinglePageComponent;
-  let fixture: ComponentFixture<MenuSinglePageComponent>;
+describe('PackageMenuComponent', () => {
+  let component: PackageMenuComponent;
+  let fixture: ComponentFixture<PackageMenuComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MenuSinglePageComponent]
+      imports: [PackageMenuComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MenuSinglePageComponent);
+    fixture = TestBed.createComponent(PackageMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

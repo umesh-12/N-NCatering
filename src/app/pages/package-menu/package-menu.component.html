@@ -1,0 +1,66 @@
+<app-header></app-header>
+
+<section class="menu-single-page p-b-60">
+    <section class="blog-hero">
+        <div class="container">
+            <h1 data-aos="zoom-in" data-aos-delay="100">{{ packageName }}</h1>
+            <p data-aos="fade-up" data-aos-delay="200">
+                Moments we created with love, taste, and perfection
+            </p>
+        </div>
+    </section>
+
+    <section class="single-menu-section m-t-60">
+        <div class="container">
+
+            <div *ngIf="isLoading" class="text-center my-5">
+                <div class="spinner-border text-primary" role="status"></div>
+            </div>
+
+            <div #pdfContent class="pdf-capture-area" *ngIf="!isLoading">
+                <div class="menu-row-wrapper mb-5" *ngFor="let cat of groupedMenuCategories" data-aos="fade-up">
+
+                    <div class="menu-category-header">
+                        <span class="icon-finger">👉</span>
+                        {{ cat.categoryName | uppercase }}
+                        <span class="choose-count">[CHOOSE ANY: {{ cat.chooseCount }}]</span>
+                    </div>
+
+                    <div class="menu-flex-container">
+
+                        <div class="menu-items-side">
+                            <div class="items-inner-wrapper">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3" *ngFor="let item of cat.items">
+                                        <div class="menu-item-name">
+                                            <span class="bullet-dot"></span> {{ item.itemName }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="menu-image-side">
+                            <img [src]="cat.items[0]?.imageUrl ? baseurl + cat.items[0].imageUrl : 'assets/img/gallery/g-2.jpg'"
+                                alt="Catering Buffet">
+
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="text-center my-5" *ngIf="!isLoading && groupedMenuCategories.length > 0">
+                <button (click)="downloadPDF()" class="btn btn-primary">
+                    📥 Download PDF Menu
+                </button>
+            </div>
+
+            <div *ngIf="!isLoading && groupedMenuCategories.length === 0" class="text-center text-muted my-5">
+                No menu items found for this package.
+            </div>
+
+        </div>
+    </section>
+</section>
+
+<app-footer></app-footer>

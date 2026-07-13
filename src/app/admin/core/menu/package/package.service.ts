@@ -25,7 +25,6 @@ export class PackageService {
     return this.http.post(`${this.baseurl}${Endpoint.savePackage}`, data);
   }
 
-
   getPackageById(id: number) {
     return this.http.get(`${this.baseurl}${Endpoint.getPackageById}/${id}`);
   }

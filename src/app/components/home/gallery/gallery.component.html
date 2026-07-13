@@ -1,32 +1,17 @@
 <section class="gallery-section m-t-60" data-aos="fade-up">
-
   <div class="container-fluid">
 
-    <section class="splide" #gallery data-aos="zoom-in" data-aos-delay="100">
+    <div *ngIf="isLoading" class="text-center my-5">
+      <div class="spinner-border text-primary" role="status"></div>
+    </div>
+
+    <section class="splide" #gallery data-aos="zoom-in" data-aos-delay="100" *ngIf="!isLoading && galleryList.length > 0">
       <div class="splide__track">
         <ul class="splide__list">
 
-          <li class="splide__slide gallery-item">
-            <a href="../../../../assets/img/gallery/gallery1.jpg" data-lightbox="gallery" data-title="Image 1">
-              <img src="../../../../assets/img/gallery/gallery1.jpg" alt="">
-            </a>
-          </li>
-
-          <li class="splide__slide gallery-item">
-            <a href="../../../../assets/img/gallery/gallery2.jpg" data-lightbox="gallery" data-title="Image 2">
-              <img src="../../../../assets/img/gallery/gallery2.jpg" alt="">
-            </a>
-          </li>
-
-          <li class="splide__slide gallery-item">
-            <a href="../../../../assets/img/gallery/gallery3.jpg" data-lightbox="gallery" data-title="Image 3">
-              <img src="../../../../assets/img/gallery/gallery3.jpg" alt="">
-            </a>
-          </li>
-
-          <li class="splide__slide gallery-item">
-            <a href="../../../../assets/img/gallery/gallery4.jpg" data-lightbox="gallery" data-title="Image 4">
-              <img src="../../../../assets/img/gallery/gallery4.jpg" alt="">
+          <li *ngFor="let item of galleryList" class="splide__slide gallery-item">
+            <a [href]="baseurl + item.imageUrl" data-lightbox="gallery" [attr.data-title]="item.title || 'Gallery Image'">
+              <img [src]="baseurl + item.imageUrl" [alt]="item.title || 'Gallery'">
             </a>
           </li>
 
@@ -34,6 +19,9 @@
       </div>
     </section>
 
-  </div>
+    <div *ngIf="!isLoading && galleryList.length === 0" class="text-center text-muted my-5">
+      No images found in gallery.
+    </div>
 
+  </div>
 </section>

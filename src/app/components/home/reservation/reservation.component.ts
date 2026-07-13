@@ -21,7 +21,7 @@ export class ReservationComponent implements AfterViewInit {
     setTimeout(() => {
       // Initialize Select2
       $('#multiSelect').select2({
-        placeholder: 'Select Event Types',
+        placeholder: 'Select Package',
         allowClear: true,
         data: this.options,
         width: '100%',

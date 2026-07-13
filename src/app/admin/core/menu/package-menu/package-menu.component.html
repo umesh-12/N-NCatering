@@ -1,108 +1,186 @@
 <div class="body-layout admin">
     <div class="row">
 
-        <!-- Product List -->
-        <div class="col-lg-8 mb-4">
+        <div class="col-lg-9 mb-4">
             <div class="card shadow-sm">
                 <div class="card-header d-flex justify-content-between align-items-center pt-0 pe-0">
                     <h3 class="mb-0">Package Menu</h3>
+                    <input type="text" class="search-input form-control" style="width: 250px;"
+                        placeholder="Search item..." [(ngModel)]="searchTerm" (input)="filterCategories()">
                 </div>
 
                 <div class="card-body px-0">
                     <div class="row">
                         <div class="card-table">
                             <div class="table-responsive-sm">
-                                <table style="width: 100%;">
-                                    <thead>
-                                        <tr>
+                                <div class="table__wrapper table__wrapper-70">
+                                    <table class="table" style="width: 100%;">
+                                        <thead class="table__head">
                                             <th style="width: 90px;">S.N.</th>
                                             <th>Package Name</th>
                                             <th>Category Name</th>
                                             <th>Count</th>
-                                            <th>isExtra</th>
-                                            <th> Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-
-                                        </tr>
-                                        <!-- <tr *ngFor="let item of categoryList; let i = index">
-                                            <td>{{i+1}}</td>
-                                            <td>{{item.categoryName}}</td>
-                                            <td>{{item.description}}</td>
-                                            <td>{{item.isActive}}</td>
-                                            <td>{{ item.createdDate | date:'yyyy-MM-dd' }}</td>
-                                            <td>
-                                                <div class="d-flex gap-2">
-                                                    <button class="btn btn-sm btn-primary me-2"
-                                                        (click)="getCategoryId(item.id)">
-                                                        Edit
-                                                    </button>
-                                                    <button class="btn btn-sm btn-danger"
-                                                        (click)="deleteCategory(item.id)">
-                                                        Delete
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr> -->
-                                    </tbody>
-                                </table>
+                                            <th>Is Extra</th>
+                                            <th>Action</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of filteredPackageMenuList; let i = index">
+                                                <td>{{i+1}}</td>
+                                                <td>{{item.packageName}}</td>
+                                                <td>{{item.categoryName}}</td>
+                                                <td>{{item.chooseCount}}</td>
+                                                <td>{{item.isExtra}}</td>
+                                                <td>
+                                                    <div class="d-flex gap-2 justify-content-end">
+                                                        <button class="btn btn-sm btn-secondary me-2"
+                                                            (click)="openPopup(item.packageMenuId)">
+                                                            Post Package Menu Item
+                                                        </button>
+                                                        <button class="btn btn-sm btn-primary me-2"
+                                                            (click)="getPackageMenuId(item.packageMenuId)">
+                                                            Edit
+                                                        </button>
+                                                        <button class="btn btn-sm btn-danger"
+                                                            (click)="deletePackageMenu(item.packageMenuId)">
+                                                            Delete
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Add/Edit Form -->
-        <!-- <div class="col-lg-4">
+        <div class="col-lg-3">
             <div class="card shadow-sm">
                 <form action="" #categoryForm="ngForm">
 
                     <div class="mb-3">
-                        <label class="form-label">Category Name</label>
-                        <input type="text" [(ngModel)]="this.service.categoryModel.categoryName" name="categoryName"
-                            class="form-control">
+                        <label class="form-label">Menu Category</label>
+                        <select data-placeholder="--Select--" name="categoryId" id="categoryId"
+                            [(ngModel)]="this.service.packageMenuModel.categoryId" class="form-control">
+                            <option></option>
+                            <option [value]="item.categoryId" *ngFor="let item of menuCategory">
+                                {{ item.categoryName }}
+                            </option>
+                        </select>
                     </div>
+
                     <div class="mb-3">
-                        <label class="form-label">Description</label>
-                        <input type="text" [(ngModel)]="this.service.categoryModel.description" name="description"
+                        <label class="form-label">Package Name</label>
+                        <select data-placeholder="--Select--" name="packageId" id="packageId"
+                            [(ngModel)]="this.service.packageMenuModel.packageId" class="form-control">
+                            <option></option>
+                            <option [value]="item.packageId" *ngFor="let item of packageMenuList">
+                                {{ item.packageName }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Choose Count</label>
+                        <input type="text" [(ngModel)]="this.service.packageMenuModel.chooseCount" name="chooseCount"
                             class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Date</label>
-                        <input type="date" [(ngModel)]="this.service.categoryModel.createdDate" name="createdDate"
-                            class="form-control">
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">IsActive</label>
-            
-                        <select name="isActive" id="isActive" [(ngModel)]="this.service.categoryModel.isActive"
-                            class="form-control">
-                            <option value="">Select</option>
-                     
+                        <label class="form-label">Is Extra</label>
+                        <select data-placeholder="--Select--" name="isExtra" id="isExtra"
+                            [(ngModel)]="this.service.packageMenuModel.isExtra" class="form-control">
+                            <option></option>
                             <option value="true">True</option>
                             <option value="false">False</option>
                         </select>
                     </div>
 
                     <div class="flex-wrap gap-2 d-flex">
-                        <button type="button" class="btn btn-primary flex-grow-1" (click)="saveCategory()">
+                        <button type="button" class="btn btn-primary flex-grow-1" (click)="savePackageMenu()">
                             <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-1"></span>
                             Save Category
                         </button>
-
                         <button type="button" class="btn btn-secondary" (click)="reset()">
                             Cancel
                         </button>
                     </div>
                 </form>
             </div>
-        </div> -->
+        </div>
 
+    </div>
+</div>
+
+<div class="popup-overlay" *ngIf="showPopup"></div>
+
+<div class="popup-container" *ngIf="showPopup" style="width: 80%;">
+    <div class="popup-header">
+        <p class="mb-0 section-title">Create Package Menu Item </p>
+        <span class="close-btn" (click)="closePopup()">×</span>
+    </div>
+
+    <div class="popup-body">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="table__wrapper table__wrapper-70">
+                    <table class="table" style="width: 100%;">
+                        <thead class="table__head">
+                            <th style="width: 90px;">S.N.</th>
+                            <th>Package Menu Item Name</th>
+                            <th>Action</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of packageMenuItemList; let i = index">
+                                <td>{{i+1}}</td>
+                                <td>{{item.itemName}}</td>
+                                <td>
+                                    <div class="d-flex gap-2 justify-content-end">
+                                        <button class="btn btn-sm btn-danger"
+                                            (click)="deletePackageMenuItem(item)">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <form #packageMenuItemForm="ngForm">
+                    <div class="mb-3">
+                        <label class="form-label">Package Menu Category</label>
+                        <select disabled data-placeholder="--Select--" name="packageMenuId" id="packageMenuId"
+                            [(ngModel)]="this.service.packageMenuItemModel.packageMenuId" class="form-control">
+                            <option></option>
+                            <option [value]="item.packageMenuId" *ngFor="let item of packageMenuList">
+                                {{ item.packageName }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Package Menu Item Category</label>
+                        <select data-placeholder="--Select--" name="menuItemId" id="menuItemId"
+                            [(ngModel)]="this.service.packageMenuItemModel.menuItemId" class="form-control">
+                            <option></option>
+                            <option [value]="item.menuItemId" *ngFor="let item of menuItem">
+                                {{ item.itemName }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-secondary" type="button" (click)="PostPackageMenuItem()"
+                        [disabled]="isLoading">
+                        {{ isLoading ? 'Processing...' : 'Save' }}
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

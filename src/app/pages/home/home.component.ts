@@ -21,7 +21,6 @@ import { FooterComponent } from '../../footer/footer.component';
     CallToActionComponent,
     MenuCardComponent,
     GalleryComponent,
-    TestimonialsComponent,
     ReservationComponent,
   ],
   templateUrl: './home.component.html',

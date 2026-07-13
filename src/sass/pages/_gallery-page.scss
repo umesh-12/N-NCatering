@@ -34,13 +34,17 @@
 .filter {
   text-align: center;
   padding: 30px;
+  flex-wrap: wrap;
 }
 
 .filter button {
   margin: 5px;
-  padding: 6px 18px;
+  padding: 0 18px;
   border: none;
+  height: 40px;
+  line-height: 40px;
   border-radius: 25px;
+  color: inherit;
   cursor: pointer;
   background: #fff;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);

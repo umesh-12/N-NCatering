@@ -20,7 +20,7 @@ export const menuRoutes: Routes = [
             ),
         canActivate: [authGuard],
     },
-    {   
+    {
         path: 'package-menu',
         loadComponent: () =>
             import('./package-menu/package-menu.component').then(
@@ -28,6 +28,7 @@ export const menuRoutes: Routes = [
 
             ),
     },
+
     {
         path: 'menu-category',
         loadComponent: () =>

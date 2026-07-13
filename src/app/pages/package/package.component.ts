@@ -1,22 +1,30 @@
+
+
+
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';;
 import { ToastrService } from 'ngx-toastr';
-import { MenuCardService } from './menu-card.service';
+
 import { RouterModule } from '@angular/router';
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../../environments/environment';
+import { PackageService } from './package.service';
+import { HeaderComponent } from '../../header/header.component';
+import { FooterComponent } from '../../footer/footer.component';
+
 
 @Component({
-  selector: 'app-menu-card',
-  imports: [CommonModule, RouterModule],
-  templateUrl: './menu-card.component.html'
+  selector: 'app-package',
+  imports: [CommonModule, RouterModule, HeaderComponent, FooterComponent],
+  templateUrl: './package.component.html'
 })
-export class MenuCardComponent implements OnInit, AfterViewInit {
+export class PackageComponent implements OnInit, AfterViewInit {
   public baseurl = environment.apiBaseUrl;
   isLoading: boolean = false;
   packageList: any[] = [];
+  packageName:string ='Our Packages'
 
   constructor(
-    public service: MenuCardService,
+    public service: PackageService,
     private toastr: ToastrService,
     private el: ElementRef
   ) { }
@@ -35,6 +43,7 @@ export class MenuCardComponent implements OnInit, AfterViewInit {
       next: (res: any) => {
         this.packageList = res.data;
         console.log(res.data, 'packageList');
+    
         this.isLoading = false;
       },
       error: (err: any) => {
