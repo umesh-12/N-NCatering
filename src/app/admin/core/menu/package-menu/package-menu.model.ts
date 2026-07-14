@@ -3,7 +3,7 @@ export class packageMenuModel {
   packageId!: number
   categoryId!: number
   chooseCount!: number
-  isExtra: boolean = true
+  isExtra!: boolean
 
 
 }

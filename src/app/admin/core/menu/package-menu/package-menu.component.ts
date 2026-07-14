@@ -3,7 +3,6 @@ import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 declare var $: any;
 import 'select2';
-
 import { ToastrService } from 'ngx-toastr';
 import { PackageMenuService } from './package-menu.service';
 
@@ -13,6 +12,7 @@ import { PackageMenuService } from './package-menu.service';
   imports: [CommonModule, FormsModule],
   templateUrl: './package-menu.component.html'
 })
+
 export class PackageMenuComponent implements OnInit, AfterViewInit {
   showPopup: boolean = false;
   isLoading: boolean = false;
@@ -23,8 +23,8 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
 
   packageMenuList: any[] = [];
   packageMenuItemList: any[] = [];
-  filteredPackageMenuList: any[] = [];
 
+  filteredPackageMenuList: any[] = [];
   selectedPackageMenuId: number | null = null;
 
   constructor(
@@ -45,8 +45,8 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
 
   // १. पपअप खोल्ने र डाटा सिंक गर्ने लजिक
   openPopup(id: number) {
-    this.showPopup = true;
 
+    this.showPopup = true;
     // मोडलमा क्लिक गरिएको रो (Row) को ID सेट गर्ने
     this.service.packageMenuItemModel.packageMenuId = id;
     this.service.packageMenuItemModel.menuItemId = 0; // पुराना छानिएका आइटम रिसेट
@@ -67,11 +67,14 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
     // आवश्यक डाटाहरू एपीआईबाट तान्ने
     this.fetchMenuItemList();
     this.fetchPackageMenuItemList(id);
+
   }
+
 
   closePopup() {
     this.showPopup = false;
   }
+
 
   validateForm(): boolean {
     const model = this.service.packageMenuModel;
@@ -94,6 +97,7 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
     return true;
   }
 
+
   dropDownPackageHandle() {
     const selectEl = $('#packageId');
     setTimeout(() => { selectEl.select2(); }, 10);
@@ -103,6 +107,7 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
     });
   }
 
+
   dropDownCategoryHandle() {
     const selectEl = $('#categoryId');
     setTimeout(() => { selectEl.select2(); }, 10);
@@ -111,6 +116,7 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
       this.service.packageMenuModel.categoryId = val ? Number(val) : 0;
     });
   }
+
 
   dropDownExtraHandle() {
     const selectEl = $('#isExtra');
@@ -123,6 +129,7 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
     });
   }
 
+
   fetchMenuCategory() {
     this.isLoading = true;
     this.service.getmenuCategory().subscribe({
@@ -134,6 +141,7 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
       error: (err: any) => { this.isLoading = false; }
     });
   }
+
 
   fetchPackageMenu() {
     this.isLoading = true;
@@ -149,6 +157,7 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
     });
   }
 
+
   filterCategories() {
     if (!this.searchTerm || this.searchTerm.trim() === '') {
       this.filteredPackageMenuList = this.packageMenuList;
@@ -162,6 +171,7 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
     }
   }
 
+
   savePackageMenu() {
     if (!this.validateForm()) return;
     this.isLoading = true;
@@ -173,7 +183,6 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
       chooseCount: model.chooseCount,
       isExtra: model.isExtra
     };
-
     this.service.postPackageMenu(payload).subscribe({
       next: (res: any) => {
         const msg = model.packageMenuId === 0 ? 'Package Menu added successfully' : 'Package Menu updated successfully';
@@ -183,6 +192,7 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
     });
   }
 
+
   private handleSuccess(message: string) {
     debugger
     this.toastr.success(message);
@@ -190,10 +200,12 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
     this.isLoading = false;
   }
 
+
   private handleError(err: any) {
     console.error(err);
     this.isLoading = false;
   }
+
 
   getPackageMenuId(ID: number) {
     this.isLoading = true;
@@ -209,11 +221,13 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
         };
         setTimeout(() => { $('#categoryId').val(Number(this.service.packageMenuModel.categoryId)).trigger('change'); });
         setTimeout(() => { $('#packageId').val(Number(this.service.packageMenuModel.packageId)).trigger('change'); });
+        setTimeout(() => { $('#isExtra').val(String(this.service.packageMenuModel.isExtra)).trigger('change'); });
         this.isLoading = false;
       },
       error: (err: any) => { this.isLoading = false; }
     });
   }
+
 
   deletePackageMenu(ID: number) {
     if (!confirm('Are you sure you want to delete this Item?')) return;
@@ -228,18 +242,21 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
     });
   }
 
+
   reset() {
     this.service.packageMenuModel = {
       packageMenuId: 0,
       packageId: 0,
       categoryId: 0,
       chooseCount: 0,
-      isExtra: true,
+      isExtra: this.service.packageMenuModel.isExtra,
     };
     this.selectedPackageMenuId = null;
-    $('#categoryId').val('').trigger('change');
-    $('#packageId').val('').trigger('change');
+    $('#categoryId').val(' ').trigger('change');
+    $('#packageId').val(' ').trigger('change');
+    $('#isExtra').val(' ').trigger('change'); ``
   }
+
 
   fetchPackageMenuItemList(ID: number) {
     debugger
@@ -253,6 +270,7 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
     });
   }
 
+
   fetchMenuItemList() {
     this.isLoading = true;
     this.service.getMenuItemList().subscribe({
@@ -264,12 +282,12 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
     });
   }
 
+
   // २. पपअप भित्रको सेभ (Create/Save)
   PostPackageMenuItem() {
     const model = this.service.packageMenuItemModel;
     const packageMenuId = model.packageMenuId;
     const menuItemId = model.menuItemId;
-
     if (!menuItemId || menuItemId === 0) {
       this.toastr.error('Please select a Menu Item', 'Validation Error');
       return;
@@ -279,10 +297,8 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
     this.service.postPackageMenuItem(packageMenuId, menuItemId).subscribe({
       next: (res: any) => {
         this.handleSuccessful('Package Menu Item added successfully');
-
         // मुख्य चेन्ज: थपिएपछि लिस्ट तुरुन्तै रिफ्रेस गर्न फङ्सन कल गरियो
         this.fetchPackageMenuItemList(packageMenuId);
-
         // सेभ भएपछि ड्रपडाउन खाली गर्ने
         $('#menuItemId').val('').trigger('change');
       },
@@ -290,28 +306,28 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
     });
   }
 
+
   private handleSuccessful(message: string) {
     this.toastr.success(message);
     this.isLoading = false;
   }
+
 
   private handleErrorApi(err: any) {
     this.isLoading = false;
     this.toastr.error('Something went wrong', 'Error');
   }
 
+  
   // ३. पपअप भित्रको डिलिट (Delete) लजिक सुधारिएको
   deletePackageMenuItem(item: any) {
     if (!confirm('Are you sure you want to delete this Item?')) return;
-
     const packageMenuId = item.packageMenuId;
     const menuItemId = item.menuItemId;
-
     this.isLoading = true;
     this.service.deletePackageMenuItem(packageMenuId, menuItemId).subscribe({
       next: (res: any) => {
         this.toastr.success('Item removed successfully');
-
         // मुख्य चेन्ज: डिलिट भएपछि पपअप भित्रको टेबल तुरुन्तै रिफ्रेस गर्न यो फङ्सन कल गरियो
         this.fetchPackageMenuItemList(packageMenuId);
       },

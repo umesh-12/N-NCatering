@@ -5,17 +5,22 @@ declare var $: any;
 import 'select2';
 import { ToastrService } from 'ngx-toastr';
 import { GalleryFeaturedService } from './gallery-featured.service';
+import { environment } from '../../../../../environments/environment';
+
 @Component({
   selector: 'app-gallery-featured',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './gallery-featured.component.html'
 })
+
 export class GalleryFeaturedComponent implements OnInit, AfterViewInit {
   isLoading: boolean = false;
   searchTerm: string = '';
-  galleryfeaturedList: any[] = []; 
-  filteredGalleryFeaturedList: any[] = []; 
+  galleryfeaturedList: any[] = [];
+  filteredGalleryFeaturedList: any[] = [];
+
+  public baseurl = environment.apiBaseUrl;
 
   constructor(
     public service: GalleryFeaturedService,
@@ -55,6 +60,7 @@ export class GalleryFeaturedComponent implements OnInit, AfterViewInit {
       const search = this.searchTerm.toLowerCase().trim();
       this.filteredGalleryFeaturedList = this.galleryfeaturedList.filter(item =>
         item.categoryName && item.categoryName.toLowerCase().includes(search)
+        || item.title && item.title.toLowerCase().includes(search)
       );
     }
   }

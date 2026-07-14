@@ -22,7 +22,7 @@
                                                 <th>Description</th>
                                                 <th>Price</th>
                                                 <th>Image</th>
-                                                <th>is Active</th>
+                                                <th>Show / Hide</th>
                                                 <th style="width: 150px; text-align: right; padding-right: 20px;">
                                                     Action</th>
                                             </tr>
@@ -37,7 +37,9 @@
                                                     <img [src]="baseurl + item.imageUrl" [alt]="item.packageName"
                                                         width="60" style="border-radius: 5px; object-fit: cover;">
                                                 </td>
-                                                <td>{{item.isActive}}</td>
+                                                <td  class="text-center">
+                                                    <span [class]="item.isActive ? 'text-success' : 'text-danger'"> {{item.isActive ? 'Show': 'hide'}}</span>
+                                                   </td>
 
                                                 <td>
                                                     <div class="d-flex gap-2 justify-content-end">
@@ -98,7 +100,7 @@
 
                  
                        <div class="mb-3">
-                        <label class="form-label">IsActive</label>
+                        <label class="form-label">Hide / Show ( IsActive )</label>
                         <!-- Select2 सँग राम्रो काम गरोस् भनेर यहाँ value स्ट्रिङमा मिलाइएको छ -->
                         <select data-placeholder="--select--" name="isActive" id="isActive" [(ngModel)]="this.service.packageModel.isActive"
                             class="form-control">

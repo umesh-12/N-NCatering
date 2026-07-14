@@ -12,10 +12,13 @@ import { GalleryCategoryService } from './gallery-category.service';
   imports: [CommonModule, FormsModule],
   templateUrl: './gallery-category.component.html'
 })
+
+
 export class GalleryCategoryComponent implements OnInit, AfterViewInit {
   isLoading: boolean = false;
   searchTerm: string = '';
   gallerycategoryList: any[] = [];
+
   filteredGalleryCategoryList: any[] = [];
 
   constructor(
@@ -24,20 +27,21 @@ export class GalleryCategoryComponent implements OnInit, AfterViewInit {
     private el: ElementRef
   ) { }
 
+
   ngOnInit(): void {
     this.fetchGalleryCategories();
   }
 
+
   ngAfterViewInit(): void {
     const selectEl = $('#isActive');
-
     // Select2 Initialize गर्ने
-    selectEl.select2();
-
+    setTimeout(() => {
+      selectEl.select2();
+    }, 50);
     // Select2 मा भ्यालु चेन्ज हुँदा Angular Model अपडेट गर्ने
     selectEl.on('change', (e: any) => {
       const val = $(e.target).val();
-
       // String value लाई Boolean मा ढाल्ने
       if (val === 'true' || val === true) {
         this.service.galleryCategoryModel.isActive = true;
@@ -48,6 +52,7 @@ export class GalleryCategoryComponent implements OnInit, AfterViewInit {
       }
     });
   }
+
 
   // Fetch gallery category List
   fetchGalleryCategories() {
@@ -66,6 +71,7 @@ export class GalleryCategoryComponent implements OnInit, AfterViewInit {
     });
   }
 
+
   filterCategories() {
     if (!this.searchTerm || this.searchTerm.trim() === '') {
       this.filteredGalleryCategoryList = this.gallerycategoryList;
@@ -77,10 +83,10 @@ export class GalleryCategoryComponent implements OnInit, AfterViewInit {
     }
   }
 
+
   // Fetch gallery category by ID for editing
   getGalleryCategoryId(ID: number) {
     this.isLoading = true;
-
     this.service.getGalleryCategoryById(ID).subscribe({
       next: (res: any) => {
         this.service.galleryCategoryModel = {
@@ -89,12 +95,10 @@ export class GalleryCategoryComponent implements OnInit, AfterViewInit {
           displayOrder: res.displayOrder ?? 0,
           isActive: res.isActive ?? true
         };
-
         // Select2 dropdown लाई नयाँ value सँग sync गर्ने
         setTimeout(() => {
           $('#isActive').val(String(this.service.galleryCategoryModel.isActive)).trigger('change');
         });
-
         this.isLoading = false;
       },
       error: (err: any) => {
@@ -104,61 +108,50 @@ export class GalleryCategoryComponent implements OnInit, AfterViewInit {
     });
   }
 
+
   // 1. Separate Validation Function with Duplicate Check
   validateForm(): boolean {
     const model = this.service.galleryCategoryModel;
-
     // १. Category Name खाली छ कि छैन चेक गर्ने
     if (!model.categoryName || model.categoryName.trim() === '') {
       this.toastr.error('Category Name is required.');
       return false;
     }
-
     if (!model.displayOrder || model.displayOrder == 0) {
       this.toastr.error('Please fill display order.');
       return false;
     }
-
     if (model.isActive === null || model.isActive === undefined) {
       this.toastr.error('Please select Active Status.');
       return false;
     }
-
-
     const isDuplicate = this.gallerycategoryList.some(item => {
       const sameName = item.categoryName?.toLowerCase().trim() === model.categoryName?.toLowerCase().trim();
-
       if (model.galleryMasterId === 0) {
-
         return sameName;
       } else {
-
         return sameName && item.galleryMasterId !== model.galleryMasterId;
       }
     });
-
     if (isDuplicate) {
       this.toastr.error('This Category Name already exists!', 'Duplicate Entry');
       return false;
     }
-
     return true;
   }
+
 
   // 2. Save or Update Gallery Category
   saveGalleryCategory() {
     if (!this.validateForm()) return;
-
     this.isLoading = true;
     const model = this.service.galleryCategoryModel;
-
     const payload = {
       galleryMasterId: model.galleryMasterId,
       categoryName: model.categoryName,
       displayOrder: model.displayOrder,
       isActive: model.isActive
     };
-
     if (model.galleryMasterId === 0) {
       this.service.postGalleryCategory(payload).subscribe({
         next: () => this.handleSuccess('Gallery Category added successfully'),
@@ -172,18 +165,19 @@ export class GalleryCategoryComponent implements OnInit, AfterViewInit {
     }
   }
 
+
   private handleSuccess(message: string) {
     this.toastr.success(message);
     this.fetchGalleryCategories();
     this.reset();
     this.isLoading = false;
   }
-
   private handleError(err: any) {
     console.error(err);
     this.reset();
     this.isLoading = false;
   }
+
 
   // deleteCategory
   deleteGalleryCategory(ID: number) {
@@ -203,18 +197,20 @@ export class GalleryCategoryComponent implements OnInit, AfterViewInit {
     });
   }
 
+
   // reset category
   reset() {
     this.service.galleryCategoryModel = {
       galleryMasterId: 0,
       categoryName: '',
       displayOrder: 0,
-      isActive: true
+      isActive: this.service.galleryCategoryModel.isActive
     };
-
     // Reset गर्दा Select2 Dropdown लाई पनि UI मा "true" मा फिर्ता लैजाने
     setTimeout(() => {
-      $('#isActive').val('true').trigger('change');
+      $('#isActive').val(' ').trigger('change');
     });
   }
+
+  
 }

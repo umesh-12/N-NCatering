@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
   imports: [CommonModule, FormsModule],
   templateUrl: './menu-category.component.html'
 })
+
 export class MenuCategoryComponent implements OnInit, AfterViewInit {
   isLoading: boolean = false;
   searchTerm: string = '';

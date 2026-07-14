@@ -12,11 +12,14 @@ import { environment } from '../../../../../environments/environment';
   imports: [CommonModule, FormsModule],
   templateUrl: './gallery.component.html'
 })
+
 export class GalleryComponent implements OnInit, AfterViewInit {
   isLoading: boolean = false;
   searchTerm: string = '';
+
   galleryCategory: any[] = [];
   galleryList: any[] = [];
+
   filteredgalleryList: any[] = [];
 
   selectedFile: File | null = null;
@@ -30,26 +33,27 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     private el: ElementRef
   ) { }
 
+
   ngOnInit(): void {
     this.fetchgalleryList();
   }
 
+
   ngAfterViewInit(): void {
     this.selectedIsActive();
     this.selectedIsFeatured();
-    this.selectedGalleryMasterId(); // 
+    this.selectedGalleryMasterId(); //
     this.fetchGalleryCategory();
   }
+
 
   selectedGalleryMasterId() {
     const selectEl = $('#GalleryMasterId');
     setTimeout(() => {
       selectEl.select2();
     }, 10);
-
     selectEl.on('change', (e: any) => {
       const val = $(e.target).val();
-
       if (val) {
         this.service.galleryModel.GalleryMasterId = Number(val);
       } else {
@@ -57,12 +61,13 @@ export class GalleryComponent implements OnInit, AfterViewInit {
       }
     });
   }
+
+
   selectedIsActive() {
     const selectEl = $('#isActive');
     setTimeout(() => {
       selectEl.select2();
-    }, 10);
-
+    }, 50);
     selectEl.on('change', (e: any) => {
       const val = $(e.target).val();
       if (val === 'true') this.service.galleryModel.isActive = true;
@@ -71,12 +76,12 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     });
   }
 
+
   selectedIsFeatured() {
     const selectEl = $('#isFeatured');
     setTimeout(() => {
       selectEl.select2();
     }, 10);
-
     selectEl.on('change', (e: any) => {
       const val = $(e.target).val();
       if (val === 'true') this.service.galleryModel.isFeatured = true;
@@ -85,15 +90,14 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     });
   }
 
+
   // Fetch Gallery Category List
   fetchGalleryCategory() {
     this.isLoading = true;
     this.service.getGalleryCategory().subscribe({
       next: (res: any) => {
-
         this.galleryCategory = res;
         this.isLoading = false;
-
       },
       error: (err: any) => {
         console.error(err);
@@ -101,6 +105,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
       }
     });
   }
+
 
   // Fetch Gallery List
   fetchgalleryList() {
@@ -118,6 +123,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     });
   }
 
+
   filterCategories() {
     if (!this.searchTerm?.trim()) {
       this.filteredgalleryList = this.galleryList;
@@ -126,30 +132,29 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     const search = this.searchTerm.toLowerCase().trim();
     this.filteredgalleryList = this.galleryList.filter(item =>
       item.title?.toLowerCase().includes(search) || item.description?.toLowerCase().includes(search)
+      || item.categoryName?.toLowerCase().includes(search)
     );
   }
+
 
   // validateGallery()
   validateGallery(): boolean {
     const model = this.service.galleryModel;
-
     if (!model.title || model.title.trim() === '') {
       this.toastr.error('Please enter a gallery title.');
       return false;
     }
-
     if (!model.GalleryMasterId || Number(model.GalleryMasterId) === 0) {
       this.toastr.error('Please select a Master Category.');
       return false;
     }
-
     if (model.galleryId === 0 && !this.selectedFile) {
       this.toastr.error('Please select an image for the new gallery item.');
       return false;
     }
-
     return true;
   }
+
 
   onFileSelected(event: any): void {
     const file = event.target.files[0];
@@ -163,26 +168,25 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     }
   }
 
+
   saveGallery() {
     if (!this.validateGallery()) {
       return;
     }
-
     const formData = new FormData();
     const model = this.service.galleryModel;
 
-    formData.append('title', (model.title || '').trim());
 
+    formData.append('title', (model.title || '').trim());
     formData.append('galleryMasterId', String(model.GalleryMasterId));
     formData.append('galleryId', String(model.galleryId));
     formData.append('description', (model.description || '').trim());
     formData.append('displayOrder', String(model.displayOrder));
-
     const isActiveValue = model.isActive ? 'true' : 'false';
     formData.append('isActive', isActiveValue);
-
     const isFeaturedValue = model.isFeatured ? 'true' : 'false';
     formData.append('isFeatured', isFeaturedValue);
+
 
     // image selection handling
     if (this.selectedFile) {
@@ -224,6 +228,8 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     }
   }
 
+
+
   getGalleryId(ID: number) {
     this.isLoading = true;
     this.service.getGalleryById(ID).subscribe({
@@ -239,22 +245,17 @@ export class GalleryComponent implements OnInit, AfterViewInit {
           isFeatured: res.data.isFeatured ?? false,
           isActive: res.data.isActive ?? true
         };
-
         this.imagePreview = res.data.imageUrl ? this.baseurl + res.data.imageUrl : null;
         this.selectedFile = null;
-
         setTimeout(() => {
           $('#GalleryMasterId').val(String(res.data.galleryMasterId)).trigger('change');
         }, 0);
-
         setTimeout(() => {
           $('#isFeatured').val(String(res.data.isFeatured)).trigger('change');
         }, 0);
-
         setTimeout(() => {
           $('#isActive').val(String(res.data.isActive)).trigger('change');
         }, 0);
-
         this.isLoading = false;
       },
       error: (err: any) => {
@@ -264,9 +265,10 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     });
   }
 
+
+
   deleteGallery(ID: number) {
     if (!confirm('Are you sure you want to delete this gallery item ?')) return;
-
     this.isLoading = true;
     this.service.deleteGalleryById(ID).subscribe({
       next: (res: any) => {
@@ -281,6 +283,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     });
   }
 
+
   reset() {
     this.service.galleryModel = {
       galleryId: 0,
@@ -293,12 +296,9 @@ export class GalleryComponent implements OnInit, AfterViewInit {
       isFeatured: false,
       isActive: true
     };
-
-
     $('#GalleryMasterId').val('').trigger('change');
-    $('#isFeatured').val('false').trigger('change');
-    $('#isActive').val('true').trigger('change');
-
+    $('#isFeatured').val(' ').trigger('change');
+    $('#isActive').val(' ').trigger('change');
     this.selectedFile = null;
     this.imagePreview = null;
   }

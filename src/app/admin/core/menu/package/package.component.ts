@@ -12,8 +12,8 @@ import { environment } from '../../../../../environments/environment';
   imports: [CommonModule, FormsModule],
   templateUrl: './package.component.html'
 })
-export class PackageComponent implements OnInit, AfterViewInit {
 
+export class PackageComponent implements OnInit, AfterViewInit {
   isLoading: boolean = false;
   searchTerm: string = '';
   packageList: any[] = []; // ओरिजिनल डाटा राख्न
@@ -24,7 +24,6 @@ export class PackageComponent implements OnInit, AfterViewInit {
 
   // Track selected category ID for editing
   selectedCategoryId: number | null = null;
-
   public baseurl = environment.apiBaseUrl;
 
   constructor(
@@ -41,12 +40,13 @@ export class PackageComponent implements OnInit, AfterViewInit {
     const selectEl = $('#isActive');
 
     // Select2 Initialize गर्ने
-    selectEl.select2();
+    setTimeout(() => {
+      selectEl.select2();
+    }, 20);
 
     // Select2 मा भ्यालु चेन्ज हुँदा Angular Model अपडेट गर्ने
     selectEl.on('change', (e: any) => {
       const val = $(e.target).val();
-
       if (val === 'true') this.service.packageModel.isActive = true;
       else if (val === 'false') this.service.packageModel.isActive = false;
       else this.service.packageModel.isActive = null as any;
@@ -98,25 +98,18 @@ export class PackageComponent implements OnInit, AfterViewInit {
 
   validateForm(): boolean {
     const model = this.service.packageModel;
-
-
     if (!model.packageName || model.packageName.trim() === '') {
       this.toastr.error('Package Name is required.');
       return false;
     }
-
-
     if (!model.description || model.description.trim() === '') {
       this.toastr.error('Description is required.');
       return false;
     }
-
     if (!model.price || model.price == 0) {
       this.toastr.error('Price is required.');
       return false;
     }
-
-
     if (model.packageId === 0) {
       // नयाँ प्याकेज थप्दा अनिवार्य रूपमा फाइल छानिएको हुनुपर्छ
       if (!this.selectedFile) {
@@ -130,18 +123,15 @@ export class PackageComponent implements OnInit, AfterViewInit {
         return false;
       }
     }
-
     // ५. IsActive ड्रपडाउन छानिएको छ कि छैन चेक गर्ने (नयाँ थपिएको)
     // Select2 मा खाली हुँदा यसको भ्यालु '', null वा undefined हुन सक्छ
     if (model.isActive === null || model.isActive === undefined || String(model.isActive).trim() === '') {
       this.toastr.error('Please select Active Status (IsActive).');
       return false;
     }
-
     // ६. डुप्लिकेट नाम चेक गर्ने लजिक
     const isDuplicate = this.packageList.some(item => {
       const sameName = item.packageName?.toLowerCase().trim() === model.packageName?.toLowerCase().trim();
-
       if (model.packageId === 0) {
         // नयाँ थप्दा: नाम म्याच भयो भने डुप्लिकेट
         return sameName;
@@ -150,44 +140,38 @@ export class PackageComponent implements OnInit, AfterViewInit {
         return sameName && item.packageId !== model.packageId;
       }
     });
-
     if (isDuplicate) {
       this.toastr.error('This Package Name already exists!', 'Duplicate Entry');
       return false;
     }
-
     return true;
   }
+
 
   savePackage() {
     // यहाँ भ्यालिडेशन फङ्सन कल गरिएको छ
     if (!this.validateForm()) {
       return;
     }
-
     const formData = new FormData();
-
     // if (!this.validateProduct()) {
     //   return;
     // }
-
     // १. अपडेट मोड हो भने सानो अक्षरमा मात्र 'id' पठाउने
     // if (this.selectedProductId) {
     //   formData.append('id', String(this.selectedProductId));
     // }
-
     formData.append('packageId', String(this.service.packageModel.packageId));
     formData.append('packageName', this.service.packageModel.packageName);
     formData.append('description', this.service.packageModel.description.trim());
     formData.append('price', String(this.service.packageModel.price));
-
     const isActiveValue = this.service.packageModel.isActive ? 'true' : 'false';
-
     formData.append('isActive', isActiveValue);
-    
+
     if (this.selectedFile) {
       formData.append('Image', this.selectedFile);
     }
+
     // else if (this.service.packageModel.imageUrl) {
     //   formData.append('Image', this.service.packageModel.imageUrl);
     // }
@@ -195,10 +179,9 @@ export class PackageComponent implements OnInit, AfterViewInit {
     else if (this.service.packageModel.packageId > 0) {
       // २. यदि नयाँ फाइल छैन र यो UPDATE मोड हो भने, पुरानो इमेजको पाथ 'ImageUrl' मा पठाइदिने
       formData.append('Image', this.service.packageModel.imageUrl);
-    } 
+    }
 
     this.isLoading = true;
-
     if (this.service.packageModel.packageId === 0) {
       this.service.postPackage(formData).subscribe({
         next: () => {
@@ -213,6 +196,7 @@ export class PackageComponent implements OnInit, AfterViewInit {
         }
       });
     }
+
     else {
       this.service.postPackage(formData).subscribe({
         next: (res: any) => {
@@ -234,7 +218,6 @@ export class PackageComponent implements OnInit, AfterViewInit {
   // ==========================================
   getPackageId(ID: number) {
     this.isLoading = true;
-
     this.service.getPackageById(ID).subscribe({
       next: (res: any) => {
         this.service.packageModel = {
@@ -248,12 +231,11 @@ export class PackageComponent implements OnInit, AfterViewInit {
 
         this.imagePreview = res.data.imageUrl ? this.baseurl + res.data.imageUrl : null;
         this.selectedFile = null;
-
+        
         setTimeout(() => {
           const Id = res.data.isActive;
           $('#isActive').val(String(Id)).trigger('change');
         }, 0);
-
         this.isLoading = false;
       },
       error: (err: any) => {
@@ -266,7 +248,6 @@ export class PackageComponent implements OnInit, AfterViewInit {
   // Delete product
   deletePackage(ID: number) {
     if (!confirm('Are you sure you want to delete this product?')) return;
-
     this.isLoading = true;
     this.service.deletePackageById(ID).subscribe({
       next: (res: any) => {
@@ -280,7 +261,6 @@ export class PackageComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
   // Reset Form
   reset() {
     this.service.packageModel = {
@@ -291,7 +271,6 @@ export class PackageComponent implements OnInit, AfterViewInit {
       imageUrl: '',
       isActive: $('#isActive').val('').trigger('change')
     };
-
     this.selectedFile = null;
     this.imagePreview = null;
   }
