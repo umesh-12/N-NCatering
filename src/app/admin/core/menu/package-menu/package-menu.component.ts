@@ -194,7 +194,6 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
 
 
   private handleSuccess(message: string) {
-    debugger
     this.toastr.success(message);
     this.fetchPackageMenu();
     this.isLoading = false;
@@ -259,11 +258,11 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
 
 
   fetchPackageMenuItemList(ID: number) {
-    debugger
     this.isLoading = true;
     this.service.getPackageMenuItemList(ID).subscribe({
       next: (res: any) => {
         this.packageMenuItemList = res;
+        console.log(res, 'packageMenuItemList')
         this.isLoading = false;
       },
       error: (err: any) => { this.isLoading = false; }
@@ -282,16 +281,39 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
     });
   }
 
+  ItemValidate(): boolean {
+    const model = this.service.packageMenuItemModel;
+    const menuItemId = Number(model.menuItemId);
+
+    // 1. Dropdown Blank Option check
+    if (!menuItemId || menuItemId === 0) {
+      this.toastr.error('Please select a Menu Item', 'Validation Error');
+      return false;
+    }
+
+    // 2. Exact Duplicate Check logic array check parsing
+    // packageMenuItemList bhitra select bhako item pachi loop data filtering array mapping trigger
+    const isDuplicate = this.packageMenuItemList.some(item => item.menuItemId === menuItemId);
+
+    if (isDuplicate) {
+      this.toastr.error('This Package Menu Item already exists in this category!', 'Duplicate Entry');
+      return false;
+    }
+
+    return true;
+  }
+
 
   // २. पपअप भित्रको सेभ (Create/Save)
   PostPackageMenuItem() {
+
+    if (!this.ItemValidate()) {
+      return;
+    }
+
     const model = this.service.packageMenuItemModel;
     const packageMenuId = model.packageMenuId;
     const menuItemId = model.menuItemId;
-    if (!menuItemId || menuItemId === 0) {
-      this.toastr.error('Please select a Menu Item', 'Validation Error');
-      return;
-    }
 
     this.isLoading = true;
     this.service.postPackageMenuItem(packageMenuId, menuItemId).subscribe({
@@ -318,7 +340,7 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
     this.toastr.error('Something went wrong', 'Error');
   }
 
-  
+
   // ३. पपअप भित्रको डिलिट (Delete) लजिक सुधारिएको
   deletePackageMenuItem(item: any) {
     if (!confirm('Are you sure you want to delete this Item?')) return;

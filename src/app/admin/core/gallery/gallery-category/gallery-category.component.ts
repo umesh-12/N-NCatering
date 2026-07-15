@@ -39,18 +39,7 @@ export class GalleryCategoryComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       selectEl.select2();
     }, 50);
-    // Select2 मा भ्यालु चेन्ज हुँदा Angular Model अपडेट गर्ने
-    selectEl.on('change', (e: any) => {
-      const val = $(e.target).val();
-      // String value लाई Boolean मा ढाल्ने
-      if (val === 'true' || val === true) {
-        this.service.galleryCategoryModel.isActive = true;
-      } else if (val === 'false' || val === false) {
-        this.service.galleryCategoryModel.isActive = false;
-      } else {
-        this.service.galleryCategoryModel.isActive = null as any;
-      }
-    });
+   
   }
 
 
@@ -99,6 +88,8 @@ export class GalleryCategoryComponent implements OnInit, AfterViewInit {
         setTimeout(() => {
           $('#isActive').val(String(this.service.galleryCategoryModel.isActive)).trigger('change');
         });
+
+
         this.isLoading = false;
       },
       error: (err: any) => {
@@ -150,7 +141,9 @@ export class GalleryCategoryComponent implements OnInit, AfterViewInit {
       galleryMasterId: model.galleryMasterId,
       categoryName: model.categoryName,
       displayOrder: model.displayOrder,
-      isActive: model.isActive
+      isActive: $("#isActive").val() === 'true' ? true : false
+      ///Noted important---------------------
+      // isActive: this.service.galleryCategoryModel.isActive
     };
     if (model.galleryMasterId === 0) {
       this.service.postGalleryCategory(payload).subscribe({
@@ -212,5 +205,5 @@ export class GalleryCategoryComponent implements OnInit, AfterViewInit {
     });
   }
 
-  
+
 }

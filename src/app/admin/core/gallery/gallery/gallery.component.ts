@@ -44,6 +44,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     this.selectedIsFeatured();
     this.selectedGalleryMasterId(); //
     this.fetchGalleryCategory();
+    
   }
 
 
@@ -52,14 +53,6 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       selectEl.select2();
     }, 10);
-    selectEl.on('change', (e: any) => {
-      const val = $(e.target).val();
-      if (val) {
-        this.service.galleryModel.GalleryMasterId = Number(val);
-      } else {
-        this.service.galleryModel.GalleryMasterId = 0;
-      }
-    });
   }
 
 
@@ -68,12 +61,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       selectEl.select2();
     }, 50);
-    selectEl.on('change', (e: any) => {
-      const val = $(e.target).val();
-      if (val === 'true') this.service.galleryModel.isActive = true;
-      else if (val === 'false') this.service.galleryModel.isActive = false;
-      else this.service.galleryModel.isActive = null as any;
-    });
+
   }
 
 
@@ -82,12 +70,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       selectEl.select2();
     }, 10);
-    selectEl.on('change', (e: any) => {
-      const val = $(e.target).val();
-      if (val === 'true') this.service.galleryModel.isFeatured = true;
-      else if (val === 'false') this.service.galleryModel.isFeatured = false;
-      else this.service.galleryModel.isFeatured = null as any;
-    });
+
   }
 
 
@@ -178,14 +161,14 @@ export class GalleryComponent implements OnInit, AfterViewInit {
 
 
     formData.append('title', (model.title || '').trim());
-    formData.append('galleryMasterId', String(model.GalleryMasterId));
+    formData.append('galleryMasterId', $("#GalleryMasterId").val());
     formData.append('galleryId', String(model.galleryId));
     formData.append('description', (model.description || '').trim());
     formData.append('displayOrder', String(model.displayOrder));
-    const isActiveValue = model.isActive ? 'true' : 'false';
-    formData.append('isActive', isActiveValue);
-    const isFeaturedValue = model.isFeatured ? 'true' : 'false';
-    formData.append('isFeatured', isFeaturedValue);
+    // const isActiveValue = model.isActive ? 'true' : 'false';
+    formData.append('isActive', $("#isActive").val());
+    // const isFeaturedValue = model.isFeatured ? 'true' : 'false';
+    formData.append('isFeatured',  $("#isFeatured").val());
 
 
     // image selection handling

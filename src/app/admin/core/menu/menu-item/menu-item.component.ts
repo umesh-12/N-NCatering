@@ -109,14 +109,14 @@ export class MenuItemComponent implements OnInit, AfterViewInit {
   dropDownCategoryHandle() {
     const selectEl = $('#categoryId');
     setTimeout(() => { selectEl.select2(); }, 10);
-    selectEl.on('change', (e: any) => {
-      const val = $(e.target).val();
-      if (val) {
-        this.service.menuItemModel.categoryId = Number(val);
-      } else {
-        this.service.menuItemModel.categoryId = 0;
-      }
-    });
+    // selectEl.on('change', (e: any) => {
+    //   const val = $(e.target).val();
+    //   if (val) {
+    //     this.service.menuItemModel.categoryId = Number(val);
+    //   } else {
+    //     this.service.menuItemModel.categoryId = 0;
+    //   }
+    // });
   }
 
   fetchMenuCategory() {
@@ -173,11 +173,11 @@ export class MenuItemComponent implements OnInit, AfterViewInit {
       next: (res: any) => {
         this.service.menuItemModel = {
           menuItemId: res.menuItemId ?? 0,
-          categoryId: res.categoryId ?? this.service.menuItemModel.categoryId,
+          categoryId: res.categoryId,
           itemName: res.itemName ?? '',
         };
         setTimeout(() => {
-          $('#categoryId').val(Number(this.service.menuItemModel.categoryId)).trigger('change');
+          $('#categoryId').val(res.categoryId).trigger('change');
         });
         this.isLoading = false;
       },
@@ -223,7 +223,7 @@ export class MenuItemComponent implements OnInit, AfterViewInit {
     const model = this.service.menuItemModel;
     const payload = {
       menuItemId: model.menuItemId,
-      categoryId: model.categoryId,
+      categoryId: $("#categoryId").val() ? Number($("#categoryId").val()) : 0,
       itemName: model.itemName
     };
     if (model.menuItemId === 0) {
@@ -247,7 +247,7 @@ export class MenuItemComponent implements OnInit, AfterViewInit {
     this.reset();
     this.isLoading = false;
   }
-  
+
   private handleError(err: any) {
     console.error(err);
     this.isLoading = false;
@@ -273,7 +273,7 @@ export class MenuItemComponent implements OnInit, AfterViewInit {
     });
   }
 
-  
+
   // Reset Form
   reset() {
     this.service.menuItemModel = {
@@ -282,6 +282,6 @@ export class MenuItemComponent implements OnInit, AfterViewInit {
       itemName: '',
     };
     this.selectedmenuItemId = null;
-    $('#categoryId').val('').trigger('change');
+    $('#categoryId').val(' ').trigger('change');
   }
 }

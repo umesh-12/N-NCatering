@@ -165,8 +165,8 @@ export class PackageComponent implements OnInit, AfterViewInit {
     formData.append('packageName', this.service.packageModel.packageName);
     formData.append('description', this.service.packageModel.description.trim());
     formData.append('price', String(this.service.packageModel.price));
-    const isActiveValue = this.service.packageModel.isActive ? 'true' : 'false';
-    formData.append('isActive', isActiveValue);
+    // const isActiveValue = this.service.packageModel.isActive ? 'true' : 'false';
+    formData.append('isActive', $("#isActive").val());
 
     if (this.selectedFile) {
       formData.append('Image', this.selectedFile);
@@ -231,7 +231,7 @@ export class PackageComponent implements OnInit, AfterViewInit {
 
         this.imagePreview = res.data.imageUrl ? this.baseurl + res.data.imageUrl : null;
         this.selectedFile = null;
-        
+
         setTimeout(() => {
           const Id = res.data.isActive;
           $('#isActive').val(String(Id)).trigger('change');
@@ -269,7 +269,7 @@ export class PackageComponent implements OnInit, AfterViewInit {
       description: '',
       price: 0,
       imageUrl: '',
-      isActive: $('#isActive').val('').trigger('change')
+      isActive: $('#isActive').val(' ').trigger('change')
     };
     this.selectedFile = null;
     this.imagePreview = null;

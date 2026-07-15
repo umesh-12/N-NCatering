@@ -97,7 +97,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Menu Category</label>
-                        <select data-placeholder="--Select--"  name="categoryId" id="categoryId" [(ngModel)]="this.service.menuItemModel.categoryId"
+                        <select data-placeholder="--Select--"  name="categoryId" id="categoryId" 
                             class="form-control">
                              <option></option>
                             <option [value]="item.categoryId" *ngFor="let item of menuCategory">{{ item.categoryName }}</option>
