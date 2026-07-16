@@ -26,7 +26,7 @@ export class MenuCategoryComponent implements OnInit, AfterViewInit {
     private toastr: ToastrService,
     private el: ElementRef
   ) { }
-  
+
   ngOnInit(): void {
     this.fetchMenucategoryList()
   }
@@ -167,6 +167,8 @@ export class MenuCategoryComponent implements OnInit, AfterViewInit {
     this.isLoading = true;
     this.service.deleteMenuCategory(ID).subscribe({
       next: (res: any) => {
+
+
         this.toastr.success('Item removed from Category');
         this.fetchMenucategoryList();
         this.isLoading = false;
@@ -174,6 +176,12 @@ export class MenuCategoryComponent implements OnInit, AfterViewInit {
       error: (err: any) => {
         console.error(err);
         this.isLoading = false;
+        // ब्याकइन्डबाट आएको एरर मेसेज देखाउने लजिक:
+        if (err.error && err.error.message) {
+          this.toastr.error('This category contains items and cannot be deleted.');
+        } else {
+          this.toastr.error('This category contains items and cannot be deleted.');
+        }
       }
     });
   }

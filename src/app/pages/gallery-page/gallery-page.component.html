@@ -16,7 +16,7 @@
       All
     </button>
 
-    <button *ngFor="let item of gallerycategoryList | slice:0:6" (click)="setFilter(item.categoryName)"
+    <button *ngFor="let item of gallerycategoryList " (click)="setFilter(item.categoryName)"
       [class.active]="selectedFilter === item.categoryName" class="btn btn-outline-primary">
       {{item.categoryName}}
     </button>

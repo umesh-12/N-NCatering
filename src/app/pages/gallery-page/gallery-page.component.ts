@@ -58,7 +58,7 @@ export class GalleryPageComponent implements OnInit, AfterViewInit {
       next: (res: any) => {
         // यदि एपीआई रेस्पोन्स सिधै एरे हो भने 'res' र यदि अब्जेक्ट हो भने 'res.data' लिने
         this.galleryList = res.data || res;
-            console.log(res,'gallery')
+        console.log(res, 'gallery')
         this.isLoading = false;
       },
       error: (err: any) => {
@@ -74,8 +74,9 @@ export class GalleryPageComponent implements OnInit, AfterViewInit {
     this.isLoading = true;
     this.service.getGalleryCategories().subscribe({
       next: (res: any) => {
-    
+
         this.gallerycategoryList = res.data || res;
+        this.gallerycategoryList = this.gallerycategoryList.filter(item => item.isActive == true)
         this.isLoading = false;
       },
       error: (err: any) => {

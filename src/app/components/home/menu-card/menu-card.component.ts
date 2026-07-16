@@ -34,6 +34,11 @@ export class MenuCardComponent implements OnInit, AfterViewInit {
     this.service.getPackageList().subscribe({
       next: (res: any) => {
         this.packageList = res.data;
+        console.log(res, 'packageList')
+
+        this.packageList = this.packageList.filter(item => item.isActive == true)
+
+
         console.log(res.data, 'packageList');
         this.isLoading = false;
       },

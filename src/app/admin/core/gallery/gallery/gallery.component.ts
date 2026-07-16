@@ -80,6 +80,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     this.service.getGalleryCategory().subscribe({
       next: (res: any) => {
         this.galleryCategory = res;
+        this.galleryCategory = this.galleryCategory.filter(item => item.isActive == true);
         this.isLoading = false;
       },
       error: (err: any) => {

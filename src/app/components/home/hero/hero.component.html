@@ -4,17 +4,20 @@
     <section class="splide" #splide>
         <div class="splide__track">
             <ul class="splide__list">
-               
-                <li class="splide__slide">
-                    <img src="../../../../assets/img/slider/slider1.jpg" alt="">
-                            <div class="slider-content">
-                        <h2>Serving Fresh, Hygienic & Delicious Catering Experiences</h2>
-                        <p>From preparation to presentation, we focus on freshness, cleanliness, and flavor. Our catering services are designed to bring joy to your celebrations with food that your guests will truly enjoy.</p>
 
-                        <a  routerLink="/reservation" class="btn btn-white">Book Reservation <i class="ri-arrow-right-long-line"></i></a>
+                <li *ngFor="let item of featuredGalleryList" class="splide__slide">
+                    <img [src]="baseurl + item.imageUrl" alt="">
+                    <div class="slider-content">
+                        <h2>Serving Fresh, Hygienic & Delicious Catering Experiences</h2>
+                        <p>From preparation to presentation, we focus on freshness, cleanliness, and flavor. Our
+                            catering services are designed to bring joy to your celebrations with food that your guests
+                            will truly enjoy.</p>
+
+                        <a routerLink="/reservation" class="btn btn-white">Book Reservation <i
+                                class="ri-arrow-right-long-line"></i></a>
                     </div>
                 </li>
-
+                <!-- 
                 
 
                 <li class="splide__slide">
@@ -53,7 +56,7 @@
                         <a  routerLink="/reservation" class="btn btn-white">Book Reservation<i class="ri-arrow-right-long-line"></i></a>
                     </div>
                 </li>
-
+ -->
 
             </ul>
         </div>
