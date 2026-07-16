@@ -125,7 +125,7 @@ export class PackageComponent implements OnInit, AfterViewInit {
     }
     // ५. IsActive ड्रपडाउन छानिएको छ कि छैन चेक गर्ने (नयाँ थपिएको)
     // Select2 मा खाली हुँदा यसको भ्यालु '', null वा undefined हुन सक्छ
-    if (model.isActive === null || model.isActive === undefined || String(model.isActive).trim() === '') {
+    if ($("#isActive").val() === null || $("#isActive").val() === undefined || $("#isActive").val() =='' ) {
       this.toastr.error('Please select Active Status (IsActive).');
       return false;
     }

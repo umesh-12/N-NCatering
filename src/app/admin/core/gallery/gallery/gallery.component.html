@@ -90,7 +90,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Gallery Category</label>
-                        <select data-placeholder="--Select--"  name="GalleryMasterId" id="GalleryMasterId" [(ngModel)]="this.service.galleryModel.GalleryMasterId"
+                        <select data-placeholder="--Select--"  name="GalleryMasterId" id="GalleryMasterId" 
                             class="form-control">
                             <option></option>
                             <option [value]="item.galleryMasterId" *ngFor="let item of galleryCategory">{{ item.categoryName }}</option>
@@ -122,7 +122,6 @@
 
                     <div class="mb-3">
                         <label class="form-label">IsFeatured</label>
-                        <!-- Select2 सँग राम्रो काम गरोस् भनेर यहाँ value स्ट्रिङमा मिलाइएको छ -->
                         <select data-placeholder="--Select--" name="isFeatured" id="isFeatured"
                             class="form-control">
                             <option></option>

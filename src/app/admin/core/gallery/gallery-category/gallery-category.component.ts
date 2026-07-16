@@ -39,7 +39,7 @@ export class GalleryCategoryComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       selectEl.select2();
     }, 50);
-   
+
   }
 
 
@@ -112,10 +112,12 @@ export class GalleryCategoryComponent implements OnInit, AfterViewInit {
       this.toastr.error('Please fill display order.');
       return false;
     }
-    if (model.isActive === null || model.isActive === undefined) {
-      this.toastr.error('Please select Active Status.');
+
+    if (!$("#isActive").val() || $("#isActive").val() === 'null' || $("#isActive").val() === 'undefined') {
+      this.toastr.error('Please select isActive Status.');
       return false;
     }
+
     const isDuplicate = this.gallerycategoryList.some(item => {
       const sameName = item.categoryName?.toLowerCase().trim() === model.categoryName?.toLowerCase().trim();
       if (model.galleryMasterId === 0) {

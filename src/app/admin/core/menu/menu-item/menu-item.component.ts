@@ -195,7 +195,7 @@ export class MenuItemComponent implements OnInit, AfterViewInit {
       this.toastr.error('Item Name is required.');
       return false;
     }
-    if (!model.categoryId || model.categoryId == 0) {
+    if (! $("#categoryId").val() ||  $("#categoryId").val() == 0) {
       this.toastr.error('Please select a valid Menu Category.');
       return false;
     }

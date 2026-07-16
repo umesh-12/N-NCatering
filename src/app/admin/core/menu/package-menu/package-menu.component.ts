@@ -79,19 +79,20 @@ export class PackageMenuComponent implements OnInit, AfterViewInit {
   validateForm(): boolean {
     const model = this.service.packageMenuModel;
     if (!model.categoryId || model.categoryId === 0) {
-      this.toastr.warning('Please select a Menu Category');
+      this.toastr.error('Please select a Menu Category');
       return false;
     }
     if (!model.packageId || model.packageId === 0) {
-      this.toastr.warning('Please select a Package Name');
+      this.toastr.error('Please select a Package Name');
+      return false;
+    }
+
+    if (model.chooseCount === undefined || model.chooseCount === null || model.chooseCount <= 0) {
+      this.toastr.error('Please enter a valid count greater than 0');
       return false;
     }
     if (model.isExtra === null || model.isExtra === undefined || (model.isExtra as any) === '') {
-      this.toastr.warning('Please select whether it is Extra or not');
-      return false;
-    }
-    if (model.chooseCount === undefined || model.chooseCount === null || model.chooseCount < 0) {
-      this.toastr.warning('Please enter a valid count');
+      this.toastr.error('Please select  Extra');
       return false;
     }
     return true;

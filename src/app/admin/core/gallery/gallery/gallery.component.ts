@@ -44,7 +44,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     this.selectedIsFeatured();
     this.selectedGalleryMasterId(); //
     this.fetchGalleryCategory();
-    
+
   }
 
 
@@ -127,14 +127,37 @@ export class GalleryComponent implements OnInit, AfterViewInit {
       this.toastr.error('Please enter a gallery title.');
       return false;
     }
-    if (!model.GalleryMasterId || Number(model.GalleryMasterId) === 0) {
-      this.toastr.error('Please select a Master Category.');
+    if (!$("#GalleryMasterId").val() || Number($("#GalleryMasterId").val()) === 0) {
+      this.toastr.error('Please select a Gallery Category.');
       return false;
     }
+
+    if (!model.description || model.description.trim() === '') {
+      this.toastr.error('Please enter description.');
+      return false;
+    }
+
     if (model.galleryId === 0 && !this.selectedFile) {
-      this.toastr.error('Please select an image for the new gallery item.');
+      this.toastr.error('Please select an image .');
       return false;
     }
+
+
+    if (!model.displayOrder || model.displayOrder == 0) {
+      this.toastr.error('Please enter displayOrder greater than 0.');
+      return false;
+    }
+
+    if (!$("#isFeatured").val() || $("#isFeatured").val() === 'null' || $("#isFeatured").val() === 'undefined') {
+      this.toastr.error('Please select isFeatured.');
+      return false;
+    }
+
+    if (!$("#isActive").val() || $("#isActive").val() === 'null' || $("#isActive").val() === 'undefined') {
+      this.toastr.error('Please select isActive.');
+      return false;
+    }
+
     return true;
   }
 
@@ -168,7 +191,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     // const isActiveValue = model.isActive ? 'true' : 'false';
     formData.append('isActive', $("#isActive").val());
     // const isFeaturedValue = model.isFeatured ? 'true' : 'false';
-    formData.append('isFeatured',  $("#isFeatured").val());
+    formData.append('isFeatured', $("#isFeatured").val());
 
 
     // image selection handling
